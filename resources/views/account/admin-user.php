@@ -54,7 +54,7 @@ $name_search = trim($_POST['search']);
                     <th>День рождения</th>
                     <th>Почта</th>
                     <th>Телефон</th>
-                    <th>Регестрация</th>
+                    <th>Регистрация</th>
                     <th>Группа</th>
                     <th>Роль</th>
                 </tr>
