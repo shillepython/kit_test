@@ -28,33 +28,22 @@ if ($user->dateUser($id,1) == ''){
 
 
 if (isset($_POST['action'])) {
-        function uploadFile($file_json)
-        {
-            $extension = pathinfo($file_json['name'], PATHINFO_EXTENSION);
-            $file_txt_upload = 'txt-file/'.uniqid()  . '_' . date("m.d.y") . "." . $extension;
-            move_uploaded_file($file_json['tmp_name'], $file_txt_upload);
-
-            $file_read_txt = file($file_txt_upload);
-            $file_json_encode = json_encode($file_read_txt);
-            $file = 'json-file/'.uniqid() . '_' . date("m.d.y").".json";
-            if (!file_exists($file)) {
-                $fcreate = fopen($file, "w");
-                fwrite($fcreate, $file_json_encode);
-                fclose($fcreate);
-            }
-            header('Location: /');
-            return $file_txt_upload;
-        }
-        $filename = uploadFile($_FILES['file']);
+    $user->uploadFile(trim($_POST['name_test']),$_FILES['file']);
 }
 ?>
-
 <?php if($user->dateUser($id,10) == 3):?>
 
 
     <?php require "../../layouts/adminnav.php"; ?>
     <div class="container center-align">
         <form action="?" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="first_name" name="name_test" type="text" class="validate" required>
+                    <label for="first_name">Название теста</label>
+                </div>
+            </div>
             <div class="file-field input-field">
                 <div class="btn">
                     <span>File</span>

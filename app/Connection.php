@@ -30,6 +30,7 @@ abstract class Database extends Connection {
     abstract public function getGroupUser($id);
     abstract public function searchUser($name);
     abstract public function searchUserGroup($group);
+    abstract public function uploadFile($name_tets,$file_json);
 }
 class User extends Database{
     private $table = '`users`';
@@ -129,6 +130,30 @@ class User extends Database{
         return $num;
     }
 
+
+    //ЗАГРУЗКА ФАЙЛОВ ПРИ СОЗДАНИИ ТЕСТОВ \НАЧАЛО\
+    public function create_json($file_txt_upload,$name_tets) {
+        $file_read_txt = file($file_txt_upload);
+        $file_json_encode = json_encode($file_read_txt);
+        $file = 'json-file/'.uniqid() . '_' . date("m.d.y"). "_" . $name_tets .".json";
+        if (!file_exists($file)) {
+            $fcreate = fopen($file, "w");
+            fwrite($fcreate, $file_json_encode);
+            fclose($fcreate);
+        }
+    }
+
+    public function uploadFile($name_tets,$file_json) {
+        $extension = pathinfo($file_json['name'], PATHINFO_EXTENSION);
+        $file_txt_upload = 'txt-file/'.uniqid()  . '_' . date("m.d.y") . "_" . $name_tets . "." . $extension;
+        move_uploaded_file($file_json['tmp_name'], $file_txt_upload);
+
+        $this->create_json($file_txt_upload,$name_tets);
+
+        header('Location: /');
+        return $file_txt_upload;
+    }
+//ЗАГРУЗКА ФАЙЛОВ ПРИ СОЗДАНИИ ТЕСТОВ \КОНЕЦ\
 }
 
 class UserObject extends User{
