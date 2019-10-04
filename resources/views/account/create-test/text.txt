@@ -12,7 +12,7 @@
 0 1 <1>
 7 05 <time>
 {----------------------- 1 --------------------------}
-1)what is HTML?
+1)Что такое HTML
 &
 autofocus
 multiple
@@ -21,7 +21,7 @@ placeholder
 *required
 &
 {----------------------- 2 --------------------------}
-2)what is css after tag?
+2)что такое абстрактный метод
 &
 :first
 :first-line
