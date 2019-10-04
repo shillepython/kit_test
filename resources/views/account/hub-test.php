@@ -90,11 +90,14 @@ if ($user->dateUser($id,1) == ''){
             <div class="col s12">
                 <h5>Панель управление пользователями</h5>
                 <div class="row s12">
-                    <div class="col s6">
+                    <div class="col s4">
                         <a href="admin-user.php" class="waves-effect waves-light btn-large">Таблица всех пользователей</a>
                     </div>
-                    <div class="col s6">
-                        <a href="admin-groups.php" class="waves-effect waves-light btn-large">Поиск пользователей по группам</a>
+                    <div class="col s4">
+                        <a href="admin-groups.php" class="waves-effect waves-light btn-large">Поиск пользователей</a>
+                    </div>
+                    <div class="col s4">
+                        <a href="create-test/add.php" class="waves-effect waves-light btn-large">Создать тест</a>
                     </div>
                 </div>
             </div>
