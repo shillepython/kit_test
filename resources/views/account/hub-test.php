@@ -78,8 +78,9 @@ if ($user->dateUser($id,1) == ''){
 //        ?>
 <!--    </div>-->
 <!--</div>-->
-<?php elseif($user->dateUser($id,10) == 2):?>
-
+<?php elseif($user->dateUser($id,10) == 2):
+    require "../layouts/navbar.php";
+?>
     <p>Привет преподователь </p>
 
 <?php elseif($user->dateUser($id,10) == 3):?>

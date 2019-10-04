@@ -28,7 +28,9 @@ if ($user->dateUser($id,1) == ''){
 
 
 if (isset($_POST['action'])) {
-    $user->uploadFile(trim($_POST['name_test']),$_FILES['file']);
+    $name_test = trim($_POST['name_test']);
+    $file = $_FILES['file'];
+    $user->uploadFile($name_test,$file);
 }
 ?>
 <?php if($user->dateUser($id,10) == 3):?>
