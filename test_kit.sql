@@ -181,7 +181,7 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `tests`
+-- Индексы таблицы `testing`
 --
 ALTER TABLE `tests`
   ADD PRIMARY KEY (`id`),
@@ -238,7 +238,7 @@ ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `tests`
+-- AUTO_INCREMENT для таблицы `testing`
 --
 ALTER TABLE `tests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
@@ -279,7 +279,7 @@ ALTER TABLE `questions`
   ADD CONSTRAINT `FK_question_test` FOREIGN KEY (`test_id`) REFERENCES `tests` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ограничения внешнего ключа таблицы `tests`
+-- Ограничения внешнего ключа таблицы `testing`
 --
 ALTER TABLE `tests`
   ADD CONSTRAINT `FK_test_question` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

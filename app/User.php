@@ -22,7 +22,8 @@ class User extends AbstractModel{
         return $row;
     }
 
-    // СОВПОДЕНИЕ ЛОГИНА И ПАРОЛЯ С ВЕДЕННЫМИ ДАННЫМИ ПОЛЬЗОВАТЕЛЕМ
+    // СОВПОДЕНИЕ ЛОГИНА И ПАРОЛЯ С ВЕДЕННЫМИ ДАННЫМИ ПОЛЬЗОВАТЕЛЕМ + Вход пользователя
+
     public function query_log_pass($login,$password) {
         $result_pass_login = parent::query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password'");
         $row_auth = $result_pass_login->fetch_assoc();
@@ -36,7 +37,9 @@ class User extends AbstractModel{
         parent::query($add);
         return $add;
     }
-
+    public function phpmailler() {
+        return parent::query("SELECT * FROM " . $this->table . " ORDER BY `user_id` DESC LIMIT 1");
+    }
     //Удаление пользователя
     public function deleteUser($id)
     {
@@ -50,11 +53,11 @@ class User extends AbstractModel{
         return parent::query("UPDATE `users` SET login='$login', password='$password', name='$name', surname='$surname', birth_date='$birth_date', email='$email', tel='$phone', registration_date='$today', group_id='$group_id', role_id='$role_id' WHERE id=$id");
     }
 
-    public function getGroupUser($id)
+    public function getElementsTable($row_table,$id)
     {
-        $getGroup =  parent::query("SELECT `group_id` FROM " . $this->table . " WHERE id='$id'");
-        $row = $getGroup->fetch_assoc();
-        return $row['group_id'];
+        $getGroup =  parent::query("SELECT `$row_table` FROM " . $this->table . " WHERE id='$id'");
+        $row_ass = $getGroup->fetch_assoc();
+        return $row_ass[$row_table];
     }
 
     public function whileSearch($name) {
@@ -87,12 +90,7 @@ class User extends AbstractModel{
     }
 
 //select * from `news` where `text` like '%"'.$_POST['search'].'"%' ;
-    //Вход пользователя
-    public function sign_in($login,$password) {
-        $result_pass_login = parent::query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password'");
-        $row = $result_pass_login->fetch_assoc();
-        return $row;
-    }
+
     //Полечение строк определённого пользователя
     public function select_num_rows($login,$password) {
         $result_row = parent::query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password'");
@@ -103,8 +101,15 @@ class User extends AbstractModel{
 
     //ЗАГРУЗКА ФАЙЛОВ ПРИ СОЗДАНИИ ТЕСТОВ \НАЧАЛО\
     public function create_json($file_txt_upload,$name_tets) {
-        $file_read_txt = file($file_txt_upload);
-        $file_json_encode = json_encode($file_read_txt);
+
+        $keyarray = ["ans1", "ans2", "ans3", "ans4", "ans5"];
+        $array = file($file_txt_upload);
+        foreach ($array as $key => $value) {
+            $temparray = preg_split( '/ {2,}/', $value);// разделить строку по двум и более пробелам / {2,}/g
+            $namebook = array_shift($temparray); // извлекаем название книги и укорачиваем массив на один элемент
+            $books[$namebook] = array_combine($keyarray, $temparray); // склеиваем массив с ключами и новый массив
+        }
+        $file_json_encode = json_encode($books);
         $file = 'json-file/'.uniqid() . '_' . date("m.d.y"). "_" . $name_tets .".json";
         if (!file_exists($file)) {
             $fcreate = fopen($file, "w");
@@ -119,7 +124,6 @@ class User extends AbstractModel{
         move_uploaded_file($file_json['tmp_name'], $file_txt_upload);
 
         $this->create_json($file_txt_upload,$name_tets);
-
         header('Location: /');
         return $file_txt_upload;
     }

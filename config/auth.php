@@ -5,12 +5,10 @@ use app\User;
 
 $connection = new User();
 
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
 
-$connection = new User();
 $name = trim($_POST['name']);
 $surname = trim($_POST['surname']);
 $login = trim($_POST['login']);
@@ -36,13 +34,14 @@ if($result_row_login == 0) {
 
 $id = $_SESSION['user'][0];
 
-$sql = "SELECT * FROM users ORDER BY user_id DESC LIMIT 1";
-$result = $connection->query($sql); if ($result->num_rows > 0) {
+
+$result = $connection->phpmailler(); if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $email = $row["email"];
         $login = $row['login'];
         $name = $row['name'];
         $surname = $row['surname'];
+        $password = $row['password'];
         echo "<br>";
     }
 }
@@ -62,17 +61,16 @@ try {
     // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('shillenetwork@gmail.com', 'Serafim Semikhat');
-    $mail->addAddress($email, 'Joe User');     // Add a recipient
+    $mail->setFrom('shillenetwork@gmail.com', 'Kit-Test');
+    $mail->addAddress($email, 'Kit-Test.ua');     // Add a recipient
 
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Hello dear, '.$surname;
-    $mail->Body    = '<p>Добрый день:</p><p>Ваш логин:'. $login . '</p><p>Ваше имя:'. $name .'</p>';
+    $mail->Subject = 'Регистрация на сайте KIT-TEST';
+    $mail->Body    = '<p>Добрый день: <strong>' . $name .' ' . $surname .'</strong>, ваши контактные данные для входа в аккаунт</p><p><strong>Логин: '. $login . '</strong></p><p><strong>Пароль: '. $password .'</strong><p>';
 
     $mail->send();
-    echo 'Письмо было отправлено на '. $email."<br><a href='index.php'>Просмотр сайта</a>";
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }

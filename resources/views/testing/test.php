@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-require "../../../../autoload.php";
+require "../../../autoload.php";
 use app\User;
 use app\UserObject;
 
@@ -30,13 +30,13 @@ if ($user->dateUser($id,1) == ''){
 if (isset($_POST['action'])) {
     $name_test = trim($_POST['name_test']);
     $file = $_FILES['file'];
-    $json = $user->uploadFile($name_test,$file);
+    $user->uploadFile($name_test,$file);
 }
 ?>
 <?php if($user->dateUser($id,10) == 3):?>
 
 
-    <?php require "../../layouts/adminnav-add.php"; ?>
+    <?php require "../layouts/adminnav-add.php"; ?>
     <div class="container center-align">
         <form action="?" method="post" enctype="multipart/form-data">
             <div class="row">
@@ -67,5 +67,5 @@ if (isset($_POST['action'])) {
 
 <?php endif; ?>
 
-<?php require "../../layouts/footer.php"?>
+<?php require "../layouts/footer.php"?>
 

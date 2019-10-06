@@ -40,8 +40,8 @@ if ($user->dateUser($id,1) == ''){
 <!--    <hr>-->
 <!--    <div class="row cards-top">-->
 <!--        --><?php
-//        $tests = "SELECT * FROM `users`";
-//        while ($test = $tests->fetch_assoc()) {
+//        $testing = "SELECT * FROM `users`";
+//        while ($test = $testing->fetch_assoc()) {
 //            ?>
 <!--            <div class="col s12 m4">-->
 <!--                <div class="card">-->
@@ -55,7 +55,7 @@ if ($user->dateUser($id,1) == ''){
 <!--                        --><?php //echo $test['short_text']; ?>
 <!--                    </div>-->
 <!--                    <div class="card-action">-->
-<!--                        <a href="../tests/test.php?id=--><?php //echo $test['id'] ?><!--">Пройти тест</a>-->
+<!--                        <a href="../testing/test.php?id=--><?php //echo $test['id'] ?><!--">Пройти тест</a>-->
 <!--                    </div>-->
 <!--                </div>-->
 <!--            </div>-->

@@ -18,7 +18,3 @@ class Connection {
     }
 }
 
-//include "AbstractModel.php";
-//include "User.php";
-//include "UserObject.php";
-
