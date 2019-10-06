@@ -1,6 +1,10 @@
 <?php
+use app\UserObject;
+include "autoload.php";
+
 session_start();
 
+$userObj = new UserObject();
 if (isset($_SESSION['user'])){
     header('Location: resources/views/account/hub-test.php');
     exit();

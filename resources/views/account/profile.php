@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])){
 }
 
 
-require "../../../app/Connection.php";
+require "../../../autoload.php";
 use app\User;
 use app\UserObject;
 $connection = new User();

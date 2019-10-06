@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-require "../../../../app/Connection.php";
+require "../../../../autoload.php";
 use app\User;
 use app\UserObject;
 
@@ -36,7 +36,7 @@ if (isset($_POST['action'])) {
 <?php if($user->dateUser($id,10) == 3):?>
 
 
-    <?php require "../../layouts/adminnav.php"; ?>
+    <?php require "../../layouts/adminnav-add.php"; ?>
     <div class="container center-align">
         <form action="?" method="post" enctype="multipart/form-data">
             <div class="row">

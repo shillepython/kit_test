@@ -52,10 +52,13 @@ if (!isset($_SESSION['user'])){
 
 <?php
 require "../../../app/Connection.php";
-use app\Connection;
-$connection = new Connection();
+use app\User;
+use app\UserObject;
+
+$connection = new User();
+$user = new UserObject();
 ?>
-<?php if($_SESSION['user' ][6] == 'пользователь'): ?>
+<?php if($user->dateUser($id,10) == 1): ?>
     <div class="container">
         <?php
             $test = $connection->query("SELECT * FROM `article_tests` WHERE `id`= " . (int) $_GET['id']);
@@ -98,11 +101,11 @@ $connection = new Connection();
 
                 <?php } ?>
     </div>
-<?php elseif($_SESSION['user' ][6] == 'преподаватель'):?>
+<?php elseif($user->dateUser($id,10) == 2):?>
 
     <p>Привет преподователь </p>
 
-<?php elseif($_SESSION['user' ][6] == 'администратор'):?>
+<?php elseif($user->dateUser($id,10) == 3):?>
 
     <p>Привет администратор </p>
 

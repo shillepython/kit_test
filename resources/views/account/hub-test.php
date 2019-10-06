@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-require "../../../app/Connection.php";
+require "../../../autoload.php";
 use app\User;
 use app\UserObject;
 
@@ -30,20 +30,6 @@ if ($user->dateUser($id,1) == ''){
     }
 }
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/public/css/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" href="/public/css/style.css">
-    <title>Kit Test</title>
-</head>
-<body>
-
 <?php if($user->dateUser($id,10) == 1):
     require "../layouts/navbar.php";
 ?>
@@ -92,10 +78,10 @@ if ($user->dateUser($id,1) == ''){
                 <h5>Панель управление пользователями</h5>
                 <div class="row s12">
                     <div class="col s4">
-                        <a href="admin-user.php" class="waves-effect waves-light btn-large">Таблица всех пользователей</a>
+                        <a href="admin-user.php" class="waves-effect waves-light btn-large">Таблица пользователей</a>
                     </div>
                     <div class="col s4">
-                        <a href="admin-groups.php" class="waves-effect waves-light btn-large">Поиск пользователей</a>
+                        <a href="admin-groups.php" class="waves-effect waves-light btn-large">Поиск групп</a>
                     </div>
                     <div class="col s4">
                         <a href="create-test/add.php" class="waves-effect waves-light btn-large">Создать тест</a>

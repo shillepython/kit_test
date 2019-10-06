@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-require "../../../app/Connection.php";
+require "../../../autoload.php";
 use app\User;
 use app\UserObject;
 

@@ -1,9 +1,9 @@
 <?php
-session_start();
-require "../app/Connection.php";
+require "../autoload.php";
 use app\User;
-
 $connection = new User();
+session_start();
+
 $login = trim($_POST['login']);
 $password = trim($_POST['password']);
 $result_pass_login = $connection->sign_in($login,$password);
