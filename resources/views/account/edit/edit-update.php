@@ -9,16 +9,19 @@ if (!isset($_SESSION['user'])) {
     header('Location: /');
     exit();
 }
-require "../../../../app/Connection.php";
+include "../../../../autoload.php";
+
 use app\User;
 use app\UserObject;
+use app\Admin;
 
 $connection = new User();
 $user = new UserObject();
+$admin = new Admin();
 
 $id = $_SESSION['user'][0];
 
-if ($user->dateUser($id,1) == ''){
+if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
         header('Location: /');
@@ -38,6 +41,6 @@ $group = $_POST['group'];
 $date_registartion = $_POST['date_registartion'];
 $role = $_POST['role_select'];
 
-if ($update = $user->updateUser($id,$login,$password,$name,$surname,$date,$email,$phone,$date_registartion,$group,$role)){
+if ($update = $admin->updateUser($id,$login,$password,$name,$surname,$date,$email,$phone,$date_registartion,$group,$role)){
     header('Location: ../admin-user.php');
 }

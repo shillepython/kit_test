@@ -12,18 +12,20 @@ if (!isset($_SESSION['user'])) {
 require "../../../autoload.php";
 use app\User;
 use app\UserObject;
+use app\Admin;
 
 $connection = new User();
 $user = new UserObject();
+$admin = new Admin();
 
 if (isset($_GET['del_user'])) {
     $id_user = $_GET['del_user'];
-    $user->deleteUser($id_user);
+    $admin->deleteUser($id_user);
     header('Location: admin-user.php');
 }
 $id = $_SESSION['user'][0];
 
-if ($user->dateUser($id,1) == ''){
+if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
         header('Location: /');
@@ -35,7 +37,7 @@ $name_search = trim($_POST['search']);
 
 
 ?>
-<?php if($user->dateUser($id,10) == 3):?>
+<?php if($admin->getElementsTable('role_id',$id) == 3 || $admin->getElementsTable('role_id',$id) == 2):?>
 
     <?php require "../layouts/adminnav.php"; ?>
 <div class="container">
@@ -58,7 +60,7 @@ $name_search = trim($_POST['search']);
             </tr>
             </thead>
             <tbody>
-                    <?php $user->searchUserGroup($name_search); ?>
+                    <?php $admin->searchUserGroup($name_search); ?>
             </tbody>
         </table>
     <?php endif; ?>
@@ -81,7 +83,7 @@ $name_search = trim($_POST['search']);
             <tbody>
             <?php
 
-            $users = $user->AllTable();
+            $users = $admin->AllTable();
             while ($user = $users->fetch_row()) {
                 ?>
                 <tr>

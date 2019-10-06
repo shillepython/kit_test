@@ -12,17 +12,21 @@ if (!isset($_SESSION['user'])) {
 require "../../../autoload.php";
 use app\User;
 use app\UserObject;
+use app\Admin;
 
 $connection = new User();
+$admin = new Admin();
 $user = new UserObject();
+
+echo $admin->editTests(15);
 
 if (isset($_GET['del_user'])) {
     $id_user = $_GET['del_user'];
-    $user->deleteUser($id_user);
+    $admin->deleteUser($id_user);
 }
 $id = $_SESSION['user'][0];
 
-if ($user->dateUser($id,1) == ''){
+if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
         header('Location: /');
@@ -30,7 +34,7 @@ if ($user->dateUser($id,1) == ''){
     }
 }
 ?>
-<?php if($user->dateUser($id,10) == 1):
+<?php if($admin->getElementsTable('role_id',$id) == 1):
     require "../layouts/navbar.php";
 ?>
 
@@ -64,12 +68,26 @@ if ($user->dateUser($id,1) == ''){
 //        ?>
 <!--    </div>-->
 <!--</div>-->
-<?php elseif($user->dateUser($id,10) == 2):
-    require "../layouts/navbar.php";
+<?php elseif($admin->getElementsTable('role_id',$id) == 2):
+    require "../layouts/authornav.php";
 ?>
-    <p>Привет преподователь </p>
+    <div class="container">
+        <div class="row z-depth-2 profil-text">
+            <div class="col s12">
+                <h5>Панель управление пользователями</h5>
+                <div class="row s12">
+                    <div class="col s6">
+                        <a href="create-test/add.php" class="waves-effect waves-light btn-large">Создать тест</a>
+                    </div>
+                    <div class="col s6">
+                        <a href="admin-groups.php" class="waves-effect waves-light btn-large">Поиск групп</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<?php elseif($user->dateUser($id,10) == 3):?>
+<?php elseif($admin->getElementsTable('role_id',$id) == 3):?>
 
     <?php require "../layouts/adminnav.php"; ?>
     <div class="container">

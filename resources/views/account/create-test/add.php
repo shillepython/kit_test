@@ -10,15 +10,15 @@ if (!isset($_SESSION['user'])) {
 }
 
 require "../../../../autoload.php";
-use app\User;
-use app\UserObject;
+use app\Author;
+use app\Admin;
 
-$connection = new User();
-$user = new UserObject();
+$author = new Author();
+$admin = new Admin();
 
 $id = $_SESSION['user'][0];
 
-if ($user->dateUser($id,1) == ''){
+if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
         header('Location: /');
@@ -26,14 +26,13 @@ if ($user->dateUser($id,1) == ''){
     }
 }
 
-
 if (isset($_POST['action'])) {
     $name_test = trim($_POST['name_test']);
     $file = $_FILES['file'];
-    $json = $user->uploadFile($name_test,$file);
+    $json = $author->uploadFile($name_test,$file);
 }
 ?>
-<?php if($user->dateUser($id,10) == 3):?>
+<?php if($admin->getElementsTable('role_id',$id) == 3 || $admin->getElementsTable('role_id',$id) == 2):?>
 
 
     <?php require "../../layouts/adminnav-add.php"; ?>

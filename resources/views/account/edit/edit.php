@@ -9,16 +9,19 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-require "../../../../app/Connection.php";
+include "../../../../autoload.php";
+
 use app\User;
 use app\UserObject;
+use app\Admin;
 
 $connection = new User();
 $user = new UserObject();
+$admin = new Admin();
 
 $id = $_SESSION['user'][0];
 
-if ($user->dateUser($id,1) == ''){
+if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
         header('Location: /');
@@ -27,7 +30,7 @@ if ($user->dateUser($id,1) == ''){
 }
 
 $id_edit = $_GET['id'];
-$sql_edit = $user->getId($id_edit);
+$sql_edit = $admin->getId($id_edit);
 $result_sql = $sql_edit->fetch_row();
 
 $login = $result_sql[1];
@@ -42,10 +45,10 @@ $group = $result_sql[9];
 
 ?>
 
-<?php if($user->dateUser($id,10) == 3):?>
+<?php if($admin->getElementsTable('role_id',$id) == 3):?>
 
 
-    <?php require "../../layouts/adminnav.php"; ?>
+    <?php require "../../layouts/adminnav-edit.php"; ?>
     <div class="container center-align">
         <div class="row background-reg z-depth-2">
             <form action="edit-update.php" method="post" class="col s12">
