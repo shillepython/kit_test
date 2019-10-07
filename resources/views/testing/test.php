@@ -10,62 +10,65 @@ if (!isset($_SESSION['user'])) {
 }
 
 require "../../../autoload.php";
+use app\Admin;
 use app\User;
-use app\UserObject;
 
-$connection = new User();
-$user = new UserObject();
+$admin = new Admin();
+$user = new User();
 
 $id = $_SESSION['user'][0];
-
-if ($user->dateUser($id,1) == ''){
+$idGet = (int) $_GET['id'];
+if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
         header('Location: /');
         exit();
     }
 }
-
-
-if (isset($_POST['action'])) {
-    $name_test = trim($_POST['name_test']);
-    $file = $_FILES['file'];
-    $user->uploadFile($name_test,$file);
-}
 ?>
-<?php if($user->dateUser($id,10) == 3):?>
 
-
-    <?php require "../layouts/adminnav-add.php"; ?>
-    <div class="container center-align">
-        <form action="?" method="post" enctype="multipart/form-data">
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="first_name" name="name_test" type="text" class="validate" required>
-                    <label for="first_name">Название теста</label>
+    <?php require "../layouts/navbar.php"; ?>
+    <p class="container center-align">
+        <button>Открыть тест</button>
+    </p>
+<div class="container">
+    <div class="test">
+        <div class="row">
+            <div class="col s12">
+                <h4>Тест: <?php echo $testing = $user->getTestTable('title',$idGet); ?></h4>
+                <div class="row tests">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="first_name" name="name" type="text" class="validate" required>
+                        <label for="first_name">Ваше имя</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="last_name" name="surname" type="text" class="validate" required>
+                        <label for="last_name">Ваша фамилия</label>
+                    </div>
                 </div>
             </div>
-            <div class="file-field input-field">
-                <div class="btn">
-                    <span>File</span>
-                    <input type="file" name="file">
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Отправить
-                        <i class="material-icons right">send</i>
-                    </button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
-
-<?php endif; ?>
+</div>
 
 <?php require "../layouts/footer.php"?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $( document ).ready(function() {
+        $( "button" ).click(function() { // задаем функцию при нажатиии на элемент <button>
+            $.getJSON( "test_html.json", function ( data, textStatus, jqXHR ) { // указываем url и функцию обратного вызова;
+                let tests = [];
+                for (let key in data ) {
+                    tests.push('<p>' + key + ": <br>" + data[key]['ans1'] + "<br>" + data[key]['ans2'] + "<br>" + data[key]['ans3'] + "<br>" + data[key]['ans4'] + "<br>" + data[key]['ans5'] + "</p>"); // добавляем в переменную все ключи объекта и их значения
+                };
+                $('<form/>', {
+                    'class': 'my-new-list',
+                    html: tests.join('')
+                }).appendTo('.tests');
+            })
+        })
+    });
+</script>
 

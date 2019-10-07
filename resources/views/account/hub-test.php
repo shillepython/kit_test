@@ -11,12 +11,10 @@ if (!isset($_SESSION['user'])) {
 
 require "../../../autoload.php";
 use app\User;
-use app\UserObject;
 use app\Admin;
 
-$connection = new User();
+$user = new User();
 $admin = new Admin();
-$user = new UserObject();
 
 echo $admin->editTests(15);
 
@@ -38,36 +36,36 @@ if ($admin->getElementsTable('login',$id) == ''){
     require "../layouts/navbar.php";
 ?>
 
-<!--<div class="container">-->
-<!--    <h2>Все тесты:</h2>-->
-<!---->
-<!--    <hr>-->
-<!--    <div class="row cards-top">-->
-<!--        --><?php
-//        $testing = "SELECT * FROM `users`";
-//        while ($test = $testing->fetch_assoc()) {
-//            ?>
-<!--            <div class="col s12 m4">-->
-<!--                <div class="card">-->
-<!--                    <div class="card-image">-->
-<!--                        <img src="/public/img/test/--><?php //echo $test['img']; ?><!--">-->
-<!--                        <span class="card-title">-->
-<!--                        --><?php //echo $test['title']; ?>
-<!--                    </span>-->
-<!--                    </div>-->
-<!--                    <div class="card-content">-->
-<!--                        --><?php //echo $test['short_text']; ?>
-<!--                    </div>-->
-<!--                    <div class="card-action">-->
-<!--                        <a href="../testing/test.php?id=--><?php //echo $test['id'] ?><!--">Пройти тест</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            --><?php
-//        }
-//        ?>
-<!--    </div>-->
-<!--</div>-->
+<div class="container">
+    <h2>Все тесты:</h2>
+
+    <hr>
+    <div class="row cards-top">
+        <?php
+        $testing = $user->out_test();
+        while ($test = $testing->fetch_assoc()) {
+            ?>
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="/public/img/test/<?php echo $test['image']; ?>">
+                        <span class="card-title">
+                        <?php echo $test['title']; ?>
+                    </span>
+                    </div>
+                    <div class="card-content">
+                        <?php echo $test['text']; ?>
+                    </div>
+                    <div class="card-action">
+                        <a href="../testing/test.php?id=<?php echo $test['id'] ?>">Пройти тест</a>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+</div>
 <?php elseif($admin->getElementsTable('role_id',$id) == 2):
     require "../layouts/authornav.php";
 ?>

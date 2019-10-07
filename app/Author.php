@@ -9,6 +9,7 @@ class Author extends UserObject {
             $temparray = preg_split( '/ {2,}/', $value);// разделить строку по двум и более пробелам / {2,}/g
             $namebook = array_shift($temparray); // извлекаем название книги и укорачиваем массив на один элемент
             $books[$namebook] = array_combine($keyarray, $temparray); // склеиваем массив с ключами и новый массив
+
         }
         $file_json_encode = json_encode($books);
         $file = 'json-file/'.uniqid() . '_' . date("m.d.y"). "_" . $name_tets .".json";

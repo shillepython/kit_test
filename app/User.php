@@ -39,5 +39,13 @@ class User extends UserObject{
     public function phpmailler() {
         return parent::query("SELECT * FROM " . $this->table . " ORDER BY user_id DESC LIMIT 1");
     }
+    public function out_test() {
+        return parent::query("SELECT * FROM `out_test`");
+    }
+    public function getTestTable($row_table,$id) {
+        $getTest =  parent::query("SELECT `$row_table` FROM `out_test` WHERE id='$id'");
+        $row_ass = $getTest->fetch_assoc();
+        return $row_ass[$row_table];
+    }
 
 }
