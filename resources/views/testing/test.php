@@ -46,8 +46,8 @@ if ($admin->getElementsTable('login',$id) == ''){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     $( document ).ready(function() {
-        $( "button" ).click(function() { // задаем функцию при нажатиии на элемент <button>
-            $.getJSON( "test_html.json", function ( data, textStatus, jqXHR ) { // указываем url и функцию обратного вызова;
+        $( "button" ).click(function() {
+            $.getJSON( "test_html.json", function ( data) {
                 let tests = [];
                 for (let key in data ) {
                     let ans1 = 1;
