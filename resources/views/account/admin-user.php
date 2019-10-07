@@ -117,7 +117,7 @@ $name_search = trim($_POST['search']);
                 }
                 ?></td>
                 <td><a href="edit/edit.php?id=<?php echo $user[0]; ?>" class="btn-user"><i class="material-icons left">edit</i></a></td>
-                <td><a href="?del_user=<? echo $user[0]; ?>"><i class="material-icons left">remove_circle_outline</i></a></td>
+                <td><a href="?del_user=<?php echo $user[0]; ?>"><i class="material-icons left">remove_circle_outline</i></a></td>
             </tr>
             <?php } ?>
             </tbody>

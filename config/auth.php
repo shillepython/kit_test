@@ -19,7 +19,7 @@ $password = trim($_POST['password']);
 $birth_date = trim($_POST['date']);
 $role_id = 1;
 
-$result_row_login = $connection->query_log($login);
+$result_row_login = $connection->query_log($login,$password);
 if($result_row_login == 0) {
     if ($connection->add_user_sql($login, $password, $name, $surname, $birth_date, $email, $phone, $today, $role_id)) {
         $result_pass_login = $connection->query_log_pass($login,$password);
