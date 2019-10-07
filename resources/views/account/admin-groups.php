@@ -32,10 +32,9 @@ if ($admin->getElementsTable('login',$id) == ''){
         exit();
     }
 }
-
-$name_search = trim($_POST['search']);
-
-
+if (empty($_POST['action'])){
+    $name_search = trim($_POST['search']);
+}
 ?>
 <?php if($admin->getElementsTable('role_id',$id) == 3 || $admin->getElementsTable('role_id',$id) == 2):?>
 

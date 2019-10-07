@@ -34,21 +34,10 @@ if ($admin->getElementsTable('login',$id) == ''){
 <div class="container">
     <div class="test">
         <div class="row">
-            <div class="col s12">
+            <div class="col s12 tests">
                 <h4>Тест: <?php echo $testing = $user->getTestTable('title',$idGet); ?></h4>
-                <div class="row tests">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="first_name" name="name" type="text" class="validate" required>
-                        <label for="first_name">Ваше имя</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="last_name" name="surname" type="text" class="validate" required>
-                        <label for="last_name">Ваша фамилия</label>
-                    </div>
-                </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -61,7 +50,17 @@ if ($admin->getElementsTable('login',$id) == ''){
             $.getJSON( "test_html.json", function ( data, textStatus, jqXHR ) { // указываем url и функцию обратного вызова;
                 let tests = [];
                 for (let key in data ) {
-                    tests.push('<p>' + key + ": <br>" + data[key]['ans1'] + "<br>" + data[key]['ans2'] + "<br>" + data[key]['ans3'] + "<br>" + data[key]['ans4'] + "<br>" + data[key]['ans5'] + "</p>"); // добавляем в переменную все ключи объекта и их значения
+                    let ans1 = 1;
+                    let ans2 = 2;
+                    let ans3 = 3;
+                    let ans4 = 4;
+                    tests.push('<div class="row tests-bg z-depth-2"><div class="col s12">'
+                    + "<h4>" +key+ "</h4>"
+                    + "<p> <input name='group1' type='radio' id="+ "'" + ans1 + 1 + "'" +" /><label for="+ "'" + ans1 + "'" +">" + data[key]['ans1'] + "</label></p>"
+                    + "<p> <input name='group1' type='radio' id="+ "'" + ans2 + 2 + "'" +"  /><label for="+ "'" + ans2 + "'" +">" + data[key]['ans2'] + "</label></p>"
+                    + "<p> <input name='group1' type='radio' id="+ "'" + ans3 + 3 + "'" +"  /><label for="+ "'" + ans3 + "'" +">" + data[key]['ans3'] + "</label></p>"
+                    + "<p> <input name='group1' type='radio' id="+ "'" + ans4 + 4 + "'" +"  /><label for="+ "'" + ans4 + "'" +">" + data[key]['ans4'] + "</label></p>"
+                    + "</div></div>");
                 };
                 $('<form/>', {
                     'class': 'my-new-list',

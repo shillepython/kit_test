@@ -18,8 +18,8 @@ if (isset($_SESSION['user'])){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/public/css/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="public/css/style.css">
     <title>Kit Test</title>
 </head>
 <body>
