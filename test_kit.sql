@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 04 2019 г., 18:29
+-- Время создания: Окт 11 2019 г., 00:14
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.1.22
 
@@ -45,6 +45,32 @@ CREATE TABLE `answer_options` (
   `id` int(11) NOT NULL,
   `text` text CHARACTER SET latin1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `out_test`
+--
+
+CREATE TABLE `out_test` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `difficult` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `file_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `out_test`
+--
+
+INSERT INTO `out_test` (`id`, `title`, `text`, `difficult`, `image`, `file_name`) VALUES
+(1, 'HTML', 'тест по html', 'middle', 'html.png', 'test_html.json'),
+(2, 'JS', 'тест по JS', 'easy', 'js.png', 'test_js.json'),
+(3, 'HTML', 'Hello_worls', 'middle', 'js.png', '5d9f99cb9b105_10.10.19_JS.json'),
+(6, 'HTML', 'finn', 'easy', 'js.png', '5d9f9c8d97c3d_10.11.19_HTML.json'),
+(7, 'HTCCESS', 'finn', 'easy', 'js.png', '5d9f9cd65e59a_10.11.19_HTCCESS.json');
 
 -- --------------------------------------------------------
 
@@ -132,10 +158,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `birth_date`, `email`, `tel`, `registration_date`, `group_id`, `role_id`) VALUES
 (105, 'shille', 'cthfabv123', 'Серафим', 'Семихат', '06.07.2004', 'shillenetwork@gmail.com', '0980193160', '2019-03-10', 'JS-PHP1-19', 3),
-(107, 'ruslanBel', 'qwerty123', 'Руслан', 'Билецкий', '04.10.2000', 'ruslanBelltchi@gmail.com', '0980193160', '2010-03-19', 'HTML-CSS1-1', 1),
-(113, 'Semik', '123', 'Simavarvar', 'Семихат', '02.03.2000', 'serafim123semikhat@gmail.com', '0980193160', '2019-10-03', 'Отсутствует', 1),
-(114, 'Semikss', '123', 'Simavarvar', 'Семихат', '02.03.2000', 'appletrollface@gmail.com', '0980193160', '2019-10-03', 'Отсутствует', 1),
-(115, 'Semikss2222', '123', 'Серафим', 'Серафим', '02.03.2000', 'appletrollface@gmail.com', '0980193160', '2019-10-03', 'Отсутствует', 1);
+(107, 'ruslanBel', 'qwerty123', 'Руслан', 'Билецкий', '04.10.2000', 'ruslanBelltchi@gmail.com', '0980193160', '2010-03-19', 'HTML-CSS-ADVANCE', 1),
+(115, 'shilleasdasdasd', 'cthfabv123', 'Simavarvar', 'Semikhat', '06.07.2004', 'serafim123semikhat@gmail.com', '0980193160', '2019-10-07', 'Отсутствует', 1);
 
 -- --------------------------------------------------------
 
@@ -168,6 +192,12 @@ ALTER TABLE `answer_options`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `out_test`
+--
+ALTER TABLE `out_test`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `questions`
 --
 ALTER TABLE `questions`
@@ -181,7 +211,7 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `testing`
+-- Индексы таблицы `tests`
 --
 ALTER TABLE `tests`
   ADD PRIMARY KEY (`id`),
@@ -226,6 +256,12 @@ ALTER TABLE `answer_options`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT для таблицы `out_test`
+--
+ALTER TABLE `out_test`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT для таблицы `questions`
 --
 ALTER TABLE `questions`
@@ -238,7 +274,7 @@ ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `testing`
+-- AUTO_INCREMENT для таблицы `tests`
 --
 ALTER TABLE `tests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
@@ -279,7 +315,7 @@ ALTER TABLE `questions`
   ADD CONSTRAINT `FK_question_test` FOREIGN KEY (`test_id`) REFERENCES `tests` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ограничения внешнего ключа таблицы `testing`
+-- Ограничения внешнего ключа таблицы `tests`
 --
 ALTER TABLE `tests`
   ADD CONSTRAINT `FK_test_question` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

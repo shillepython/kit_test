@@ -57,7 +57,7 @@ if ($admin->getElementsTable('login',$id) == ''){
                         <?php echo $test['text']; ?>
                     </div>
                     <div class="card-action">
-                        <a href="../testing/test.php?id=<?php echo $test['id'] ?>">Пройти тест</a>
+                        <a href="create-test/views_test/test.php?id=<?php echo $test['id'] ?>">Пройти тест</a>
                     </div>
                 </div>
             </div>
