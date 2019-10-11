@@ -48,7 +48,7 @@ if ($admin->getElementsTable('login',$id) == ''){
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="/public/img/test/<?php echo $test['image']; ?>">
+                        <img width="300px" height="300px" src="/public/img/test/<?php echo $test['image']; ?>">
                         <span class="card-title">
                         <?php echo $test['title']; ?>
                     </span>
@@ -67,8 +67,7 @@ if ($admin->getElementsTable('login',$id) == ''){
     </div>
 </div>
 <?php elseif($admin->getElementsTable('role_id',$id) == 2):
-    require "../layouts/authornav.php";
-?>
+    require "../layouts/authornav.php"; ?>
     <div class="container">
         <div class="row z-depth-2 profil-text">
             <div class="col s12">
@@ -106,7 +105,6 @@ if ($admin->getElementsTable('login',$id) == ''){
             </div>
         </div>
     </div>
-
 <?php endif; ?>
 
 

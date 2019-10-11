@@ -26,6 +26,7 @@ if ($admin->getElementsTable('login',$id) == ''){
     }
 }
 ?>
+<?php if($admin->getElementsTable('role_id',$id) == 1):?>
 
     <?php require "../../../layouts/navbar.php"; ?>
     <p class="container button-run center-align">
@@ -42,27 +43,34 @@ if ($admin->getElementsTable('login',$id) == ''){
     </div>
 </div>
 
+ <?php $result_file_name = $user->getTestTable('file_name', $idGet); ?>;
+
 <?php require "../../../layouts/footer.php" ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     $( document ).ready(function() {
         $( "button" ).click(function() {
+            var file_name_res = '<?= $result_file_name ?>';
             $(this).closest("button").remove();
-            $.getJSON( "json-file/5d9f9410a024c_10.10.19_HTML.json", function ( data) {
+            $.getJSON( "json-file/" + file_name_res, function ( data) {
                 let tests = [];
                 for (let key in data ) {
-                    let ans1 = 1;
-                    let ans2 = 2;
-                    let ans3 = 3;
-                    let ans4 = 4;
                     for(let i = 0; i < Object.keys(data).length - Object.keys(data).length + 1; i++){
-                        tests.push('<div class="row tests-bg z-depth-2"><div class="col s12">'
-                        + "<h4>" +key+ "</h4>"
-                        + "<p> <input name='group1' type='radio' id="+ "'" + i + "'" +" /><label for="+ "'" + ans1 + "'" +">" + data[key]['ans1'] + "</label></p>"
-                        + "<p> <input name='group1' type='radio' id="+ "'" + i + "'" +"  /><label for="+ "'" + ans2 + "'" +">" + data[key]['ans2'] + "</label></p>"
-                        + "<p> <input name='group1' type='radio' id="+ "'" + i + "'" +"  /><label for="+ "'" + ans3 + "'" +">" + data[key]['ans3'] + "</label></p>"
-                        + "<p> <input name='group1' type='radio' id="+ "'" + i + "'" +"  /><label for="+ "'" + ans4 + "'" +">" + data[key]['ans4'] + "</label></p>"
-                        + "</div></div>");
+                        for (let j = 0; j < Object.keys(data[key]).length - Object.keys(data[key]).length + 1; j++) {
+                            <?php
+                            $name_unic1 = uniqid();
+                            $name_unic2 = uniqid();
+                            $name_unic3 = uniqid();
+                            $name_unic4 = uniqid();
+                            ?>
+                            tests.push('<div class="row tests-bg z-depth-2"><div class="col s12">'
+                            + "<h4>" + key + "</h4>"
+                            + "<p> <input name='group1' type='radio' id= <?= $name_unic1 ?> /><label for= <?= $name_unic1 ?> >" + data[key]['ans1'] + "</label></p>"
+                            + "<p> <input name='group1' type='radio' id= <?= $name_unic2 ?> /><label for= <?= $name_unic2 ?> >" + data[key]['ans2'] + "</label></p>"
+                            + "<p> <input name='group1' type='radio' id= <?= $name_unic3 ?> /><label for= <?= $name_unic3 ?> >" + data[key]['ans3'] + "</label></p>"
+                            + "<p> <input name='group1' type='radio' id= <?= $name_unic4 ?> /><label for= <?= $name_unic4 ?> >" + data[key]['ans4'] + "</label></p>"
+                            + "</div></div>");
+                        }
                     }
                 };
                 $('<form/>', {
@@ -74,4 +82,10 @@ if ($admin->getElementsTable('login',$id) == ''){
         })
     });
 </script>
-
+<?php elseif ($admin->getElementsTable('role_id',$id) == 2):
+header("Location: ../../hub-test.php");
+?>
+<?php elseif ($admin->getElementsTable('role_id',$id) == 3):
+header("Location: ../../hub-test.php");
+?>
+<?php endif; ?>

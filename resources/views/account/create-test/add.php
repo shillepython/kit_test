@@ -32,7 +32,8 @@ if (isset($_POST['action'])) {
     $difficult = trim($_POST['difficult']);
 
     $file = $_FILES['file'];
-    $json = $author->uploadFile($name_test,$text_test,$difficult,$file);
+    $file_image = $_FILES['image'];
+    $json = $author->uploadFile($name_test,$text_test,$file_image,$difficult,$file);
 }
 ?>
 <?php if($admin->getElementsTable('role_id',$id) == 3 || $admin->getElementsTable('role_id',$id) == 2):?>
@@ -53,6 +54,15 @@ if (isset($_POST['action'])) {
                     <label for="text_test">Описание теста</label>
                 </div>
             </div>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File image</span>
+                    <input type="file" name="image">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">recent_actors</i>
@@ -66,13 +76,14 @@ if (isset($_POST['action'])) {
             </div>
             <div class="file-field input-field">
                 <div class="btn">
-                    <span>File</span>
+                    <span>File test</span>
                     <input type="file" name="file">
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">
                 </div>
             </div>
+
             <div class="row">
                 <div class="col s12">
                     <button class="btn waves-effect waves-light" type="submit" name="action">Отправить
