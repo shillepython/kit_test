@@ -14,12 +14,12 @@ class Admin extends UserObject {
         return Admin::query("SELECT * FROM `roles`");
     }
 
-    //Получить айди пользователя
+    //Получить айди пользователя из бл по id
     public function getId($id) {
         return Admin::query("SELECT * FROM `users` WHERE id='$id'");
     }
 
-    //Удаление пользователя
+    //Удаление пользователя из бд
     public function deleteUser($id)
     {
         return Admin::query("DELETE FROM " . $this->table . " WHERE id = '$id'");
