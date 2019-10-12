@@ -29,6 +29,7 @@ if ($admin->getElementsTable('login',$id) == ''){
 <?php if($admin->getElementsTable('role_id',$id) == 1):?>
 
     <?php require "../../../layouts/navbar.php"; ?>
+    
     <p class="container button-run center-align">
         <button class="waves-effect waves-light btn-large test-run">Начать тест</button>
     </p>
@@ -36,14 +37,13 @@ if ($admin->getElementsTable('login',$id) == ''){
     <div class="test">
         <div class="row">
             <div class="col s12 tests">
-                <h4>Тест: <?php echo $testing = $user->getTestTable('title',$idGet); ?></h4>
+                <h4>Тест: <?php echo $testing = $admin->getTestTable('title',$idGet); ?></h4>
             </div>
-
         </div>
     </div>
 </div>
 
- <?php $result_file_name = $user->getTestTable('file_name', $idGet); ?>;
+ <?php $result_file_name = $admin->getTestTable('file_name', $idGet); ?>;
 
 <?php require "../../../layouts/footer.php" ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -52,11 +52,12 @@ if ($admin->getElementsTable('login',$id) == ''){
         $( "button" ).click(function() {
             var file_name_res = '<?= $result_file_name ?>';
             $(this).closest("button").remove();
-            $.getJSON( "json-file/" + file_name_res, function ( data) {
+            $.getJSON( "json-file/" + file_name_res, function (data) {
                 let tests = [];
                 for (let key in data ) {
-                    for(let i = 0; i < Object.keys(data).length - Object.keys(data).length + 1; i++){
-                        for (let j = 0; j < Object.keys(data[key]).length - Object.keys(data[key]).length + 1; j++) {
+                    // for(let i = 0; i < Object.keys(data).length - Object.keys(data).length + 1; i++){
+                    //     for (let j = 0; j < Object.keys(data[key]).length - Object.keys(data[key]).length + 1; j++) {
+                        for (let test in key ) {
                             <?php
                             $name_unic1 = uniqid();
                             $name_unic2 = uniqid();
@@ -71,9 +72,9 @@ if ($admin->getElementsTable('login',$id) == ''){
                             + "<p> <input name='group1' type='radio' id= <?= $name_unic4 ?> /><label for= <?= $name_unic4 ?> >" + data[key]['ans4'] + "</label></p>"
                             + "</div></div>");
                         }
-                    }
+                    // }
                 };
-                $('<form/>', {
+                $('<form>', {
                     'class': 'form-testing',
                     html: tests.join('')
                 }).appendTo('.tests');

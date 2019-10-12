@@ -32,7 +32,7 @@ if ($admin->getElementsTable('login',$id) == ''){
         exit();
     }
 }
-if (empty($_POST['action'])){
+if (isset($_POST['action'])){
     $name_search = trim($_POST['search']);
 }
 ?>

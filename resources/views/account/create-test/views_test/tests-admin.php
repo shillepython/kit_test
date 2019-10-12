@@ -80,7 +80,7 @@ if ($admin->getElementsTable('login',$id) == ''){
         <hr>
         <div class="row cards-top">
             <?php
-            $testing = $user->out_test();
+            $testing = $admin->out_test();
             while ($test = $testing->fetch_assoc()) {
                 ?>
                 <div class="col s12 m4">

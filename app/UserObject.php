@@ -1,7 +1,6 @@
 <?php
 namespace app;
 use mysql;
-
 class UserObject extends AbstractModel{
     private $table = '`users`';
     //Обновление данных пользователя
@@ -26,21 +25,20 @@ class UserObject extends AbstractModel{
     //Поиск пользователя
     public function searchUser($name)
     {
-        $searhuser = parent::query("SELECT * FROM " . $this->table . " WHERE `login` LIKE '%$name%'");
+        $searhuser = Admin::query("SELECT * FROM " . $this->table . " WHERE `login` LIKE '%$name%'");
         $this->whileSearch($searhuser);
 
     }
+
+    //Поиск группы
     public function searchUserGroup($group) {
-        $searhGroup = parent::query("SELECT * FROM " . $this->table . " WHERE `group_id` LIKE '%$group%'");
+        $searhGroup = Admin::query("SELECT * FROM " . $this->table . " WHERE `group_id` LIKE '%$group%'");
         $this->whileSearch($searhGroup);
     }
 
-    //ЗАГРУЗКА ФАЙЛОВ ПРИ СОЗДАНИИ ТЕСТОВ \НАЧАЛО\
-
-//ЗАГРУЗКА ФАЙЛОВ ПРИ СОЗДАНИИ ТЕСТОВ \КОНЕЦ\
     public function getElementsTable($row_table,$id)
     {
-        $getGroup =  parent::query("SELECT `$row_table` FROM `users` WHERE id='$id'");
+        $getGroup =  Admin::query("SELECT `$row_table` FROM `users` WHERE id='$id'");
         $row_ass = $getGroup->fetch_assoc();
         return $row_ass[$row_table];
     }

@@ -39,7 +39,7 @@ class Author extends UserObject {
     }
 
     public function add_json_name($name_tets,$result_file_name,$text_test,$file_image_ret,$difficult) {
-        return parent::query("INSERT INTO `out_test` (title,text,difficult,image,file_name) VALUES ('$name_tets','$text_test','$difficult','$file_image_ret','$result_file_name')");
+        return Author::query("INSERT INTO `out_test` (title,text,difficult,image,file_name) VALUES ('$name_tets','$text_test','$difficult','$file_image_ret','$result_file_name')");
     }
     public function uploadImage($file_image) {
         $path = "../../../../public/img/test/";

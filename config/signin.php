@@ -1,6 +1,7 @@
 <?php
 require "../autoload.php";
 use app\User;
+use app\Connection;
 
 $connetion = new User();
 session_start();

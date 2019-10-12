@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 11 2019 г., 00:14
+-- Время создания: Окт 12 2019 г., 21:59
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.1.22
 
@@ -66,11 +66,8 @@ CREATE TABLE `out_test` (
 --
 
 INSERT INTO `out_test` (`id`, `title`, `text`, `difficult`, `image`, `file_name`) VALUES
-(1, 'HTML', 'тест по html', 'middle', 'html.png', 'test_html.json'),
-(2, 'JS', 'тест по JS', 'easy', 'js.png', 'test_js.json'),
-(3, 'HTML', 'Hello_worls', 'middle', 'js.png', '5d9f99cb9b105_10.10.19_JS.json'),
-(6, 'HTML', 'finn', 'easy', 'js.png', '5d9f9c8d97c3d_10.11.19_HTML.json'),
-(7, 'HTCCESS', 'finn', 'easy', 'js.png', '5d9f9cd65e59a_10.11.19_HTCCESS.json');
+(19, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5da21c67804fd_10.12.19_HTACCESS.json'),
+(20, 'JS', 'На сколько хорошо ты знаешь JS? пройди тесты, и узнай результаты.', 'easy', 'js.png', '5da2217f90d08_10.12.19_JS.json');
 
 -- --------------------------------------------------------
 
@@ -158,8 +155,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `birth_date`, `email`, `tel`, `registration_date`, `group_id`, `role_id`) VALUES
 (105, 'shille', 'cthfabv123', 'Серафим', 'Семихат', '06.07.2004', 'shillenetwork@gmail.com', '0980193160', '2019-03-10', 'JS-PHP1-19', 3),
-(107, 'ruslanBel', 'qwerty123', 'Руслан', 'Билецкий', '04.10.2000', 'ruslanBelltchi@gmail.com', '0980193160', '2010-03-19', 'HTML-CSS-ADVANCE', 1),
-(115, 'shilleasdasdasd', 'cthfabv123', 'Simavarvar', 'Semikhat', '06.07.2004', 'serafim123semikhat@gmail.com', '0980193160', '2019-10-07', 'Отсутствует', 1);
+(107, 'ruslanBel', 'qwerty123', 'Руслан', 'Билецкий', '04.10.2000', 'ruslanBelltchi@gmail.com', '0980193160', '2010-03-19', 'HTML-CSS-ADVANCE', 1);
 
 -- --------------------------------------------------------
 
@@ -259,7 +255,7 @@ ALTER TABLE `answer_options`
 -- AUTO_INCREMENT для таблицы `out_test`
 --
 ALTER TABLE `out_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `questions`

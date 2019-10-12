@@ -2,19 +2,18 @@
 namespace app;
 use mysqli;
 
-class Connection {
-    private $connection;
+trait Connection {
+    private static $connection;
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
     private $db = 'test_kit';
     //Подключение базы данных
     public function __construct() {
-        $this->connection = new mysqli($this->host, $this->user, $this->pass, $this->db);
+        self::$connection = new mysqli($this->host, $this->user, $this->pass, $this->db);
     }
-    //Обработка sql запроса
-    public function query($sql) {
-        return $this->connection->query($sql);
+    public static function query($sql) {
+        return self::$connection->query($sql);
     }
 }
 
