@@ -19,7 +19,7 @@ class Admin extends UserObject {
         return Admin::query("SELECT * FROM `users` WHERE id='$id'");
     }
 
-    //Удаление пользователя из бд
+    //Удаление пользователя из бд ......
     public function deleteUser($id)
     {
         return Admin::query("DELETE FROM " . $this->table . " WHERE id = '$id'");
