@@ -4,7 +4,7 @@ use mysql;
 class Admin extends UserObject {
     private $table = '`users`';
 
-    //Получить всю таблицу
+    //Получить всю таблиц
     public function AllTable(){
         return Admin::query("SELECT * FROM " . $this->table);
     }
