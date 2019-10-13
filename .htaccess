@@ -1,0 +1,8 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine on
+RewriteRule ^resources/views/account/edit/edit/([0-9]+)?$ /resources/views/account/edit/edit?id=$1 [L]
+RewriteRule ^resources/views/account/create-test/views_test/test/([0-9]+)?$ /resources/views/account/create-test/views_test/test?id=$1 [L]
+RewriteRule ^([^.?]+)$ %{REQUEST_URI}.php [L]
+RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
+RewriteRule .* - [L,R=404]

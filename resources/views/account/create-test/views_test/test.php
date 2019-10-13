@@ -18,6 +18,7 @@ $user = new User();
 
 $id = $_SESSION['user'][0];
 $idGet = (int) $_GET['id'];
+
 if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
