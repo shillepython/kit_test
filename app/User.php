@@ -5,11 +5,6 @@ use mysql;
 class User extends UserObject{
     private $table = '`users`';
 
-    function query($sql)
-    {
-        return $query = Connection::getInstance()->query($sql);
-    }
-
     public function query_login_password($login,$password)
     {
         return $conn = $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password'");

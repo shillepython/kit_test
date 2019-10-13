@@ -2,7 +2,6 @@
 namespace app;
 use mysql;
 class Author extends UserObject {
-
     public function create_json($file_txt_upload,$name_tets,$text_test,$file_image_ret,$difficult) {
         $keyarray = ["ans1", "ans2", "ans3", "ans4", "ans5"];
         $array = file($file_txt_upload);
@@ -39,7 +38,7 @@ class Author extends UserObject {
     }
 
     public function add_json_name($name_tets,$result_file_name,$text_test,$file_image_ret,$difficult) {
-        return Author::query("INSERT INTO `out_test` (title,text,difficult,image,file_name) VALUES ('$name_tets','$text_test','$difficult','$file_image_ret','$result_file_name')");
+        return $this->query("INSERT INTO `out_test` (title,text,difficult,image,file_name) VALUES ('$name_tets','$text_test','$difficult','$file_image_ret','$result_file_name')");
     }
     public function uploadImage($file_image) {
         $path = "../../../../public/img/test/";

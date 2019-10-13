@@ -22,6 +22,7 @@ class Connection
     const USERNAME = "root";
     const PASSWORD = "";
     const DB_NAME = "test_kit";
+
     private static $instance;
     private $connection;
     /**

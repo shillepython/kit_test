@@ -5,7 +5,10 @@ class UserObject extends AbstractModel{
     private $table = '`users`';
     //Обновление данных пользователя
     //Пример использования - $user->updateUser(105,'shille','cthfabv123', 'Серафим', 'Семихат','06.07.2004', 'shillenetwork@gmail.com','0980193160','2019-03-10','Отсутствует','1');
-
+    function query($sql)
+    {
+        return Connection::getInstance()->query($sql);
+    }
     public function whileSearch($name) {
         while ($row = $name->fetch_row()){
             echo "<tr>";
@@ -25,20 +28,20 @@ class UserObject extends AbstractModel{
     //Поиск пользователя
     public function searchUser($name)
     {
-        $searhuser = Admin::query("SELECT * FROM " . $this->table . " WHERE `login` LIKE '%$name%'");
+        $searhuser = $this->query("SELECT * FROM " . $this->table . " WHERE `login` LIKE '%$name%'");
         $this->whileSearch($searhuser);
 
     }
 
     //Поиск группы
     public function searchUserGroup($group) {
-        $searhGroup = Admin::query("SELECT * FROM " . $this->table . " WHERE `group_id` LIKE '%$group%'");
+        $searhGroup = $this->query("SELECT * FROM " . $this->table . " WHERE `group_id` LIKE '%$group%'");
         $this->whileSearch($searhGroup);
     }
 
     public function getElementsTable($row_table,$id)
     {
-        $getGroup =  Admin::query("SELECT `$row_table` FROM `users` WHERE id='$id'");
+        $getGroup =  $this->query("SELECT `$row_table` FROM `users` WHERE id='$id'");
         $row_ass = $getGroup->fetch_assoc();
         return $row_ass[$row_table];
     }
