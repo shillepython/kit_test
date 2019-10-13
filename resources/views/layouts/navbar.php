@@ -17,15 +17,15 @@
             <a href="#" class="brand-logo center"><img src="http://kitit.com.ua/wp-content/uploads/2018/12/cropped-logo_kit_w-1.png" width="65" height="65" alt=""></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/resources/views/account/hub-test.php">На главную</a></li>
+                <li><a href="/resources/views/account/hub-test">На главную</a></li>
                 <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php echo $_SESSION['user'][1] ?><i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li><a href="/resources/views/account/profile.php">Профиль</a></li>
+                <li><a href="/resources/views/account/profile">Профиль</a></li>
                 <li><a href="?out">Выход</a></li>
             </ul>
             <ul id="dropdown1" class="dropdown-content">
-                <li><a href="/resources/views/account/profile.php">Профиль</a></li>
+                <li><a href="/resources/views/account/profile">Профиль</a></li>
                 <li><a href="?out">Выход</a></li>
             </ul>
         </div>

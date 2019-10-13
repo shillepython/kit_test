@@ -6,7 +6,7 @@ session_start();
 
 $userObj = new UserObject();
 if (isset($_SESSION['user'])){
-    header('Location: resources/views/account/hub-test.php');
+    header('Location: resources/views/account/hub-test');
     exit();
 }
 ?>
@@ -33,19 +33,19 @@ if (isset($_SESSION['user'])){
             </ul>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/">Registation</a></li>
-                <li><a href="resources/views/signin/signin.php">Sign in</a></li>
+                <li><a href="resources/views/signin/signin">Sign in</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="http://kitit.com.ua/">Go home</a></li>
-                <li><a href="sass.html">Registation</a></li>
-                <li><a href="badges.html">Sign in</a></li>
+                <li><a href="/">Registation</a></li>
+                <li><a href="resources/views/signin/signin">Sign in</a></li>
             </ul>
         </div>
     </div>
 </nav>
     <div class="container center-align">
         <div class="row background-reg z-depth-2">
-            <form action="config/auth.php" method="post" class="col s12">
+            <form action="config/auth" method="post" class="col s12">
                 <h4>Регестрация аккаунта</h4>
                 <div class="row">
                     <div class="input-field col s6">

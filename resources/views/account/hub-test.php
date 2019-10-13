@@ -57,7 +57,7 @@ if ($admin->getElementsTable('login',$id) == ''){
                         <?php echo $test['text']; ?>
                     </div>
                     <div class="card-action">
-                        <a href="create-test/views_test/test.php?id=<?php echo $test['id'] ?>">Пройти тест</a>
+                        <a href="create-test/views_test/test?id=<?php echo $test['id'] ?>">Пройти тест</a>
                     </div>
                 </div>
             </div>
@@ -74,10 +74,10 @@ if ($admin->getElementsTable('login',$id) == ''){
                 <h5>Панель управление пользователями</h5>
                 <div class="row s12">
                     <div class="col s6">
-                        <a href="create-test/add.php" class="waves-effect waves-light btn-large">Создать тест</a>
+                        <a href="create-test/add" class="waves-effect waves-light btn-large">Создать тест</a>
                     </div>
                     <div class="col s6">
-                        <a href="admin-groups.php" class="waves-effect waves-light btn-large">Поиск групп</a>
+                        <a href="admin-groups" class="waves-effect waves-light btn-large">Поиск групп</a>
                     </div>
                 </div>
             </div>
@@ -93,13 +93,13 @@ if ($admin->getElementsTable('login',$id) == ''){
                 <h5>Панель управление пользователями</h5>
                 <div class="row s12">
                     <div class="col s4">
-                        <a href="admin-user.php" class="waves-effect waves-light btn-large">Таблица пользователей</a>
+                        <a href="admin-user" class="waves-effect waves-light btn-large">Таблица пользователей</a>
                     </div>
                     <div class="col s4">
-                        <a href="admin-groups.php" class="waves-effect waves-light btn-large">Поиск групп</a>
+                        <a href="admin-groups" class="waves-effect waves-light btn-large">Поиск групп</a>
                     </div>
                     <div class="col s4">
-                        <a href="create-test/add.php" class="waves-effect waves-light btn-large">Создать тест</a>
+                        <a href="create-test/add" class="waves-effect waves-light btn-large">Создать тест</a>
                     </div>
                 </div>
             </div>

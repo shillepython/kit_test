@@ -51,7 +51,7 @@ $group = $result_sql[9];
     <?php require "../../layouts/adminnav-edit.php"; ?>
     <div class="container center-align">
         <div class="row background-reg z-depth-2">
-            <form action="edit-update.php" method="post" class="col s12">
+            <form action="edit-update" method="post" class="col s12">
                 <input type="hidden" name="id" value="<?php echo $id_edit ?>">
                 <input type="hidden" name="date_registartion" value="<?php echo $date_registartion ?>">
                 <h4>Редактирование пользователя</h4>

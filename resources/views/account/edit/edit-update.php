@@ -42,5 +42,5 @@ $date_registartion = $_POST['date_registartion'];
 $role = $_POST['role_select'];
 
 if ($update = $admin->updateUser($id,$login,$password,$name,$surname,$date,$email,$phone,$date_registartion,$group,$role)){
-    header('Location: ../admin-user.php');
+    header('Location: ../admin-user');
 }

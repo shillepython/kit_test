@@ -84,9 +84,9 @@ if ($admin->getElementsTable('login',$id) == ''){
     });
 </script>
 <?php elseif ($admin->getElementsTable('role_id',$id) == 2):
-header("Location: ../../hub-test.php");
+header("Location: ../../hub-test");
 ?>
 <?php elseif ($admin->getElementsTable('role_id',$id) == 3):
-header("Location: ../../hub-test.php");
+header("Location: ../../hub-test");
 ?>
 <?php endif; ?>

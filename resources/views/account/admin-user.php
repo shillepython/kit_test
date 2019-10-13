@@ -21,7 +21,7 @@ $admin = new Admin();
 if (isset($_GET['del_user'])) {
     $id_user = $_GET['del_user'];
     $admin->deleteUser($id_user);
-    header('Location: admin-user.php');
+    header('Location: admin-user');
 }
 $id = $_SESSION['user'][0];
 
@@ -67,7 +67,7 @@ if (isset($_POST['action'])){
             </table>
         <?php endif; ?>
         <table class="highlight">
-            <form action="admin-user.php" method="post">
+            <form action="admin-user" method="post">
                 <input name="search" placeholder="Введите логин пользователя" type="text" required>
                 <button class="btn waves-effect waves-light" type="submit" name="action">Поиск
                     <i class="material-icons right">send</i>
@@ -116,7 +116,7 @@ if (isset($_POST['action'])){
                     echo 'пользователь';
                 }
                 ?></td>
-                <td><a href="edit/edit.php?id=<?php echo $user[0]; ?>" class="btn-user"><i class="material-icons left">edit</i></a></td>
+                <td><a href="edit/edit/<?php echo $user[0]; ?>" class="btn-user"><i class="material-icons left">edit</i></a></td>
                 <td><a href="?del_user=<?php echo $user[0]; ?>"><i class="material-icons left">remove_circle_outline</i></a></td>
             </tr>
             <?php } ?>

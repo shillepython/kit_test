@@ -21,7 +21,7 @@ $admin = new Admin();
 if (isset($_GET['del_user'])) {
     $id_user = $_GET['del_user'];
     $admin->deleteUser($id_user);
-    header('Location: admin-user.php');
+    header('Location: admin-user');
 }
 $id = $_SESSION['user'][0];
 
@@ -64,7 +64,7 @@ if (isset($_POST['action'])){
         </table>
     <?php endif; ?>
         <table class="highlight">
-            <form action="admin-groups.php" method="post">
+            <form action="admin-groups" method="post">
                 <input name="search" placeholder="Введите название группы" type="text" required>
                 <button class="btn waves-effect waves-light" type="submit" name="action">Поиск
                     <i class="material-icons right">send</i>
