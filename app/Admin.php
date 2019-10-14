@@ -35,17 +35,35 @@ class Admin extends UserObject {
     public function out_test() {
         return $this->query("SELECT * FROM `out_test`");
     }
-    public function getTestTable($row_table,$id) {
-        $getTest =  $this->query("SELECT `$row_table` FROM `out_test` WHERE id='$id'");
+
+
+
+
+
+
+    public function return_row($row_table,$getTest) {
         $row_ass = $getTest->fetch_assoc();
         return $row_ass[$row_table];
     }
 
-    public function getPasswordUser($row_table,$login) {
-        $getTest =  $this->query("SELECT `$row_table` FROM `users` WHERE login='$login'");
-        $row_ass = $getTest->fetch_assoc();
-        return $row_ass[$row_table];
+    public function getTestTable($row_table,$id) {
+        $get_select = $this->query("SELECT `$row_table` FROM `out_test` WHERE id='$id'");
+        return $this->return_row($row_table,$get_select);
     }
+
+    public function getPasswordUser($row_table,$login) {
+        $get_select = $this->query("SELECT `$row_table` FROM `users` WHERE login='$login'");
+        return $this->return_row($row_table,$get_select);
+    }
+
+    public function getEmailUser($row_table,$email) {
+        $get_select = $this->query("SELECT `$row_table` FROM `users` WHERE email='$email'");
+        return $this->return_row($row_table,$get_select);
+    }
+
+
+
+
 
     public function editTests ($id){
         //
