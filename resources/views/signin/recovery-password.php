@@ -46,21 +46,14 @@ if (isset($_SESSION['user'])){
             <h4>Востановление пароля</h4>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">face</i>
-                    <input id="login" name="login" type="text" class="validate">
-                    <label for="login">Ваша логин</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
                     <input id="email" name="email" type="email" class="validate" required>
-                    <label for="email">Ваша почта</label>
+                    <label for="email">Ваша почта от аккаунт</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col s12">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">вход
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Отправить пароль
                         <i class="material-icons right">send</i>
                     </button>
                 </div>

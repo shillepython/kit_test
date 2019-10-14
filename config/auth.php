@@ -6,8 +6,10 @@ use app\Admin;
 
 $connection = new User();
 $admin = new Admin();
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 require '../vendor/autoload.php';
 
 $name = trim($_POST['name']);
@@ -20,19 +22,15 @@ $password = trim($_POST['password']);
 $birth_date = trim($_POST['date']);
 $role_id = 1;
 
-$result_row_login = $connection->query_log($login,$password,$email);
-
-if($result_row_login == 0) {
-
+$result_row_login = $connection->query_log($login,$email);
+if ($result_row_login == 0){
     $pass = password_hash($password, PASSWORD_DEFAULT);
-
     if ($connection->add_user_sql($login, $pass, $name, $surname, $birth_date, $email, $phone, $today, $role_id)) {
-        $result_pass_login = $connection->query_log_pass($login,$pass,$email);
+        $result_pass_login = $connection->query_log_pass($login,$pass);
         $_SESSION['user'] = array($result_pass_login['id'], $result_pass_login['login'], $result_pass_login['password'], $result_pass_login['name'], $result_pass_login['surname'], $result_pass_login['birth_date'], $result_pass_login['email'], $row_auth['tel'], $result_pass_login['registration_date'], $result_pass_login['group_id'], $result_pass_login['role_id']);
         header('Location: ../resources/views/account/hub-test');
     }
-
-}else {
+}else{
     header('Location: /');
     exit();
 }
