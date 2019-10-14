@@ -51,7 +51,7 @@ $group = $result_sql[9];
     <?php require "../../layouts/adminnav-edit.php"; ?>
     <div class="container center-align">
         <div class="row background-reg z-depth-2">
-            <form action="edit-update" method="post" class="col s12">
+            <form action="../edit-update" method="post" class="col s12">
                 <input type="hidden" name="id" value="<?php echo $id_edit ?>">
                 <input type="hidden" name="date_registartion" value="<?php echo $date_registartion ?>">
                 <h4>Редактирование пользователя</h4>
@@ -92,12 +92,7 @@ $group = $result_sql[9];
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">lock</i>
-                        <input id="password" name="password" type="text" value="<?php echo $password ?>" class="validate" required>
-                        <label for="password">Пароль</label>
-                    </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         <i class="material-icons prefix">group</i>
                         <input id="group" name="group" type="text" value="<?php echo $group ?>" class="validate" required>
                         <label for="group">Групаа</label>

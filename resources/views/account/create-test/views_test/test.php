@@ -55,24 +55,36 @@ if ($admin->getElementsTable('login',$id) == ''){
             $(this).closest("button").remove();
             $.getJSON( "json-file/" + file_name_res, function (data) {
                 let tests = [];
+                let count = 0;
+                let test1 = 0;
+                let test2 = 1;
+                let test3 = 2;
+                let test4 = 3;
                 for (let key in data ) {
+                    count++;
+                    test1++;
+                    test2++;
+                    test3++;
+                    test4++;
+
                     // for(let i = 0; i < Object.keys(data).length - Object.keys(data).length + 1; i++){
                     //     for (let j = 0; j < Object.keys(data[key]).length - Object.keys(data[key]).length + 1; j++) {
-                        for (let test in key ) {
+                    //     for (let test in key ) {
                             <?php
                             $name_unic1 = uniqid();
                             $name_unic2 = uniqid();
                             $name_unic3 = uniqid();
                             $name_unic4 = uniqid();
                             ?>
+
                             tests.push('<div class="row tests-bg z-depth-2"><div class="col s12">'
                             + "<h4>" + key + "</h4>"
-                            + "<p> <input name='group1' type='radio' id= <?= $name_unic1 ?> /><label for= <?= $name_unic1 ?> >" + data[key]['ans1'] + "</label></p>"
-                            + "<p> <input name='group1' type='radio' id= <?= $name_unic2 ?> /><label for= <?= $name_unic2 ?> >" + data[key]['ans2'] + "</label></p>"
-                            + "<p> <input name='group1' type='radio' id= <?= $name_unic3 ?> /><label for= <?= $name_unic3 ?> >" + data[key]['ans3'] + "</label></p>"
-                            + "<p> <input name='group1' type='radio' id= <?= $name_unic4 ?> /><label for= <?= $name_unic4 ?> >" + data[key]['ans4'] + "</label></p>"
+                            + "<p> <input name='group" + count + "' type='radio' id='test" + count + "' /><label for='test" + count + "' >" + data[key]['ans1'] + "</label></p>"
+                            + "<p> <input name='group" + count + "' type='radio' id='test" + count + "' /><label for='test" + count + "' >" + data[key]['ans2'] + "</label></p>"
+                            + "<p> <input name='group" + count + "' type='radio' id='test" + count + "' /><label for='test" + count + "' >" + data[key]['ans3'] + "</label></p>"
+                            + "<p> <input name='group" + count + "' type='radio' id='test" + count + "' /><label for='test" + count + "' >" + data[key]['ans4'] + "</label></p>"
                             + "</div></div>");
-                        }
+                        // }
                     // }
                 };
                 $('<form>', {

@@ -42,8 +42,8 @@ if (isset($_SESSION['user'])){
 
 <div class="container">
     <div class="row background-user z-depth-2">
-        <form action="../../../config/signin" method="post" class="col s12">
-            <h4>Авторизация</h4>
+        <form action="../../../config/recovery-pass" method="post" class="col s12">
+            <h4>Востановление пароля</h4>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">face</i>
@@ -53,11 +53,10 @@ if (isset($_SESSION['user'])){
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">lock</i>
-                    <input id="password" name="password" type="password" class="validate">
-                    <label for="password">Ваш пароль</label>
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Ваша почта</label>
                 </div>
-                <a style="margin-left: 60px;" href="recovery-password">Забыл пароль</a>
             </div>
             <div class="row">
                 <div class="col s12">

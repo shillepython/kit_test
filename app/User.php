@@ -11,24 +11,47 @@ class User extends UserObject{
     }
 
     // СОВПАДЕНИЕ ЛОГИНА И ПАРОЛЯ С ВЕДЕННЫМИ ДАННЫМИ ПОЛЬЗОВАТЕЛЕМ num_rows Регистрация
-    public function query_log($login,$password)
+    public function query_log($login,$password,$email)
     {
-        $result_pass_login = $this->query_login_password($login,$password);
-        $row = $result_pass_login->num_rows;
-        return $row;
+        if($result_pass_login = $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password' AND email = '$email'")){
+            $row = $result_pass_login->num_rows;
+            return $row;
+        }else{
+            return false;
+        }
+    }
+    function select_login($login) {
+        return $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login'");
     }
 
-    // СОВПАДЕНИЕ ЛОГИНА И ПАРОЛЯ С ВЕДЕННЫМИ ДАННЫМИ ПОЛЬЗОВАТЕЛЕМ fetch_assoc Авторизация
-    public function query_log_pass($login,$password) {
-        $result_pass_login = $this->query_login_password($login,$password);
+    public function verefy_password($login,$password,$bd_pass) {
+        if(password_verify($password, $bd_pass)){
+            $result_pass_login = $this->select_login($login);
+            $row = $result_pass_login->fetch_assoc();
+            return $row;
+        }else{
+            return false;
+        }
+    }
+
+    public function select_num_rows($login,$password,$bd_pass) {
+        if(password_verify($password, $bd_pass)){
+            $result_row = $this->select_login($login);
+            $num = $result_row->num_rows;
+            return $num;
+        }else{
+            return false;
+        }
+    }
+
+    // СОВПАДЕНИЕ ЛОГИНА И ПАРОЛЯ С ВЕДЕННЫМИ ДАННЫМИ ПОЛЬЗОВАТЕЛЕМ fetch_assoc Регистрация
+    public function query_log_pass($login,$password,$email) {
+        $result_pass_login = $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password' AND email = '$email'");
         $row = $result_pass_login->fetch_assoc();
         return $row;
     }
-    public function select_num_rows($login,$password) {
-        $result_row = $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password'");
-        $num = $result_row->num_rows;
-        return $num;
-    }
+
+
     //Добавление ногово пользователя
     public function add_user_sql($login,$password,$name,$surname,$birth_date,$email,$phone,$today,$role_id)
     {

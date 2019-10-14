@@ -8,7 +8,6 @@ if (!isset($_SESSION['user'])) {
     header('Location: /');
     exit();
 }
-
 require "../../../autoload.php";
 use app\User;
 use app\Admin;
@@ -23,7 +22,7 @@ if (isset($_GET['del_user'])) {
     $admin->deleteUser($id_user);
 }
 $id = $_SESSION['user'][0];
-
+var_dump($id);
 if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){

@@ -41,6 +41,12 @@ class Admin extends UserObject {
         return $row_ass[$row_table];
     }
 
+    public function getPasswordUser($row_table,$login) {
+        $getTest =  $this->query("SELECT `$row_table` FROM `users` WHERE login='$login'");
+        $row_ass = $getTest->fetch_assoc();
+        return $row_ass[$row_table];
+    }
+
     public function editTests ($id){
         //
     }
