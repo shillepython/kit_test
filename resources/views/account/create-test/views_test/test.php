@@ -42,6 +42,7 @@ if ($admin->getElementsTable('login',$id) == ''){
                 <h4>Тест: <?php echo $testing = $admin->getTestTable('title',$idGet); ?></h4>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -54,6 +55,7 @@ if ($admin->getElementsTable('login',$id) == ''){
         $("button").click(function() {
             var file_name_res = '<?= $result_file_name ?>';
             // задаем функцию при нажатиии на элемент <button>
+            $(this).closest("button").remove();
             $.getJSON( "json-file/" + file_name_res, function(data, textStatus, jqXHR) {
                 // указываем url и функцию обратного вызова;
                 let tests = [];
@@ -86,10 +88,12 @@ if ($admin->getElementsTable('login',$id) == ''){
                     group_number++;
                 }
                 // tests.push(qstr);
-                $("<form/>", {
-                    class: "my-new-list",
+                $("<form>", {
+                    id: "finish_test",
+                    action: '/',
                     html: qstr
                 }).appendTo(".tests");
+                $('#finish_test').append('<button type="submit" class="waves-effect waves-light btn-large test-run">Завершить тест</button>');
             });
         });
     });
