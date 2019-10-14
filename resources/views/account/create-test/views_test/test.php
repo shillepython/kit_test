@@ -50,51 +50,48 @@ if ($admin->getElementsTable('login',$id) == ''){
 <?php require "../../../layouts/footer.php" ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-    $( document ).ready(function() {
-        $( "button" ).click(function() {
+    $(document).ready(function() {
+        $("button").click(function() {
             var file_name_res = '<?= $result_file_name ?>';
-            $(this).closest("button").remove();
-            $.getJSON( "json-file/" + file_name_res, function (data) {
+            // задаем функцию при нажатиии на элемент <button>
+            $.getJSON( "json-file/" + file_name_res, function(data, textStatus, jqXHR) {
+                // указываем url и функцию обратного вызова;
                 let tests = [];
-                let count = 0;
-                let test1 = 0;
-                let test2 = 1;
-                let test3 = 2;
-                let test4 = 3;
-                for (let key in data ) {
-                    count++;
-                    test1++;
-                    test2++;
-                    test3++;
-                    test4++;
+                let qstr = "";
+                let group_number = 0;
+                let test_id = 0;
 
-                    // for(let i = 0; i < Object.keys(data).length - Object.keys(data).length + 1; i++){
-                    //     for (let j = 0; j < Object.keys(data[key]).length - Object.keys(data[key]).length + 1; j++) {
-                    //     for (let test in key ) {
-                            <?php
-                            $name_unic1 = uniqid();
-                            $name_unic2 = uniqid();
-                            $name_unic3 = uniqid();
-                            $name_unic4 = uniqid();
-                            ?>
-
-                            tests.push('<div class="row tests-bg z-depth-2"><div class="col s12">'
-                            + "<h4>" + key + "</h4>"
-                            + "<p> <input name='group" + count + "' type='radio' id='test" + count + "' /><label for='test" + count + "' >" + data[key]['ans1'] + "</label></p>"
-                            + "<p> <input name='group" + count + "' type='radio' id='test" + count + "' /><label for='test" + count + "' >" + data[key]['ans2'] + "</label></p>"
-                            + "<p> <input name='group" + count + "' type='radio' id='test" + count + "' /><label for='test" + count + "' >" + data[key]['ans3'] + "</label></p>"
-                            + "<p> <input name='group" + count + "' type='radio' id='test" + count + "' /><label for='test" + count + "' >" + data[key]['ans4'] + "</label></p>"
-                            + "</div></div>");
-                        // }
-                    // }
-                };
-                $('<form>', {
-                    'class': 'form-testing',
-                    html: tests.join('')
-                }).appendTo('.tests');
-
-            })
-        })
+                for (let key in data) {
+                    let answ_number = 0;
+                    qstr +=
+                        '<div class="row tests z-depth-2"><div class="col s12">' +
+                        "<h4>" +
+                        key +
+                        "</h4>";
+                    for (let k in data[key]) {
+                        qstr +=
+                            "<p> <input name='group" +
+                            group_number +
+                            "' type='radio' id='test" +
+                            test_id +
+                            "' /><label for='test" +
+                            test_id +
+                            "'>" +
+                            k +
+                            "</label></p>";
+                        answ_number++;
+                        test_id++;
+                    }
+                    qstr += "</div></div>";
+                    group_number++;
+                }
+                // tests.push(qstr);
+                $("<form/>", {
+                    class: "my-new-list",
+                    html: qstr
+                }).appendTo(".tests");
+            });
+        });
     });
 </script>
 <?php elseif ($admin->getElementsTable('role_id',$id) == 2):
