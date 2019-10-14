@@ -50,7 +50,6 @@ if (isset($_POST['action'])){
                 <thead>
                 <tr>
                     <th>Логин</th>
-                    <th>Пароль</th>
                     <th>Имя</th>
                     <th>Фамилия</th>
                     <th>День рождения</th>
@@ -77,7 +76,6 @@ if (isset($_POST['action'])){
             <thead>
             <tr>
                 <th>Логин</th>
-                <th>Пароль</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
                 <th>День рождения</th>
@@ -99,7 +97,6 @@ if (isset($_POST['action'])){
             ?>
             <tr>
                 <td><?php  echo $user[1]; ?></td>
-                <td><?php  echo $user[2]; ?></td>
                 <td><?php  echo $user[3]; ?></td>
                 <td><?php  echo $user[4]; ?></td>
                 <td><?php  echo $user[5]; ?></td>

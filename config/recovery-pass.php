@@ -55,7 +55,7 @@ if($admin->getEmailUser('email', $email)){
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'Регистрация на сайте KIT-TEST';
-        $mail->Body    = "<p>Здравствуйте: <strong> $name $surname </strong>, что-бы сбросить пароль нажмите на кнопку и после чего вы получите письмо с паролем<p>
+        $mail->Body    = "<p>Здравствуйте: <strong> $name $surname </strong>, чтобы сбросить пароль нажмите на кнопку и после чего вы получите письмо с паролем<p>
                         <form action='http://kit-test.ua/resources/views/signin/update-password?email=$email'>
                             <input type='hidden' value='$email' name='email'>
                             <input type='hidden' value='$id' name='id'>

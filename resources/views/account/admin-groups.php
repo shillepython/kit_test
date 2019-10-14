@@ -47,7 +47,6 @@ if (isset($_POST['action'])){
             <thead>
             <tr>
                 <th>Логин</th>
-                <th>Пароль</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
                 <th>День рождения</th>

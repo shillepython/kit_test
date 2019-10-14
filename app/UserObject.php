@@ -13,7 +13,6 @@ class UserObject extends AbstractModel{
         while ($row = $name->fetch_row()){
             echo "<tr>";
             echo "<td>" . $row[1] . " </td>";
-            echo "<td>" . $row[2] . " </td>";
             echo "<td>" . $row[3] . " </td>";
             echo "<td>" . $row[4] . " </td>";
             echo "<td>" . $row[5] . " </td>";

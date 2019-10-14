@@ -13,11 +13,11 @@
 </head>
 <body>
 <div class="container">
-    <div class="row background-user z-depth-2">
+    <div class="row background-user z-depth-2" style="padding: 40px">
         <h4>Востановление пароля</h4>
         <div class="row">
             <div class="input-field col s12">
-                Ваш новый пароль пришёл к вам на почту.
+                Подтвердите свою <a href="https://gmail.com">почту</a> что-бы получить новый пароль.
             </div>
         </div>
 
