@@ -44,6 +44,7 @@ if (isset($_SESSION['user'])){
     <div class="row background-user z-depth-2">
         <form action="../../../config/recovery-pass" method="post" class="col s12">
             <h4>Востановление пароля</h4>
+
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">face</i>
