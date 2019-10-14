@@ -10,15 +10,15 @@ class User extends UserObject{
         return $conn = $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password'");
     }
 
-    // СОВПАДЕНИЕ ЛОГИНА И ПАРОЛЯ С ВЕДЕННЫМИ ДАННЫМИ ПОЛЬЗОВАТЕЛЕМ num_rows Регистрация
-    public function query_log($login,$password,$email)
+    // СОВПАДЕНИЕ ЛОГИНА И ПОЧТЫ С ВЕДЕННЫМИ ДАННЫМИ ПОЛЬЗОВАТЕЛЕМ num_rows Регистрация
+    public function query_log($login,$email)
     {
-        if($result_pass_login = $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password' AND email = '$email'")){
-            $row = $result_pass_login->num_rows;
-            return $row;
-        }else{
-            return false;
-        }
+        $result_log_log = $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login'");
+        $result_log_email = $this->query("SELECT * FROM " . $this->table . " WHERE email = '$email'");
+
+        $num_row_log = $result_log_log->num_rows;
+        $num_row_email = $result_log_email->num_rows;
+        return $num_row_log + $num_row_email;
     }
     function select_login($login) {
         return $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login'");
@@ -45,8 +45,8 @@ class User extends UserObject{
     }
 
     // СОВПАДЕНИЕ ЛОГИНА И ПАРОЛЯ С ВЕДЕННЫМИ ДАННЫМИ ПОЛЬЗОВАТЕЛЕМ fetch_assoc Регистрация
-    public function query_log_pass($login,$password,$email) {
-        $result_pass_login = $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password' AND email = '$email'");
+    public function query_log_pass($login,$password) {
+        $result_pass_login = $this->query("SELECT * FROM " . $this->table . " WHERE login = '$login' AND password = '$password'");
         $row = $result_pass_login->fetch_assoc();
         return $row;
     }
@@ -60,7 +60,7 @@ class User extends UserObject{
         return $add;
     }
     public function phpmailler() {
-        return $this->query("SELECT * FROM " . $this->table . " ORDER BY user_id DESC LIMIT 1");
+        return $this->query("SELECT * FROM " . $this->table . " ORDER BY users DESC LIMIT 1");
     }
 
 }
