@@ -27,6 +27,7 @@ if ($admin->getElementsTable('login',$id) == ''){
     }
 }
 ?>
+
 <?php if($admin->getElementsTable('role_id',$id) == 1):?>
 
     <?php require "../../../layouts/navbar.php"; ?>
