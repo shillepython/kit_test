@@ -54,6 +54,13 @@
                     <p class="profil-content"><?php echo $admin->getElementsTable('registration_date',$id) ?></p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col s12">
+                    <a class="btn waves-effect waves-light" type="submit" name="action">Поменять пароль
+                        <i class="material-icons right">send</i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

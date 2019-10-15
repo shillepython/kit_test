@@ -54,7 +54,7 @@ if (isset($_GET['email'])){
 
                 // Content
                 $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = 'Регистрация на сайте KIT-TEST';
+                $mail->Subject = 'Востановление пароля на сайте KIT-TEST';
                 $mail->Body    = "<p><strong>Востановление пароля</strong>, ваши контактные данные для входа в аккаунт</p><p><strong>Логин: $login </strong></p><p><strong>Новый пароль: $password </strong><p>";
 
                 $mail->send();

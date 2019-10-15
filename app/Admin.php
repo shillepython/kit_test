@@ -1,6 +1,10 @@
 <?php
 namespace app;
 use mysql;
+
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+
 class Admin extends UserObject {
     private $table = '`users`';
 
@@ -61,7 +65,40 @@ class Admin extends UserObject {
         return $this->return_row($row_table,$get_select);
     }
 
+    public function sendEmail($subject,$body,$email){
+        if($this->getEmailUser('email', $email)){
+            $mail = new PHPMailer(true);
+            try {
+                //Server settings
+                $mail->SMTPDebug = 0;                                       // Enable verbose debug output
+                $mail->isSMTP();                                            // Set mailer to use SMTP
+                $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                $mail->Username   = 'shillenetwork@gmail.com';                     // SMTP username
+                $mail->Password   = 'Cthfabv123';                               // SMTP password
+                $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                $mail->Port       = 587;
+                $mail->CharSet = 'UTF-8';
+                // TCP port to connect to
 
+                //Recipients
+                $mail->setFrom('shillenetwork@gmail.com', 'Kit-Test');
+                $mail->addAddress($email, 'Kit-Test.ua');     // Add a recipient
+
+
+                // Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = $subject;
+                $mail->Body    = $body;
+
+                $mail->send();
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
+        }else{
+            echo 'Почта не существует!';
+        }
+    }
 
 
 
