@@ -53,9 +53,9 @@ class User extends UserObject{
 
 
     //Добавление ногово пользователя
-    public function add_user_sql($login,$password,$name,$surname,$birth_date,$email,$phone,$today,$role_id)
+    public function add_user_sql($login,$password,$name,$surname,$birth_date,$email,$token,$verefy,$phone,$today,$role_id)
     {
-        $add = "INSERT INTO $this->table (login,password,name,surname,birth_date,email,tel,registration_date,role_id) VALUES ('$login','$password','$name','$surname','$birth_date','$email','$phone','$today','$role_id')";
+        $add = "INSERT INTO $this->table (login,password,name,surname,birth_date,email,token,verefy,tel,registration_date,role_id) VALUES ('$login','$password','$name','$surname','$birth_date','$email','$token','$verefy','$phone','$today','$role_id')";
         $this->query($add);
         return $add;
     }

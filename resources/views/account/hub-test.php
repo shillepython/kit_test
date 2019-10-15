@@ -33,7 +33,63 @@ if ($admin->getElementsTable('login',$id) == ''){
         exit();
     }
 }
+$token = $_GET['token'];
+
+if (!empty($token)){
+    if ($token == $admin->getElementsTable('token',$id)){
+        $email = $admin->getElementsTable('email',$id);
+
+        $id = $admin->getEmailUser('id', $email);
+        $login = $admin->getEmailUser('login', $email);
+        $password = $admin->getEmailUser('password', $email);
+        $name = $admin->getEmailUser('name', $email);
+        $surname = $admin->getEmailUser('surname', $email);
+        $date = $admin->getEmailUser('birth_date', $email);
+        $email_row = $admin->getEmailUser('email', $email);
+        $token = 'true';
+        $verefy = 1;
+        $phone = $admin->getEmailUser('tel', $email);
+        $date_registartion = $admin->getEmailUser('registration_date', $email);
+        $group = $admin->getEmailUser('group_id', $email);
+        $role = $admin->getEmailUser('role_id', $email);
+        $admin->updateUser($id,$login,$password,$name,$surname,$date,$email_row,$token,$verefy,$phone,$date_registartion,$group,$role);
+        header("Location: /");
+    }else{
+        return;
+    }
+}
+
+if ($admin->getElementsTable('verefy',$id) != 1):
 ?>
+
+
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="../../../public/css/materialize.min.css"  media="screen,projection"/>
+        <link rel="stylesheet" href="../../../public/css/style.css">
+        <title>Kit Test</title>
+    </head>
+    <body>
+    <div class="container">
+        <div class="row background-user z-depth-2" style="padding: 40px">
+            <h4>Подтверждение почты</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    Подтвердите свою <a href="https://gmail.com">почту</a> чтобы пользоваться сервисом.
+                </div>
+            </div>
+            <a href="?out" class="btn">Выход</a>
+        </div>
+    </div>
+
+<?php else: ?>
+
 <?php if($admin->getElementsTable('role_id',$id) == 1):
     require "../layouts/navbar.php";
 ?>
@@ -111,3 +167,4 @@ if ($admin->getElementsTable('login',$id) == ''){
 
 
 <?php require "../layouts/footer.php"?>
+<?php endif; ?>

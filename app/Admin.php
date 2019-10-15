@@ -30,9 +30,9 @@ class Admin extends UserObject {
     }
 
     //Обновление данных пользователя
-    public function updateUser($id,$login,$password,$name,$surname,$birth_date,$email,$phone,$today,$group_id,$role_id)
+    public function updateUser($id,$login,$password,$name,$surname,$birth_date,$email,$token,$verefy,$phone,$today,$group_id,$role_id)
     {
-        return $this->query("UPDATE `users` SET login='$login', password='$password', name='$name', surname='$surname', birth_date='$birth_date', email='$email', tel='$phone', registration_date='$today', group_id='$group_id', role_id='$role_id' WHERE id=$id");
+        return $this->query("UPDATE `users` SET login='$login', password='$password', name='$name', surname='$surname', birth_date='$birth_date', email='$email', token='$token', verefy='$verefy', tel='$phone', registration_date='$today', group_id='$group_id', role_id='$role_id' WHERE id=$id");
     }
 
 
