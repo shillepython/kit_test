@@ -19,6 +19,9 @@ $user = new User();
 $id = $_SESSION['user'][0];
 $idGet = (int) $_GET['id'];
 
+if ($admin->getElementsTable('verefy',$id) != 1){
+    header("Location: /");
+}
 if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
@@ -33,7 +36,7 @@ if ($admin->getElementsTable('login',$id) == ''){
     <?php require "../../../layouts/navbar.php"; ?>
     
     <p class="container button-run center-align">
-        <button class="waves-effect waves-light btn-large test-run">Начать тест</button>
+        <button class="waves-effect waves-light btn-large test-run  blue-grey darken-4 white-text" style="margin-top: 20px;">Начать тест</button>
     </p>
 <div class="container">
     <div class="test">

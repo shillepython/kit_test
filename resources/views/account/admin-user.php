@@ -25,6 +25,11 @@ if (isset($_GET['del_user'])) {
 }
 $id = $_SESSION['user'][0];
 
+if ($admin->getElementsTable('verefy',$id) != 1){
+    header("Location: /");
+}
+
+
 if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
@@ -68,7 +73,7 @@ if (isset($_POST['action'])){
         <table class="highlight">
             <form action="admin-user" method="post">
                 <input name="search" placeholder="Введите логин пользователя" type="text" required>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Поиск
+                <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Поиск
                     <i class="material-icons right">send</i>
                 </button>
 
@@ -101,15 +106,15 @@ if (isset($_POST['action'])){
                 <td><?php  echo $user[4]; ?></td>
                 <td><?php  echo $user[5]; ?></td>
                 <td><?php  echo $user[6]; ?></td>
-                <td><?php  echo $user[7]; ?></td>
-                <td><?php  echo $user[8]; ?></td>
                 <td><?php  echo $user[9]; ?></td>
+                <td><?php  echo $user[10]; ?></td>
+                <td><?php  echo $user[11]; ?></td>
                 <td>
-                <?php  if($user[10] == '3') {
+                <?php  if($user[12] == '3') {
                     echo 'админ';
-                }if ($user[10] == '2'){
+                }if ($user[12] == '2'){
                     echo 'автор';
-                }if ($user[10] == '1'){
+                }if ($user[12] == '1'){
                     echo 'пользователь';
                 }
                 ?></td>

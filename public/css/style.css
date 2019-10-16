@@ -1,11 +1,12 @@
 html {
     font-family: Calibri;
+    height: 100%;
 }
 td, th, tr {
     text-align: center;
 }
 nav {
-    background-color: #87d7fc;
+    background-color: #263238;
 }
 .background-user {
     border-radius: 10px;

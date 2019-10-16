@@ -4,6 +4,7 @@ if (isset($_SESSION['user'])){
     header('Location: ../account/hub-test');
     exit();
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -54,7 +55,7 @@ if (isset($_SESSION['user'])){
             </div>
             <div class="row">
                 <div class="col s12">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Отправить пароль
+                    <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Отправить пароль
                         <i class="material-icons right">send</i>
                     </button>
                 </div>

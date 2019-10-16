@@ -22,6 +22,7 @@ if (isset($_GET['del_user'])) {
     $admin->deleteUser($id_user);
 }
 $id = $_SESSION['user'][0];
+
 if ($id == null){
     echo 'Такая почта, или логин уже существует!';
     echo "<a href='/'>на страницу регистрации</a>";
@@ -84,7 +85,7 @@ if ($admin->getElementsTable('verefy',$id) != 1):
                     Подтвердите свою <a href="https://gmail.com">почту</a> чтобы пользоваться сервисом.
                 </div>
             </div>
-            <a href="?out" class="btn">Выход</a>
+            <a href="?out" class="btn blue-grey darken-4 white-text">Выход</a>
         </div>
     </div>
 
@@ -132,10 +133,10 @@ if ($admin->getElementsTable('verefy',$id) != 1):
                 <h5>Панель управление пользователями</h5>
                 <div class="row s12">
                     <div class="col s6">
-                        <a href="create-test/add" class="waves-effect waves-light btn-large">Создать тест</a>
+                        <a href="create-test/add" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Создать тест</a>
                     </div>
                     <div class="col s6">
-                        <a href="admin-groups" class="waves-effect waves-light btn-large">Поиск групп</a>
+                        <a href="admin-groups" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Поиск групп</a>
                     </div>
                 </div>
             </div>
@@ -143,7 +144,6 @@ if ($admin->getElementsTable('verefy',$id) != 1):
     </div>
 
 <?php elseif($admin->getElementsTable('role_id',$id) == 3):?>
-
     <?php require "../layouts/adminnav.php"; ?>
     <div class="container">
         <div class="row z-depth-2 profil-text">
@@ -151,17 +151,18 @@ if ($admin->getElementsTable('verefy',$id) != 1):
                 <h5>Панель управление пользователями</h5>
                 <div class="row s12">
                     <div class="col s4">
-                        <a href="admin-user" class="waves-effect waves-light btn-large">Таблица пользователей</a>
+                        <a href="admin-user" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Таблица пользователей</a>
                     </div>
                     <div class="col s4">
-                        <a href="admin-groups" class="waves-effect waves-light btn-large">Поиск групп</a>
+                        <a href="admin-groups" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Поиск групп</a>
                     </div>
                     <div class="col s4">
-                        <a href="create-test/add" class="waves-effect waves-light btn-large">Создать тест</a>
+                        <a href="create-test/add" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Создать тест</a>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 <?php endif; ?>
 

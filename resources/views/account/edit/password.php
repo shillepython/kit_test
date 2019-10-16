@@ -17,6 +17,11 @@ $email_get = $_GET['email'];
 
 
 $id = $admin->getEmailUser('id', $email_get);
+
+if ($admin->getElementsTable('verefy',$id) != 1){
+    header("Location: /");
+}
+
 $email = $admin->getEmailUser('email', $email_get);
 ?>
     <!doctype html>
@@ -75,7 +80,7 @@ $email = $admin->getEmailUser('email', $email_get);
             </div>
             <div class="row">
                 <div class="col s12">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Поменять пароль
+                    <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Поменять пароль
                         <i class="material-icons right">send</i>
                     </button>
                 </div>

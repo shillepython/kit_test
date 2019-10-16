@@ -23,6 +23,8 @@ $name = $admin->getEmailUser('name', $email);
 $surname = $admin->getEmailUser('surname', $email);
 $date = $admin->getEmailUser('birth_date', $email);
 $email_row = $admin->getEmailUser('email', $email);
+$token = $admin->getEmailUser('token', $email);
+$verefy = $admin->getEmailUser('verefy', $email);
 $phone = $admin->getEmailUser('tel', $email);
 $date_registartion = $admin->getEmailUser('registration_date', $email);
 $group = $admin->getEmailUser('group_id', $email);
@@ -30,7 +32,7 @@ $role = $admin->getEmailUser('role_id', $email);
 
 if (isset($_GET['email'])){
 
-    if ($admin->updateUser($id,$login,$pass_hash,$name,$surname,$date,$email_row,$phone,$date_registartion,$group,$role)) {
+    if($admin->updateUser($id,$login,$pass_hash,$name,$surname,$date,$email_row,$token,$verefy,$phone,$date_registartion,$group,$role)){
 
         if($admin->getEmailUser('email', $email)){
             $mail = new PHPMailer(true);

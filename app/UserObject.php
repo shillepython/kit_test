@@ -17,10 +17,10 @@ class UserObject extends AbstractModel{
             echo "<td>" . $row[4] . " </td>";
             echo "<td>" . $row[5] . " </td>";
             echo "<td>" . $row[6] . " </td>";
-            echo "<td>" . $row[7] . " </td>";
-            echo "<td>" . $row[8] . " </td>";
             echo "<td>" . $row[9] . " </td>";
-            if($row[10] == '3') {echo "<td>" . 'админ' . "</td>";}if ($row[10] == '2'){echo "<td>" . 'автор' . "</td>";}if ($row[10] == '1'){echo "<td>" . 'пользователь' . "</td>";};
+            echo "<td>" . $row[10] . " </td>";
+            echo "<td>" . $row[11] . " </td>";
+            if($row[12] == '3') {echo "<td>" . 'админ' . "</td>";}if ($row[12] == '2'){echo "<td>" . 'автор' . "</td>";}if ($row[12] == '1'){echo "<td>" . 'пользователь' . "</td>";};
             echo "</tr>";
         }
     }

@@ -25,6 +25,11 @@ if (isset($_GET['del_user'])) {
 }
 $id = $_SESSION['user'][0];
 
+if ($admin->getElementsTable('verefy',$id) != 1){
+    header("Location: /");
+}
+
+
 if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){
@@ -65,7 +70,7 @@ if (isset($_POST['action'])){
         <table class="highlight">
             <form action="admin-groups" method="post">
                 <input name="search" placeholder="Введите название группы" type="text" required>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Поиск
+                <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Поиск
                     <i class="material-icons right">send</i>
                 </button>
 
@@ -75,6 +80,7 @@ if (isset($_POST['action'])){
                 <th>Логин</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
+                <th>Почта</th>
                 <th>Группа</th>
             </tr>
             </thead>
@@ -88,7 +94,8 @@ if (isset($_POST['action'])){
                     <td><?php  echo $user[1]; ?></td>
                     <td><?php  echo $user[3]; ?></td>
                     <td><?php  echo $user[4]; ?></td>
-                    <td><?php  echo $user[9]; ?></td>
+                    <td><?php  echo $user[6]; ?></td>
+                    <td><?php  echo $user[11]; ?></td>
                 </tr>
             <?php } ?>
             </tbody>

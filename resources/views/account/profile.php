@@ -20,6 +20,12 @@ $user = new UserObject();
 $admin = new Admin();
 
 $id = $_SESSION['user'][0];
+
+if ($admin->getElementsTable('verefy',$id) != 1){
+    header("Location: /");
+}
+
+
 if ($admin->getElementsTable('login',$id) == ''){
     session_destroy();
     if (!isset($_SESSION['user'])){

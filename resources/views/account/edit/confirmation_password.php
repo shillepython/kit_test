@@ -20,6 +20,10 @@ $rep_new_password = $_POST['rep_new_password'];
 
 $id = $admin->getEmailUser('id', $email);
 
+if ($admin->getElementsTable('verefy',$id) != 1){
+    header("Location: /");
+}
+
 $db_pass = $admin->getEmailUser('password', $email);
 if (isset($email)){
     if (strlen($new_password) < 6){
@@ -90,7 +94,7 @@ if (isset($email)){
             </div>
             <div class="row">
                 <div class="col s12">
-                    <button class="btn waves-effect waves-light" type="submit" name="action_code">Проверить код
+                    <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action_code">Проверить код
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
