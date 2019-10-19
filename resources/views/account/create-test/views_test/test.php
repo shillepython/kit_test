@@ -54,14 +54,26 @@ if ($admin->getElementsTable('login',$id) == ''){
 <?php require "../../../layouts/footer.php" ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+    /*$(document).ready(function () {
+        $("button").click(function () {
+            $.getJSON("json_question/json_question_5dab4ccf4ad7f.json", function (data, textStatus, jqXHR) {
+                $.each(data, function (i, field) {
+                    $("div.tests").append('<div class="col s12" id="'+ i +'">');
+                    $("div#"+i+".col.s12").append("<h4>" + i + "</h4>");
+                    $.each(field, function (k, v) {
+                        $("div#"+i+".col.s12").append("<p>" + k + "</p>");
+                        $("div#"+i+".col.s12").append("<p>" + v + "</p>");
+                    });
+                });
+            });
+        });
+    });*/
     $(document).ready(function() {
         $("button").click(function() {
-            var file_name_res = '<?= $result_file_name ?>';
             // задаем функцию при нажатиии на элемент <button>
-            $(this).closest("button").remove();
-            $.getJSON( "json-file/" + file_name_res, function(data, textStatus, jqXHR) {
+            $.getJSON("json_question/json_question_5dab4ccf4ad7f.json", function(data, textStatus, jqXHR) {
+
                 // указываем url и функцию обратного вызова;
-                let tests = [];
                 let qstr = "";
                 let group_number = 0;
                 let test_id = 0;
@@ -73,7 +85,8 @@ if ($admin->getElementsTable('login',$id) == ''){
                         "<h4>" +
                         key +
                         "</h4>";
-                    for (let k in data[key]) {
+                    let arr = data[key];
+                    for (let i = 0; i < arr.length; i++){
                         qstr +=
                             "<p> <input name='group" +
                             group_number +
@@ -82,7 +95,7 @@ if ($admin->getElementsTable('login',$id) == ''){
                             "' /><label for='test" +
                             test_id +
                             "'>" +
-                            k +
+                            arr[i].replace("<", "&lt;"); +
                             "</label></p>";
                         answ_number++;
                         test_id++;
@@ -91,10 +104,12 @@ if ($admin->getElementsTable('login',$id) == ''){
                     group_number++;
                 }
                 // tests.push(qstr);
-                $("<form>", {
+                $("<form/>", {
                     id: "finish_test",
-                    action: '/',
-                    html: qstr
+                    class: "my-new-list",
+                    html: qstr,
+                    action: 'dateProcessing',
+                    method: 'POST'
                 }).appendTo(".tests");
                 $('#finish_test').append('<button type="submit" class="waves-effect waves-light btn-large test-run">Завершить тест</button>');
             });
