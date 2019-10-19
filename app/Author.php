@@ -2,23 +2,51 @@
 namespace app;
 use mysql;
 class Author extends UserObject {
-    public function create_json($file_txt_upload,$name_tets,$text_test,$file_image_ret,$difficult) {
-        $keyarray = ["ans1", "ans2", "ans3", "ans4", "ans5"];
-        $array = file($file_txt_upload);
-        foreach ($array as $key => $value) {
-            $temparray = preg_split( '/ {2,}/', $value);
-            $namebook = array_shift($temparray);
-            $books[$namebook] = array_combine($keyarray, $temparray);
+    public function create_json($file_txt_upload,$name_tets,$text_test,$file_image_ret,$difficult,$file_json) {
+        header('Content-Type: application/json; charset=utf-8');
 
+        $keyarray = ["ans1", "ans2", "ans3", "ans4", "ans5"];
+        $file_json = fopen($file_txt_upload, "r"); // открываем файл на чтение
+        $data = date("M-d-Y", mktime());
+        while (!feof($file_json)) {
+            $str = fgets($file_json); // читаем файл построчно
+            if (substr($str, 0, 10) === "{---------") { // находим начало вопроса
+                $str_quest = strstr(fgets($file_json), ")"); // отрезаем номер вопроса до скобки ()
+                $str_quest = trim(substr($str_quest, 1)); // отрезаем  скобку ( и пробелы в начале и конце
+                $str_quest = rtrim($str_quest, "\r\n"); // отрезаем \r\n
+                $question_arr[$str_quest] = [];  // создаем массив вопросов
+                $answer_arr[$str_quest] = []; // создаем массив ответов
+                fgets($file_json); // пропускаем строку &
+                for ($i = 0; $i < 5; $i++) { // обходим 5 вариантов ответа
+                    $str_answ = fgets($file_json); // считываем ответ
+                    $str_answ = rtrim($str_answ, "\r\n"); // отрезаем  \r\n
+                    $str_answ = trim($str_answ); // отрезаем  пробелы в начале и конце
+                    if (substr($str_answ, 0, 1) === "*") { // если начинается на *
+                        $question_arr[$str_quest][] = ltrim($str_answ, "*");  // вопрос записываем без *
+                        $answer_arr[$str_quest][] = "true";  // ответ отмечаем как правильный
+                    } else {   // иначе
+                        $question_arr[$str_quest][] = $str_answ;  //  записываем вопрос
+                        $answer_arr[$str_quest][] = "false"; // ответ отмечаем как неправильный
+                    }
+                }
+                fgets($file_json); // пропускаем строку &
+            }
         }
-        $file_json_encode = json_encode($books);
-        $file = "views_test/json-file/".uniqid() . '_' . date("m.d.y"). "_" . $name_tets .".json";
-        if (!file_exists($file)) {
-            $fcreate = fopen($file, "w");
-            fwrite($fcreate, $file_json_encode);
-            fclose($fcreate);
-        }
-        $result_file_name = mb_substr( $file, 21);
+//        $array = file($file_txt_upload);
+//        foreach ($array as $key => $value) {
+//            $temparray = preg_split( '/ {2,}/', $value);
+//            $namebook = array_shift($temparray);
+//            $books[$namebook] = array_combine($keyarray, $temparray);
+//
+//        }
+//        $file_json_encode = json_encode($books);
+//        $file = "views_test/json-file/".uniqid() . '_' . date("m.d.y"). "_" . $name_tets .".json";
+//        if (!file_exists($file)) {
+//            $fcreate = fopen($file, "w");
+//            fwrite($fcreate, $file_json_encode);
+//            fclose($fcreate);
+//        }
+        $result_file_name = mb_substr( $file_txt_upload, 21);
         $this->add_json_name($name_tets,$result_file_name,$text_test,$file_image_ret,$difficult);
 
         $dir    = 'views_test/json-file/';
@@ -35,6 +63,52 @@ class Author extends UserObject {
         $fp = fopen("views_test/total_test/total_test.json", "w");
         fwrite($fp, implode(",", $file_total));
         fclose($fp);
+//
+//
+
+        $question_arr = [];
+        $answer_arr = [];
+        $file = fopen($file_txt_upload, "r"); // открываем файл на чтение
+        $data = date("M-d-Y", mktime()); // создаем метку времени для обеспечения уникального имени файла
+        while (!feof($file)) {
+            $str = fgets($file); // читаем файл построчно
+            if (substr($str, 0, 10) === "{---------") { // находим начало вопроса
+                $str_quest = strstr(fgets($file), ")"); // отрезаем номер вопроса до скобки ()
+                $str_quest = trim(substr($str_quest, 1)); // отрезаем  скобку ( и пробелы в начале и конце
+                $str_quest = rtrim($str_quest, "\r\n"); // отрезаем \r\n
+                $question_arr[$str_quest] = [];  // создаем массив вопросов
+                $answer_arr[$str_quest] = []; // создаем массив ответов
+                fgets($file); // пропускаем строку &
+                for ($i = 0; $i < 5; $i++) { // обходим 5 вариантов ответа
+                    $str_answ = fgets($file); // считываем ответ
+                    $str_answ = rtrim($str_answ, "\r\n"); // отрезаем  \r\n
+                    $str_answ = trim($str_answ); // отрезаем  пробелы в начале и конце
+                    if (substr($str_answ, 0, 1) === "*") { // если начинается на *
+                        $question_arr[$str_quest][] = ltrim($str_answ, "*");  // вопрос записываем без *
+                        $answer_arr[$str_quest][] = "true";  // ответ отмечаем как правильный
+                    } else {   // иначе
+                        $question_arr[$str_quest][] = $str_answ;  //  записываем вопрос
+                        $answer_arr[$str_quest][] = "false"; // ответ отмечаем как неправильный
+                    }
+                }
+                fgets($file); // пропускаем строку &
+            }
+        }
+        $json_question = json_encode($question_arr, JSON_UNESCAPED_UNICODE);  // преобразуем массив вопросов в формат json
+        $json_answer = json_encode($answer_arr, JSON_UNESCAPED_UNICODE); // преобразуем массив jndtnjd в формат json
+        print_r($json_question);
+        print_r($json_answer);
+        $jf_question = fopen('views_test/json_question/json_question_' . $data . '.json', 'w'); // открываем файл json с вопросами на запись
+        fwrite($jf_question, $json_question);
+        fclose($jf_question);
+        $jf_answer = fopen('views_test/json_ans/json_answer_' . $data . '.json', 'w'); // открываем файл json с ответами на запись
+        fwrite($jf_answer, $json_answer);
+        fclose($jf_answer);
+
+
+
+
+
     }
 
     public function add_json_name($name_tets,$result_file_name,$text_test,$file_image_ret,$difficult) {
@@ -50,8 +124,8 @@ class Author extends UserObject {
         $file_txt_upload = 'views_test/txt-file/'.uniqid()  . '_' . date("m.d.y") . "_" . $name_tets . "." . $extension;
         move_uploaded_file($file_json['tmp_name'], $file_txt_upload);
         $file_image_ret = $this->uploadImage($file_image);
-        $this->create_json($file_txt_upload,$name_tets,$text_test,$file_image_ret,$difficult);
-        header('Location: /');
+        $this->create_json($file_txt_upload,$name_tets,$text_test,$file_image_ret,$difficult,$file_json['name']);
+//        header('Location: /');
         return $file_txt_upload;
     }
 }
