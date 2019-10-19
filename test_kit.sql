@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 11 2019 г., 00:14
+-- Время создания: Окт 19 2019 г., 10:46
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.1.22
 
@@ -66,11 +66,19 @@ CREATE TABLE `out_test` (
 --
 
 INSERT INTO `out_test` (`id`, `title`, `text`, `difficult`, `image`, `file_name`) VALUES
-(1, 'HTML', 'тест по html', 'middle', 'html.png', 'test_html.json'),
-(2, 'JS', 'тест по JS', 'easy', 'js.png', 'test_js.json'),
-(3, 'HTML', 'Hello_worls', 'middle', 'js.png', '5d9f99cb9b105_10.10.19_JS.json'),
-(6, 'HTML', 'finn', 'easy', 'js.png', '5d9f9c8d97c3d_10.11.19_HTML.json'),
-(7, 'HTCCESS', 'finn', 'easy', 'js.png', '5d9f9cd65e59a_10.11.19_HTCCESS.json');
+(19, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5da21c67804fd_10.12.19_HTACCESS.json'),
+(20, 'JS', 'На сколько хорошо ты знаешь JS? пройди тесты, и узнай результаты.', 'easy', 'js.png', '5da2217f90d08_10.12.19_JS.json'),
+(21, 'HTML', 'На сколько хорошо ты знаешь HTML? пройди тесты, и узнай результаты.', 'easy', 'htaccess.jpg', '5da5a68708024_10.15.19_HTML.json'),
+(22, 'HTML', 'На сколько хорошо ты знаешь HTML? пройди тесты, и узнай результаты.', 'easy', 'htaccess.jpg', '5da5a6ac9294d_10.15.19_HTML.json'),
+(23, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab1584632c_10.19.19_HTACCESS.json'),
+(24, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab17aad382_10.19.19_HTACCESS.json'),
+(25, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab1f73c0c7_10.19.19_HTACCESS.json'),
+(26, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab3ca3d5e9_10.19.19_HTACCESS.json'),
+(27, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab3e0d9dee_10.19.19_HTACCESS.json'),
+(28, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab40fbbc54_10.19.19_HTACCESS.json'),
+(29, 'JS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'easy', '', '5daab73979511_10.19.19_JS.json'),
+(34, 'JS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'easy', '', 'daabd6e60494_10.19.19_JS.tst'),
+(35, 'JS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'easy', 'htaccess.jpg', 'daabd93a8f9c_10.19.19_JS.tst');
 
 -- --------------------------------------------------------
 
@@ -146,6 +154,8 @@ CREATE TABLE `users` (
   `surname` varchar(255) NOT NULL,
   `birth_date` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `token` text NOT NULL,
+  `verefy` int(11) NOT NULL,
   `tel` varchar(255) NOT NULL,
   `registration_date` date NOT NULL,
   `group_id` varchar(255) NOT NULL DEFAULT 'Отсутствует',
@@ -156,10 +166,8 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `birth_date`, `email`, `tel`, `registration_date`, `group_id`, `role_id`) VALUES
-(105, 'shille', 'cthfabv123', 'Серафим', 'Семихат', '06.07.2004', 'shillenetwork@gmail.com', '0980193160', '2019-03-10', 'JS-PHP1-19', 3),
-(107, 'ruslanBel', 'qwerty123', 'Руслан', 'Билецкий', '04.10.2000', 'ruslanBelltchi@gmail.com', '0980193160', '2010-03-19', 'HTML-CSS-ADVANCE', 1),
-(115, 'shilleasdasdasd', 'cthfabv123', 'Simavarvar', 'Semikhat', '06.07.2004', 'serafim123semikhat@gmail.com', '0980193160', '2019-10-07', 'Отсутствует', 1);
+INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `birth_date`, `email`, `token`, `verefy`, `tel`, `registration_date`, `group_id`, `role_id`) VALUES
+(170, 'shille', '$2y$10$mw4U.qeVNGDUB/63egHEretQ8JPY.ZMWgOgsPy3uG/epyWZvakIU.', 'Serafim', 'Semikhat', '06.07.2004', 'shillenetwork@gmail.com', 'true', 1, '0980193160', '2019-10-16', 'Отсутствует', 1);
 
 -- --------------------------------------------------------
 
@@ -259,7 +267,7 @@ ALTER TABLE `answer_options`
 -- AUTO_INCREMENT для таблицы `out_test`
 --
 ALTER TABLE `out_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT для таблицы `questions`
@@ -289,7 +297,7 @@ ALTER TABLE `test_results`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
 -- AUTO_INCREMENT для таблицы `user_test_permissions`
