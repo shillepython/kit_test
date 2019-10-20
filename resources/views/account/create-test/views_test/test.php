@@ -29,6 +29,8 @@ if ($admin->getElementsTable('login',$id) == ''){
         exit();
     }
 }
+
+$email = $admin->getElementsTable('email',$id);
 ?>
 
 <?php if($admin->getElementsTable('role_id',$id) == 1):?>
@@ -64,6 +66,7 @@ if ($admin->getElementsTable('login',$id) == ''){
 
                 // указываем url и функцию обратного вызова;
                 let qstr = "";
+                let email = '<?= $email ?>';
                 let group_number = 0;
                 let test_id = 0;
                 for (let key in data) {
@@ -96,7 +99,7 @@ if ($admin->getElementsTable('login',$id) == ''){
                     id: "test",
                     class: "my-new-list",
                     html: qstr,
-                    action: 'dateProcessing',
+                    action: 'dateProcessing?email=' + email,
                     method: 'POST'
                 }).appendTo(".tests");
                 $('#test').append('<button type="submit" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Завершить тест</button>');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 19 2019 г., 10:46
+-- Время создания: Окт 20 2019 г., 17:42
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.1.22
 
@@ -49,6 +49,48 @@ CREATE TABLE `answer_options` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `ans_question`
+--
+
+CREATE TABLE `ans_question` (
+  `id` int(11) NOT NULL,
+  `name_test` varchar(255) NOT NULL,
+  `ans` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `ans_question`
+--
+
+INSERT INTO `ans_question` (`id`, `name_test`, `ans`) VALUES
+(85, 'JS', '<table>'),
+(86, 'JS', '<tr>'),
+(87, 'JS', '<th>'),
+(88, 'JS', '<td>'),
+(89, 'JS', '<table align=\"center\">'),
+(90, 'JS', 'атрибута background'),
+(91, 'JS', '<td valign=\"top\">'),
+(92, 'JS', '<td align=\"center\">'),
+(93, 'JS', 'сellspacing=\"5\"'),
+(94, 'JS', 'сellpadding=\"5\"'),
+(95, 'JS', 'colspan=\"5\"'),
+(96, 'JS', 'bordercolor=\"red\"'),
+(97, 'HTCCESS', '<td>'),
+(98, 'HTCCESS', '<tr>'),
+(99, 'HTCCESS', '<th>'),
+(100, 'HTCCESS', '<td>'),
+(101, 'HTCCESS', '<table align=\"center\">'),
+(102, 'HTCCESS', 'атрибута background'),
+(103, 'HTCCESS', '<td valign=\"top\">'),
+(104, 'HTCCESS', '<td align=\"center\">'),
+(105, 'HTCCESS', 'сellspacing=\"5\"'),
+(106, 'HTCCESS', 'сellpadding=\"5\"'),
+(107, 'HTCCESS', 'colspan=\"5\"'),
+(108, 'HTCCESS', 'bordercolor=\"red\"');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `out_test`
 --
 
@@ -66,19 +108,8 @@ CREATE TABLE `out_test` (
 --
 
 INSERT INTO `out_test` (`id`, `title`, `text`, `difficult`, `image`, `file_name`) VALUES
-(19, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5da21c67804fd_10.12.19_HTACCESS.json'),
-(20, 'JS', 'На сколько хорошо ты знаешь JS? пройди тесты, и узнай результаты.', 'easy', 'js.png', '5da2217f90d08_10.12.19_JS.json'),
-(21, 'HTML', 'На сколько хорошо ты знаешь HTML? пройди тесты, и узнай результаты.', 'easy', 'htaccess.jpg', '5da5a68708024_10.15.19_HTML.json'),
-(22, 'HTML', 'На сколько хорошо ты знаешь HTML? пройди тесты, и узнай результаты.', 'easy', 'htaccess.jpg', '5da5a6ac9294d_10.15.19_HTML.json'),
-(23, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab1584632c_10.19.19_HTACCESS.json'),
-(24, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab17aad382_10.19.19_HTACCESS.json'),
-(25, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab1f73c0c7_10.19.19_HTACCESS.json'),
-(26, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab3ca3d5e9_10.19.19_HTACCESS.json'),
-(27, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab3e0d9dee_10.19.19_HTACCESS.json'),
-(28, 'HTACCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'senior', 'htaccess.jpg', '5daab40fbbc54_10.19.19_HTACCESS.json'),
-(29, 'JS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'easy', '', '5daab73979511_10.19.19_JS.json'),
-(34, 'JS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'easy', '', 'daabd6e60494_10.19.19_JS.tst'),
-(35, 'JS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'easy', 'htaccess.jpg', 'daabd93a8f9c_10.19.19_JS.tst');
+(54, 'JS', 'На сколько хорошо ты знаешь JS? пройди тесты, и узнай результаты.', 'easy', 'js.png', 'json_question_5dac5f66f05ad.json'),
+(55, 'HTCCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'easy', 'htaccess.jpg', 'json_question_5dac5f7ce7d50.json');
 
 -- --------------------------------------------------------
 
@@ -167,7 +198,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `birth_date`, `email`, `token`, `verefy`, `tel`, `registration_date`, `group_id`, `role_id`) VALUES
-(170, 'shille', '$2y$10$mw4U.qeVNGDUB/63egHEretQ8JPY.ZMWgOgsPy3uG/epyWZvakIU.', 'Serafim', 'Semikhat', '06.07.2004', 'shillenetwork@gmail.com', 'true', 1, '0980193160', '2019-10-16', 'Отсутствует', 1);
+(170, 'shilsdsdle', '$2y$10$mw4U.qeVNGDUB/63egHEretQ8JPY.ZMWgOgsPy3uG/epyWZvakIU.', 'Serafim', 'Semikhat', '06.07.2004', 'shillesdsdnetwork@gmail.com', 'true', 1, '0980193160', '2019-10-16', 'Отсутствует', 1),
+(171, 'shille', '$2y$10$MmGyidOGgB2t.pe/loH4bub6UU2Mc5pb35e/7zxbbZyiarV0sMqZS', 'serafim', 'Semikhat', '02.03.2000', 'shillenetwork@gmail.com', 'true', 1, '+7 (980) 193 16 05', '2019-10-20', 'Отсутствует', 1);
 
 -- --------------------------------------------------------
 
@@ -197,6 +229,12 @@ ALTER TABLE `answers`
 -- Индексы таблицы `answer_options`
 --
 ALTER TABLE `answer_options`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `ans_question`
+--
+ALTER TABLE `ans_question`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -264,10 +302,16 @@ ALTER TABLE `answer_options`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT для таблицы `ans_question`
+--
+ALTER TABLE `ans_question`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+
+--
 -- AUTO_INCREMENT для таблицы `out_test`
 --
 ALTER TABLE `out_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT для таблицы `questions`
