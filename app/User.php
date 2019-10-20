@@ -51,7 +51,6 @@ class User extends UserObject{
         return $row;
     }
 
-
     //Добавление ногово пользователя
     public function add_user_sql($login,$password,$name,$surname,$birth_date,$email,$token,$verefy,$phone,$today,$role_id)
     {
@@ -59,6 +58,8 @@ class User extends UserObject{
         $this->query($add);
         return $add;
     }
+
+
     public function phpmailler() {
         return $this->query("SELECT * FROM " . $this->table . " ORDER BY users DESC LIMIT 1");
     }

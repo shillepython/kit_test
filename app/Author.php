@@ -2,6 +2,10 @@
 namespace app;
 use mysql;
 class Author extends UserObject {
+    public function add_ans_question($name_tets,$answer)
+    {
+        return $this->query("INSERT INTO `ans_question` (name_test,ans) VALUES ('$name_tets','$answer')");
+    }
     public function create_json($file_txt_upload,$name_tets,$text_test,$file_image_ret,$difficult,$file_json) {
         header('Content-Type: application/json; charset=utf-8');
 
@@ -19,6 +23,7 @@ class Author extends UserObject {
         $fp = fopen("views_test/total_test/total_test.json", "w");
         fwrite($fp, implode(",", $file_total));
         fclose($fp);
+
 
         $question_arr = [];
         $answer_arr = [];
@@ -39,6 +44,7 @@ class Author extends UserObject {
                     $str_answ = trim($str_answ); // отрезаем  пробелы в начале и конце
                     if (substr($str_answ, 0, 1) === "*") { // если начинается на *
                         $question_arr[$str_quest][] = ltrim($str_answ, "*");  // вопрос записываем без *
+                        $this->add_ans_question($name_tets,ltrim($str_answ, "*"));
                         $answer_arr[$str_quest][] = "true";  // ответ отмечаем как правильный
                     } else {   // иначе
                         $question_arr[$str_quest][] = $str_answ;  //  записываем вопрос

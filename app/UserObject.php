@@ -45,5 +45,6 @@ class UserObject extends AbstractModel{
         return $row_ass[$row_table];
     }
 
+
 }
 

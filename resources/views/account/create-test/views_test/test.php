@@ -36,13 +36,14 @@ if ($admin->getElementsTable('login',$id) == ''){
     <?php require "../../../layouts/navbar.php"; ?>
     
     <p class="container button-run center-align">
-        <button class="waves-effect waves-light btn-large test-run  blue-grey darken-4 white-text" style="margin-top: 20px;">Начать тест</button>
+        <button class="waves-effect waves-light btn-large test-run blue-grey darken-4 white-text" style="margin-top: 20px;">Начать тест</button>
     </p>
 <div class="container">
     <div class="test">
         <div class="row">
             <div class="col s12 tests">
                 <h4>Тест: <?php echo $testing = $admin->getTestTable('title',$idGet); ?></h4>
+
             </div>
         </div>
 
@@ -54,30 +55,17 @@ if ($admin->getElementsTable('login',$id) == ''){
 <?php require "../../../layouts/footer.php" ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-    /*$(document).ready(function () {
-        $("button").click(function () {
-            $.getJSON("json_question/json_question_5dab4ccf4ad7f.json", function (data, textStatus, jqXHR) {
-                $.each(data, function (i, field) {
-                    $("div.tests").append('<div class="col s12" id="'+ i +'">');
-                    $("div#"+i+".col.s12").append("<h4>" + i + "</h4>");
-                    $.each(field, function (k, v) {
-                        $("div#"+i+".col.s12").append("<p>" + k + "</p>");
-                        $("div#"+i+".col.s12").append("<p>" + v + "</p>");
-                    });
-                });
-            });
-        });
-    });*/
     $(document).ready(function() {
         $("button").click(function() {
+            var file_name_res = '<?= $result_file_name ?>';
             // задаем функцию при нажатиии на элемент <button>
-            $.getJSON("json_question/json_question_5dab4ccf4ad7f.json", function(data, textStatus, jqXHR) {
+            $(this).closest("button").remove();
+            $.getJSON("json_question/" + file_name_res, function(data, textStatus, jqXHR) {
 
                 // указываем url и функцию обратного вызова;
                 let qstr = "";
                 let group_number = 0;
                 let test_id = 0;
-
                 for (let key in data) {
                     let answ_number = 0;
                     qstr +=
@@ -87,8 +75,9 @@ if ($admin->getElementsTable('login',$id) == ''){
                         "</h4>";
                     let arr = data[key];
                     for (let i = 0; i < arr.length; i++){
+                        $val_hom = arr[i].replace("<", "&lt;");
                         qstr +=
-                            "<p> <input name='group" +
+                            "<p> <input value='"+ $val_hom +"' name='group" +
                             group_number +
                             "' type='radio' id='test" +
                             test_id +
@@ -103,15 +92,15 @@ if ($admin->getElementsTable('login',$id) == ''){
                     qstr += "</div></div>";
                     group_number++;
                 }
-                // tests.push(qstr);
                 $("<form/>", {
-                    id: "finish_test",
+                    id: "test",
                     class: "my-new-list",
                     html: qstr,
                     action: 'dateProcessing',
                     method: 'POST'
                 }).appendTo(".tests");
-                $('#finish_test').append('<button type="submit" class="waves-effect waves-light btn-large test-run">Завершить тест</button>');
+                $('#test').append('<button type="submit" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Завершить тест</button>');
+                $('#test').append("<input type='hidden' name='title_test' value='<?php echo $admin->getTestTable('title',$idGet); ?>'>");
             });
         });
     });

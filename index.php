@@ -79,7 +79,7 @@ if (isset($_SESSION['user'])){
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">phone</i>
-                        <input id="phone" type="text" name="phone" class="validate"  placeholder="+380" required>
+                        <input id="phone" type="text" name="phone" id="phoneNumber" data-inputmask-clearmaskonlostfocus="false" class="validate"  placeholder="+380" required>
                         <label for="phone">Ваш телефон</label>
                     </div>
                 </div>
@@ -103,9 +103,14 @@ if (isset($_SESSION['user'])){
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="public/js/materialize.min.js"></script>
-
+<script src="node_modules/inputmask/dist/inputmask/bindings/inputmask.binding.js"></script>
 <script>
     $( document ).ready(function(){
+        var Inputmask = require('node_modules/inputmask');
+        var selector = document.getElementById("phoneNumber");
+
+        $(selector).inputmask("aa-9999");
+
 
         $(".button-collapse").sideNav();
     })
