@@ -33,7 +33,7 @@ if (isset($_SESSION['user'])){
             </ul>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/">Registation</a></li>
-                <li><a href="resources/views/signin/signin">Sign in</a></li>
+                <li><a href="signin">Sign in</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="http://kitit.com.ua/">Go home</a></li>
@@ -46,7 +46,7 @@ if (isset($_SESSION['user'])){
     <div class="container center-align">
         <div class="row background-reg z-depth-2">
             <form action="config/auth" method="post" class="col s12">
-                <h4>Регестрация аккаунта</h4>
+                <h4>Регистрация аккаунта</h4>
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>

@@ -27,6 +27,7 @@ if (isset($_GET['del_user'])) {
 }
 $id = $_SESSION['user'][0];
 $arr = str_replace("<", "&lt;", $_POST);
+
 $array_answer = [];
 $sql = $admin->query("SELECT * FROM `ans_question` WHERE name_test='$title'");
 while ($test = $sql->fetch_assoc()){
@@ -46,7 +47,6 @@ for ($i = 0; $i < 12; $i++){
         $true_ans++;
     }
 }
-
 $email = $_GET['email'];
 
 $name = $admin->getEmailUser('name', $email);
@@ -88,4 +88,6 @@ if ($true_ans > 1){
 
 $subject = 'Результаты тестрирования на сайте KIT-TEST';
 $body    = "<p>Здравствуйте: <strong> $name $surname </strong>, результаты теста: <p>Название теста: <strong>$title</strong></p><p>Ваш балл: <strong>$test_true</strong></p><p>";
-$admin->sendEmail($subject,$body,$email);
+if (!empty($email)){
+    $admin->sendEmail($subject,$body,$email);
+}

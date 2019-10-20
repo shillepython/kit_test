@@ -18,17 +18,17 @@
             <a href="#" class="brand-logo center"><img src="http://kitit.com.ua/wp-content/uploads/2018/12/cropped-logo_kit_w-1.png" width="65" height="65" alt=""></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down blue-grey darken-4 white-text">
-                <li><a class="white-text" href="/resources/views/account/hub-test">Панель управления</a></li>
+                <li><a class="white-text" href="hub-test">Панель управления</a></li>
                 <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php echo $admin->getElementsTable('login',$id) ?><i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
             <ul class="side-nav blue-grey darken-4 white-text" id="mobile-demo">
-                <li><a class="white-text" href="/resources/views/account/profile">Профиль</a></li>
-                <li><a class="white-text" href="/resources/views/account/hub-test">Панель</a></li>
+                <li><a class="white-text" href="profile">Профиль</a></li>
+                <li><a class="white-text" href="hub-test">Панель</a></li>
                 <li><a class="white-text" href="?out">Выход</a></li>
             </ul>
             <ul id="dropdown1" class="dropdown-content blue-grey darken-4 white-text">
-                <li><a class="white-text" href="/resources/views/account/profile">Профиль</a></li>
-                <li><a class="white-text" href="/resources/views/account/hub-test">Панель</a></li>
+                <li><a class="white-text" href="profile">Профиль</a></li>
+                <li><a class="white-text" href="hub-test">Панель</a></li>
                 <li><a class="white-text" href="?out">Выход</a></li>
             </ul>
         </div>

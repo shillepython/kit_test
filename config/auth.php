@@ -35,7 +35,7 @@ if ($result_row_login == 0){
     if ($connection->add_user_sql($login, $pass, $name, $surname, $birth_date, $email, $token, $verefy, $phone, $today, $role_id)) {
         $result_pass_login = $connection->query_log_pass($login,$pass);
         $_SESSION['user'] = array($result_pass_login['id'], $result_pass_login['login'], $result_pass_login['password'], $result_pass_login['name'], $result_pass_login['surname'], $result_pass_login['birth_date'], $result_pass_login['email'], $row_auth['tel'], $result_pass_login['registration_date'], $result_pass_login['group_id'], $result_pass_login['role_id']);
-        header('Location: ../resources/views/account/hub-test');
+        header('Location: ../hub-test');
     }
 }else{
     header('Location: /');

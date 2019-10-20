@@ -1,8 +1,13 @@
 <div class="container">
-    <div class="row z-depth-2 profil-text">
+    <style>
+        .row{
+            margin: 0;
+        }
+    </style>
+    <div class="row z-depth-2" style="margin-top: 20px; border-radius: 5px">
         <div class="col s12">
-            <h4>Ваши контактные данные</h4>
-            <div class="row">
+            <h4 style="margin: 20px;">Ваши контактные данные</h4>
+            <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000; border-top: 1px solid #000;  padding-bottom: 20px; padding-top: 20px">
                 <div class="col s4">
                     <p class="profil-content">Ваш логин:</p>
                 </div>
@@ -11,9 +16,8 @@
                 </div>
             </div>
 
-            <hr>
 
-            <div class="row">
+            <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;   padding-bottom: 20px; padding-top: 20px">
                 <div class="col s4">
                     <p class="profil-content">Ваша дата рождения:</p>
                 </div>
@@ -22,9 +26,7 @@
                 </div>
             </div>
 
-            <hr>
-
-            <div class="row">
+            <div class="row"  style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;   padding-bottom: 20px; padding-top: 20px">
                 <div class="col s4">
                     <p class="profil-content">Ваша почта:</p>
                 </div>
@@ -33,9 +35,8 @@
                 </div>
             </div>
 
-            <hr>
 
-            <div class="row">
+            <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;  padding-bottom: 20px; padding-top: 20px">
                 <div class="col s4">
                     <p class="profil-content">Ваша группа:</p>
                 </div>
@@ -44,9 +45,8 @@
                 </div>
             </div>
 
-            <hr>
 
-            <div class="row">
+            <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;   padding-bottom: 20px; padding-top: 20px">
                 <div class="col s4">
                     <p class="profil-content">Дата регистрации:</p>
                 </div>
@@ -54,14 +54,14 @@
                     <p class="profil-content"><?php echo $admin->getElementsTable('registration_date',$id) ?></p>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col s12">
-                    <a href="edit/password?email=<?php echo $admin->getElementsTable('email',$id) ?>" class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Поменять пароль
+                    <a href="edit/password?email=<?php echo $admin->getElementsTable('email',$id) ?>" style="margin: 30px 0 30px 50px;" class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Поменять пароль
                         <i class="material-icons right">send</i>
                     </a>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

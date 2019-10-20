@@ -28,7 +28,7 @@ $date_registartion = $admin->getEmailUser('registration_date', $email);
 $group = $admin->getEmailUser('group_id', $email);
 $role = $admin->getEmailUser('role_id', $email);
 
-header("Location: ../resources/views/signin/verefy-email");
+header("Location: ../verefy-email");
 
 $subject = 'Востановление пароля на сайте KIT-TEST';
 $body    = "<p>Здравствуйте: <strong> $name $surname </strong>, чтобы сбросить пароль нажмите на кнопку и после чего вы получите письмо с паролем<p>

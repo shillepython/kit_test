@@ -80,7 +80,7 @@ $email = $admin->getElementsTable('email',$id);
                     for (let i = 0; i < arr.length; i++){
                         $val_hom = arr[i].replace("<", "&lt;");
                         qstr +=
-                            "<p> <input value='"+ $val_hom +"' name='group" +
+                            "<p> <input required value='"+ $val_hom +"' name='group" +
                             group_number +
                             "' type='radio' id='test" +
                             test_id +

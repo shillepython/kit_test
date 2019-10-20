@@ -96,9 +96,8 @@ if ($admin->getElementsTable('verefy',$id) != 1):
 ?>
 
 <div class="container">
-    <h2>Все тесты:</h2>
+    <h2 style="border-bottom: 1px solid #000; padding-bottom: 20px">Все тесты:</h2>
 
-    <hr>
     <div class="row cards-top">
         <?php
         $testing = $admin->out_test();
@@ -114,6 +113,7 @@ if ($admin->getElementsTable('verefy',$id) != 1):
                     </div>
                     <div class="card-content">
                         <?php echo $test['text']; ?>
+                        <p><b>Уровень сложности: <?php echo $test['difficult']; ?></b></p>
                     </div>
                     <div class="card-action">
                         <a href="create-test/views_test/test?id=<?php echo $test['id'] ?>">Пройти тест</a>

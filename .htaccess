@@ -6,3 +6,10 @@ RewriteRule ^resources/views/account/create-test/views_test/test/([0-9]+)?$ /res
 RewriteRule ^([^.?]+)$ %{REQUEST_URI}.php [L]
 RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
 RewriteRule .* - [L,R=404]
+
+RewriteCond  %{DOCUMENT_ROOT}/resources/views/signin/$1 -f
+RewriteRule ^(.*)$ resources/views/signin/$1 [L,QSA]
+
+RewriteCond  %{DOCUMENT_ROOT}/resources/views/account/$1 -f
+
+RewriteRule ^(.*)$ resources/views/account/$1 [L,QSA]
