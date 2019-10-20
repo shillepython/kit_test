@@ -8,49 +8,49 @@
         <div class="col s12">
             <h4 style="margin: 20px;">Ваши контактные данные</h4>
             <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000; border-top: 1px solid #000;  padding-bottom: 20px; padding-top: 20px">
-                <div class="col s4">
+                <div class="col l4 s6">
                     <p class="profil-content">Ваш логин:</p>
                 </div>
-                <div class="col s4 offset-s4">
+                <div class="col l4 s6 offset-l4">
                     <p class="profil-content"> <?php echo $admin->getElementsTable('login',$id) ?></p>
                 </div>
             </div>
 
 
             <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;   padding-bottom: 20px; padding-top: 20px">
-                <div class="col s4">
+                <div class="col l4 s6">
                     <p class="profil-content">Ваша дата рождения:</p>
                 </div>
-                <div class="col s4 offset-s4">
+                <div class="col l4 s6 offset-l4">
                     <p class="profil-content"> <?php echo $admin->getElementsTable('birth_date',$id) ?></p>
                 </div>
             </div>
 
-            <div class="row"  style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;   padding-bottom: 20px; padding-top: 20px">
-                <div class="col s4">
+            <div class="row"  style="color: #fff; font-weight: bold; font-size: 18px; background-color: #263238; border-bottom: 1px solid #000;   padding-bottom: 20px; padding-top: 20px">
+                <div class="col l4 s6">
                     <p class="profil-content">Ваша почта:</p>
                 </div>
-                <div class="col s4 offset-s4">
+                <div class="col l4 s6 offset-l4">
                     <p class="profil-content"><?php echo $admin->getElementsTable('email',$id) ?></p>
                 </div>
             </div>
 
 
             <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;  padding-bottom: 20px; padding-top: 20px">
-                <div class="col s4">
+                <div class="col l4 s6">
                     <p class="profil-content">Ваша группа:</p>
                 </div>
-                <div class="col s4 offset-s4">
+                <div class="col l4 s6 offset-l4">
                     <p class="profil-content"><?php echo $admin->getElementsTable('group_id',$id) ?></p>
                 </div>
             </div>
 
 
             <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;   padding-bottom: 20px; padding-top: 20px">
-                <div class="col s4">
+                <div class="col l4 s6">
                     <p class="profil-content">Дата регистрации:</p>
                 </div>
-                <div class="col s4 offset-s4">
+                <div class="col l4 s6 offset-l4">
                     <p class="profil-content"><?php echo $admin->getElementsTable('registration_date',$id) ?></p>
                 </div>
             </div>

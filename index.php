@@ -29,16 +29,16 @@ if (isset($_SESSION['user'])){
             <a href="#" class="brand-logo center"><img src="http://kitit.com.ua/wp-content/uploads/2018/12/cropped-logo_kit_w-1.png" width="65" height="65" alt=""></a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="http://kitit.com.ua/">Go home</a></li>
+                <li><a href="http://kitit.com.ua/">kitit.com.ua</a></li>
             </ul>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/">Registation</a></li>
                 <li><a href="signin">Sign in</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li><a href="http://kitit.com.ua/">Go home</a></li>
+                <li><a href="http://kitit.com.ua/">kitit.com.ua</a></li>
                 <li><a href="/">Registation</a></li>
-                <li><a href="resources/views/signin/signin">Sign in</a></li>
+                <li><a href="signin">Sign in</a></li>
             </ul>
         </div>
     </div>
@@ -106,12 +106,6 @@ if (isset($_SESSION['user'])){
 <script src="node_modules/inputmask/dist/inputmask/bindings/inputmask.binding.js"></script>
 <script>
     $( document ).ready(function(){
-        var Inputmask = require('node_modules/inputmask');
-        var selector = document.getElementById("phoneNumber");
-
-        $(selector).inputmask("aa-9999");
-
-
         $(".button-collapse").sideNav();
     })
 </script>

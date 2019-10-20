@@ -157,7 +157,7 @@ if ($admin->getElementsTable('verefy',$id) != 1):
                         <a href="admin-groups" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Поиск групп</a>
                     </div>
                     <div class="col s4">
-                        <a href="create-test/add" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Создать тест</a>
+                        <a href="add" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Создать тест</a>
                     </div>
                 </div>
             </div>

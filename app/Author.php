@@ -64,7 +64,7 @@ class Author extends UserObject {
         $jf_answer = fopen($file_ans_dir, 'w'); // открываем файл json с ответами на запись
         fwrite($jf_answer, $json_answer);
         fclose($jf_answer);
-        header('Location: /');
+        header('Location: ../tests-admin');
         $result_file_name = mb_substr( $file_quest_dir, 25);
         $this->add_json_name($name_tets,$result_file_name,$text_test,$file_image_ret,$difficult);
 

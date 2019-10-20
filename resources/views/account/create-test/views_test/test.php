@@ -57,6 +57,11 @@ $email = $admin->getElementsTable('email',$id);
 <?php require "../../../layouts/footer.php" ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+    $( document ).ready(function(){
+        $(".button-collapse").sideNav();
+    })
+</script>
+<script>
     $(document).ready(function() {
         $("button").click(function() {
             var file_name_res = '<?= $result_file_name ?>';
@@ -72,7 +77,7 @@ $email = $admin->getElementsTable('email',$id);
                 for (let key in data) {
                     let answ_number = 0;
                     qstr +=
-                        '<div class="row tests z-depth-2"><div class="col s12">' +
+                        '<div class="row tests z-depth-2" style="border-radius: 5px; padding: 20px;"<div class="col s12">' +
                         "<h4>" +
                         key +
                         "</h4>";
@@ -104,6 +109,7 @@ $email = $admin->getElementsTable('email',$id);
                 }).appendTo(".tests");
                 $('#test').append('<button type="submit" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Завершить тест</button>');
                 $('#test').append("<input type='hidden' name='title_test' value='<?php echo $admin->getTestTable('title',$idGet); ?>'>");
+                $(".button-collapse").sideNav();
             });
         });
     });

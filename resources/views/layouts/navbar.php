@@ -21,6 +21,7 @@
                 <li><a class="dropdown-button white-text" href="#!" data-activates="dropdown1"><?php echo $_SESSION['user'][1] ?><i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
             <ul class="side-nav blue-grey darken-4 white-text" id="mobile-demo">
+                <li><a class="white-text" href="hub-test">На главную</a></li>
                 <li><a class="white-text" href="profile">Профиль</a></li>
                 <li><a class="white-text" href="?out">Выход</a></li>
             </ul>
