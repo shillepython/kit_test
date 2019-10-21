@@ -77,9 +77,7 @@ if ($admin->getElementsTable('login',$id) == ''){
 
 
 <div class="container">
-        <h2>Все тесты:</h2>
-
-        <hr>
+        <h2 style="border-bottom: 1px solid #000; padding-bottom: 20px">Все тесты:</h2>
         <div class="row cards-top">
             <?php
             $testing = $admin->out_test();
