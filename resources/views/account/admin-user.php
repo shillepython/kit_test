@@ -118,7 +118,7 @@ if (isset($_POST['action'])){
                     echo 'пользователь';
                 }
                 ?></td>
-                <td><a href="edit/edit/<?php echo $user[0]; ?>" class="btn-user"><i class="material-icons left">edit</i></a></td>
+                <td><a href="edit/<?php echo $user[0]; ?>" class="btn-user"><i class="material-icons left">edit</i></a></td>
                 <td><a href="?del_user=<?php echo $user[0]; ?>"><i class="material-icons left">remove_circle_outline</i></a></td>
             </tr>
             <?php } ?>

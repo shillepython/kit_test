@@ -116,7 +116,7 @@ if ($admin->getElementsTable('verefy',$id) != 1):
                         <p><b>Уровень сложности: <?php echo $test['difficult']; ?></b></p>
                     </div>
                     <div class="card-action">
-                        <a href="create-test/views_test/test?id=<?php echo $test['id'] ?>">Пройти тест</a>
+                        <a href="test?id=<?php echo $test['id'] ?>">Пройти тест</a>
                     </div>
                 </div>
             </div>

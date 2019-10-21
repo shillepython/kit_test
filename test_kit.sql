@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 20 2019 г., 17:42
+-- Время создания: Окт 21 2019 г., 23:31
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.1.22
 
@@ -63,30 +63,18 @@ CREATE TABLE `ans_question` (
 --
 
 INSERT INTO `ans_question` (`id`, `name_test`, `ans`) VALUES
-(85, 'JS', '<table>'),
-(86, 'JS', '<tr>'),
-(87, 'JS', '<th>'),
-(88, 'JS', '<td>'),
-(89, 'JS', '<table align=\"center\">'),
-(90, 'JS', 'атрибута background'),
-(91, 'JS', '<td valign=\"top\">'),
-(92, 'JS', '<td align=\"center\">'),
-(93, 'JS', 'сellspacing=\"5\"'),
-(94, 'JS', 'сellpadding=\"5\"'),
-(95, 'JS', 'colspan=\"5\"'),
-(96, 'JS', 'bordercolor=\"red\"'),
-(97, 'HTCCESS', '<td>'),
-(98, 'HTCCESS', '<tr>'),
-(99, 'HTCCESS', '<th>'),
-(100, 'HTCCESS', '<td>'),
-(101, 'HTCCESS', '<table align=\"center\">'),
-(102, 'HTCCESS', 'атрибута background'),
-(103, 'HTCCESS', '<td valign=\"top\">'),
-(104, 'HTCCESS', '<td align=\"center\">'),
-(105, 'HTCCESS', 'сellspacing=\"5\"'),
-(106, 'HTCCESS', 'сellpadding=\"5\"'),
-(107, 'HTCCESS', 'colspan=\"5\"'),
-(108, 'HTCCESS', 'bordercolor=\"red\"');
+(193, 'JS', 'object'),
+(194, 'JS', 'clearTimeout'),
+(195, 'JS', 'new'),
+(196, 'JS', 'var pattern = [a,b,c];'),
+(197, 'JS', '<a href>'),
+(198, 'JS', 'reverse()'),
+(199, 'JS', 'клиентскими'),
+(200, 'JS', 'onmousedown'),
+(201, 'JS', 'caller'),
+(202, 'JS', 'встраиваемый расширяемый язык программирования'),
+(203, 'JS', 'да, в Firefox такое случается'),
+(204, 'JS', 'sort()');
 
 -- --------------------------------------------------------
 
@@ -108,8 +96,7 @@ CREATE TABLE `out_test` (
 --
 
 INSERT INTO `out_test` (`id`, `title`, `text`, `difficult`, `image`, `file_name`) VALUES
-(54, 'JS', 'На сколько хорошо ты знаешь JS? пройди тесты, и узнай результаты.', 'easy', 'js.png', 'json_question_5dac5f66f05ad.json'),
-(55, 'HTCCESS', 'На сколько хорошо ты знаешь HTACCESS? пройди тесты, и узнай результаты.', 'easy', 'htaccess.jpg', 'json_question_5dac5f7ce7d50.json');
+(63, 'JS', 'На сколько хорошо ты знаешь JS? пройди тесты, и узнай результаты.', 'middle', 'js.png', 'json_question_5dae158407a1a.json');
 
 -- --------------------------------------------------------
 
@@ -198,8 +185,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `birth_date`, `email`, `token`, `verefy`, `tel`, `registration_date`, `group_id`, `role_id`) VALUES
-(170, 'shilsdsdle', '$2y$10$mw4U.qeVNGDUB/63egHEretQ8JPY.ZMWgOgsPy3uG/epyWZvakIU.', 'Serafim', 'Semikhat', '06.07.2004', 'shillesdsdnetwork@gmail.com', 'true', 1, '0980193160', '2019-10-16', 'Отсутствует', 1),
-(171, 'shille', '$2y$10$MmGyidOGgB2t.pe/loH4bub6UU2Mc5pb35e/7zxbbZyiarV0sMqZS', 'serafim', 'Semikhat', '02.03.2000', 'shillenetwork@gmail.com', 'true', 1, '+7 (980) 193 16 05', '2019-10-20', 'Отсутствует', 1);
+(170, 'shilsdsdle', '$2y$10$mw4U.qeVNGDUB/63egHEretQ8JPY.ZMWgOgsPy3uG/epyWZvakIU.', 'Serafim', 'Semikhat', '06.07.2004', 'shillesdsdnetwork@gmail.com', 'true', 1, '0980193160', '2019-10-16', 'HTML-CSS1', 1),
+(172, 'shille', '$2y$10$ct6r7MsWrIoj6HuD2TBN5OyyBdjOdquAEmap5I25y6RGO836iQ5Ly', 'Serafim', 'Semikhat', '06.07.2004', 'shillenetwork@gmail.com', 'true', 1, '+380980193160', '2019-10-20', 'JS-PHP-1', 3);
 
 -- --------------------------------------------------------
 
@@ -305,13 +292,13 @@ ALTER TABLE `answer_options`
 -- AUTO_INCREMENT для таблицы `ans_question`
 --
 ALTER TABLE `ans_question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
 -- AUTO_INCREMENT для таблицы `out_test`
 --
 ALTER TABLE `out_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT для таблицы `questions`
@@ -341,7 +328,7 @@ ALTER TABLE `test_results`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT для таблицы `user_test_permissions`

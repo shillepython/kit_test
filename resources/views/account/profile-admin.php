@@ -57,7 +57,7 @@
 
             <div class="row">
                 <div class="col s12">
-                    <a href="edit/password?email=<?php echo $admin->getElementsTable('email',$id) ?>" style="margin: 30px 0 30px 50px;" class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Поменять пароль
+                    <a href="password?email=<?php echo $admin->getElementsTable('email',$id) ?>" style="margin: 30px 0 30px 50px;" class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Поменять пароль
                         <i class="material-icons right">send</i>
                     </a>
                 </div>

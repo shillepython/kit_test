@@ -21,6 +21,8 @@ $user = new User();
 $admin = new Admin();
 echo $admin->editTests(15);
 $title = $_POST['title_test'];
+$difficult = $_POST['difficult'];
+
 if (isset($_GET['del_user'])) {
     $id_user = $_GET['del_user'];
     $admin->deleteUser($id_user);
@@ -77,7 +79,7 @@ if ($true_ans > 1){
             <div class="row">
                 <div class="input-field col s12">
                     Ваши результаты были отправлены к вам на почту. <br><br>
-                    <a href="/" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">на главную</a>
+                    <a href="hub-test" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">на главную</a>
                 </div>
             </div>
 
@@ -87,7 +89,7 @@ if ($true_ans > 1){
 <?php
 
 $subject = 'Результаты тестрирования на сайте KIT-TEST';
-$body    = "<p>Здравствуйте: <strong> $name $surname </strong>, результаты теста: <p>Название теста: <strong>$title</strong></p><p>Ваш балл: <strong>$test_true</strong></p><p>";
+$body    = "<p>Здравствуйте: <strong> $name $surname </strong>, результаты теста: <p>Название теста: <strong>$title</strong></p><p>Сложность теста: <strong>$difficult</strong></p><p>Ваш балл: <strong>$test_true</strong></p><p>";
 if (!empty($email)){
     $admin->sendEmail($subject,$body,$email);
 }

@@ -1,11 +1,14 @@
 AddDefaultCharset UTF-8
 
 RewriteEngine on
-RewriteRule ^resources/views/account/edit/edit/([0-9]+)?$ /resources/views/account/edit/edit?id=$1 [L]
-RewriteRule ^resources/views/account/create-test/views_test/test/([0-9]+)?$ /resources/views/account/create-test/views_test/test?id=$1 [L]
+RewriteRule ^edit/([0-9]+)?$ /edit?id=$1 [L]
+RewriteRule ^test/([0-9]+)?$ /test?id=$1 [L]
+RewriteRule ^password/([a-z]+)?$ /password?email=$1 [L]
+
 RewriteRule ^([^.?]+)$ %{REQUEST_URI}.php [L]
 RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
 RewriteRule .* - [L,R=404]
+
 
 RewriteCond  %{DOCUMENT_ROOT}/resources/views/signin/$1 -f
 RewriteRule ^(.*)$ resources/views/signin/$1 [L,QSA]
@@ -13,8 +16,15 @@ RewriteRule ^(.*)$ resources/views/signin/$1 [L,QSA]
 RewriteCond  %{DOCUMENT_ROOT}/resources/views/account/$1 -f
 RewriteRule ^(.*)$ resources/views/account/$1 [L,QSA]
 
+RewriteCond  %{DOCUMENT_ROOT}/resources/views/error/$1 -f
+RewriteRule ^(.*)$ resources/views/error/$1 [L,QSA]
+
 RewriteCond  %{DOCUMENT_ROOT}/resources/views/account/create-test/$1 -f
 RewriteRule ^(.*)$ resources/views/account/create-test/$1 [L,QSA]
 
+RewriteCond  %{DOCUMENT_ROOT}/resources/views/account/edit/$1 -f
+RewriteRule ^(.*)$ resources/views/account/edit/$1 [L,QSA]
+
 RewriteCond  %{DOCUMENT_ROOT}/resources/views/account/create-test/views_test/$1 -f
 RewriteRule ^(.*)$ resources/views/account/create-test/views_test/$1 [L,QSA]
+ErrorDocument 404 /404-error.html

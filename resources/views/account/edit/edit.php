@@ -38,15 +38,18 @@ $id_edit = $_GET['id'];
 $sql_edit = $admin->getId($id_edit);
 $result_sql = $sql_edit->fetch_row();
 
+$email = $admin->getElementsTable('email',$id);
+
 $login = $result_sql[1];
 $password = $result_sql[2];
 $name = $result_sql[3];
 $surname = $result_sql[4];
 $date = $result_sql[5];
 $email = $result_sql[6];
-$phone = $result_sql[7];
-$date_registartion = $result_sql[8];
-$group = $result_sql[9];
+
+$phone = $result_sql[9];
+$date_registartion = $result_sql[10];
+$group = $result_sql[11];
 
 ?>
 
@@ -59,6 +62,7 @@ $group = $result_sql[9];
             <form action="../edit-update" method="post" class="col s12">
                 <input type="hidden" name="id" value="<?php echo $id_edit ?>">
                 <input type="hidden" name="date_registartion" value="<?php echo $date_registartion ?>">
+                <input type="hidden" name="password" value="<?php echo $password ?>">
                 <h4>Редактирование пользователя</h4>
                 <div class="row">
                     <div class="input-field col s6">

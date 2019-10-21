@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])){
-    header('Location: ../account/hub-test');
+    header('Location: ../hub-test');
     exit();
 }
 

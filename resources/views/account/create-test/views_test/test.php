@@ -83,16 +83,17 @@ $email = $admin->getElementsTable('email',$id);
                         "</h4>";
                     let arr = data[key];
                     for (let i = 0; i < arr.length; i++){
-                        $val_hom = arr[i].replace("<", "&lt;");
+                        $val_first = arr[i].replace("<", "&lt;");
+                        $val = $val_first.replace(">", "&gt;");
                         qstr +=
-                            "<p> <input required value='"+ $val_hom +"' name='group" +
+                            "<p> <input required value='"+ $val +"' name='group" +
                             group_number +
                             "' type='radio' id='test" +
                             test_id +
                             "' /><label for='test" +
                             test_id +
                             "'>" +
-                            arr[i].replace("<", "&lt;"); +
+                            $val +
                             "</label></p>";
                         answ_number++;
                         test_id++;
@@ -109,6 +110,7 @@ $email = $admin->getElementsTable('email',$id);
                 }).appendTo(".tests");
                 $('#test').append('<button type="submit" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Завершить тест</button>');
                 $('#test').append("<input type='hidden' name='title_test' value='<?php echo $admin->getTestTable('title',$idGet); ?>'>");
+                $('#test').append("<input type='hidden' name='difficult' value='<?php echo $admin->getTestTable('difficult',$idGet); ?>'>");
                 $(".button-collapse").sideNav();
             });
         });

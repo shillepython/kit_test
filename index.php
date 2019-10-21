@@ -6,7 +6,7 @@ session_start();
 
 $userObj = new UserObject();
 if (isset($_SESSION['user'])){
-    header('Location: resources/views/account/hub-test');
+    header('hub-test');
     exit();
 }
 ?>
