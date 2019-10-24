@@ -40,7 +40,7 @@ if (isset($_POST['action'])) {
 ?>
 <?php if($admin->getElementsTable('role_id',$id) == 3 || $admin->getElementsTable('role_id',$id) == 2):?>
     <?php require "../../layouts/adminnav-add.php"; ?>
-    <div class="container center-align">
+    <div class="container center-align admin-panel z-depth-3">
         <form action="?" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">

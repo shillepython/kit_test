@@ -87,7 +87,7 @@ if ($admin->getElementsTable('login',$id) == ''){
             $testing = $admin->out_test();
             while ($test = $testing->fetch_assoc()) {
                 ?>
-                <div class="col s12 m4">
+                <div class="col s12 xl4 m4">
                     <div class="card">
                         <div class="card-image">
                             <img  width="300px" height="300px" src="/public/img/test/<?php echo $test['image']; ?>">

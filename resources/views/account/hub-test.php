@@ -34,31 +34,34 @@ if ($admin->getElementsTable('login',$id) == ''){
         exit();
     }
 }
-$token = $_GET['token'];
 
-if (isset($token)){
-    if ($token == $admin->getElementsTable('token',$id)){
-        $email = $admin->getElementsTable('email',$id);
+if (isset($_GET['token'])){
+    $token = $_GET['token'];
+    if (!empty($token)){
+        if ($token == $admin->getElementsTable('token',$id)){
+            $email = $admin->getElementsTable('email',$id);
 
-        $id = $admin->getEmailUser('id', $email);
-        $login = $admin->getEmailUser('login', $email);
-        $password = $admin->getEmailUser('password', $email);
-        $name = $admin->getEmailUser('name', $email);
-        $surname = $admin->getEmailUser('surname', $email);
-        $date = $admin->getEmailUser('birth_date', $email);
-        $email_row = $admin->getEmailUser('email', $email);
-        $token = 'true';
-        $verefy = 1;
-        $phone = $admin->getEmailUser('tel', $email);
-        $date_registartion = $admin->getEmailUser('registration_date', $email);
-        $group = $admin->getEmailUser('group_id', $email);
-        $role = $admin->getEmailUser('role_id', $email);
-        $admin->updateUser($id,$login,$password,$name,$surname,$date,$email_row,$token,$verefy,$phone,$date_registartion,$group,$role);
-        header("Location: hub-test");
-    }else{
-        return;
+            $id = $admin->getEmailUser('id', $email);
+            $login = $admin->getEmailUser('login', $email);
+            $password = $admin->getEmailUser('password', $email);
+            $name = $admin->getEmailUser('name', $email);
+            $surname = $admin->getEmailUser('surname', $email);
+            $date = $admin->getEmailUser('birth_date', $email);
+            $email_row = $admin->getEmailUser('email', $email);
+            $token = 'true';
+            $verefy = 1;
+            $phone = $admin->getEmailUser('tel', $email);
+            $date_registartion = $admin->getEmailUser('registration_date', $email);
+            $group = $admin->getEmailUser('group_id', $email);
+            $role = $admin->getEmailUser('role_id', $email);
+            $admin->updateUser($id,$login,$password,$name,$surname,$date,$email_row,$token,$verefy,$phone,$date_registartion,$group,$role);
+            header("Location: hub-test");
+        }else{
+            return;
+        }
     }
 }
+
 
 if ($admin->getElementsTable('verefy',$id) != 1):
 ?>
@@ -103,7 +106,7 @@ if ($admin->getElementsTable('verefy',$id) != 1):
         $testing = $admin->out_test();
         while ($test = $testing->fetch_assoc()) {
             ?>
-            <div class="col s12 m4">
+            <div class="col s12 xl4 m4">
                 <div class="card">
                     <div class="card-image">
                         <img width="300px" height="300px" src="/public/img/test/<?php echo $test['image']; ?>">
@@ -130,13 +133,16 @@ if ($admin->getElementsTable('verefy',$id) != 1):
     <div class="container">
         <div class="row z-depth-2 profil-text">
             <div class="col s12">
-                <h5>Панель управление пользователями</h5>
+                <h5>Панель управление</h5>
                 <div class="row s12">
-                    <div class="col s6">
+                    <div class="col s12 l4 xl4" style="padding: 20px;">
                         <a href="create-test/add" class="waves-effect waves-light btn-large cyan darken-2 white-text">Создать тест</a>
                     </div>
-                    <div class="col s6">
+                    <div class="col s12 l4 xl4" style="padding: 20px;">
                         <a href="admin-groups" class="waves-effect waves-light btn-large cyan darken-2 white-text">Поиск групп</a>
+                    </div>
+                    <div class="col s12 l4 xl4" style="padding: 20px;">
+                        <a href="add" class="waves-effect waves-light btn-large cyan darken-2 white-text">Создать тест</a>
                     </div>
                 </div>
             </div>
@@ -148,15 +154,15 @@ if ($admin->getElementsTable('verefy',$id) != 1):
     <div class="container">
         <div class="row z-depth-2 profil-text">
             <div class="col s12">
-                <h5>Панель управление пользователями</h5>
+                <h5>Панель управление</h5>
                 <div class="row s12">
-                    <div class="col s4">
+                    <div class="col s12 l4 xl4" style="padding: 20px;">
                         <a href="admin-user" class="waves-effect waves-light btn-large cyan darken-2 white-text">Таблица пользователей</a>
                     </div>
-                    <div class="col s4">
+                    <div class="col s12 l4 xl4 " style="padding: 20px;">
                         <a href="admin-groups" class="waves-effect waves-light btn-large cyan darken-2 white-text">Поиск групп</a>
                     </div>
-                    <div class="col s4">
+                    <div class="col s12 l4 xl4" style="padding: 20px;">
                         <a href="add" class="waves-effect waves-light btn-large cyan darken-2 white-text">Создать тест</a>
                     </div>
                 </div>

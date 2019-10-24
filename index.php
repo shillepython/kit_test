@@ -1,12 +1,10 @@
 <?php
+session_start();
 use app\UserObject;
 include "autoload.php";
-
-session_start();
-
 $userObj = new UserObject();
 if (isset($_SESSION['user'])){
-    header('hub-test');
+    header("Location: hub-test");
     exit();
 }
 ?>
