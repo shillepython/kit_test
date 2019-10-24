@@ -100,7 +100,26 @@ class Admin extends UserObject {
         }
     }
 
+    public function download_user_file(){
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=user_database.csv');
+        $output = fopen("php://output", 'w') or die("не удалось создать файл");
+        fputcsv($output, array('ID', 'Login', 'Password', 'Name', 'Surname', 'date', 'email', 'Phone', 'Registration', 'Group', 'Role'), ",");
 
+        $sql = $this->query("SELECT * FROM `users` ORDER BY id DESC");
+        while ($row = $sql->fetch_row()){
+            if ($row[12] == "1"){
+                $status = "User";
+            }elseif ($row[12] == "2"){
+                $status = "Author";
+            }elseif ($row[12] == "3"){
+                $status = "Admin";
+            }
+            $lineData = array($row[0],$row[1],$row[3],$row[4],$row[5],$row[6],$row[7],$row[8],$row[9],$row[10],$row[11],$status);
+            fputcsv($output, $lineData, ",");
+        }
+        fclose($output);
+    }
 
     public function editTests ($id){
         //

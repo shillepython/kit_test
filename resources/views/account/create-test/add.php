@@ -57,7 +57,7 @@ if (isset($_POST['action'])) {
                 </div>
             </div>
             <div class="file-field input-field">
-                <div class="btn blue-grey darken-4 white-text">
+                <div class="btn cyan darken-2 white-text">
                     <span>File image</span>
                     <input type="file" name="image">
                 </div>
@@ -77,7 +77,7 @@ if (isset($_POST['action'])) {
                 </div>
             </div>
             <div class="file-field input-field">
-                <div class="btn blue-grey darken-4 white-text">
+                <div class="btn cyan darken-2 white-text">
                     <span>File test</span>
                     <input type="file" name="file">
                 </div>
@@ -88,7 +88,7 @@ if (isset($_POST['action'])) {
 
             <div class="row">
                 <div class="col s12">
-                    <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Отправить
+                    <button class="btn waves-effect waves-light cyan darken-2 white-text" type="submit" name="action">Отправить
                         <i class="material-icons right">send</i>
                     </button>
                 </div>

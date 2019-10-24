@@ -1,4 +1,13 @@
 <?php
+session_start();
+if (isset($_GET['out'])){
+    session_destroy();
+    header('Location: /');
+}
+if (!isset($_SESSION['user'])){
+    header('Location: /');
+    exit();
+}
 require "../../../../autoload.php";
 use app\User;
 use app\Admin;
@@ -11,7 +20,13 @@ require '../../../../vendor/autoload.php';
 
 $connetion = new User();
 $admin = new Admin();
-session_start();
+if ($admin->getElementsTable('login',$id) == ''){
+    session_destroy();
+    if (!isset($_SESSION['user'])){
+        header('Location: /');
+        exit();
+    }
+}
 
 $code = $_POST['code'];
 $code_password = $_POST['code_password'];
@@ -39,9 +54,10 @@ if (isset($_POST['action_code'])){
         $role = $admin->getEmailUser('role_id', $email);
 
         if($admin->updateUser($id,$login,$pass_hash,$name,$surname,$date,$email_row,$token,$verefy,$phone,$date_registartion,$group,$role)){
+            $_SESSION['user'] = array($id,$login,$new_password_comf,$name,$surname,$date,$email_row,$phone,$date_registartion,$group,$role);
             $code = uniqid();
             $admin->sendEmail('Новые данные для входа в аккаунт на сайте KIT-TEST',"<p><strong>Данные для входа в акканут</strong></p><p><strong>Логин: $login </strong></p><p><strong>Новый пароль: $new_password_comf </strong></p>",$email);
-            header("Location: /");
+            header("Location: signin");
         }
 
     }

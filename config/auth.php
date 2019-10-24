@@ -34,7 +34,7 @@ if ($result_row_login == 0){
     $pass = password_hash($password, PASSWORD_DEFAULT);
     if ($connection->add_user_sql($login, $pass, $name, $surname, $birth_date, $email, $token, $verefy, $phone, $today, $role_id)) {
         $result_pass_login = $connection->query_log_pass($login,$pass);
-        $_SESSION['user'] = array($result_pass_login['id'], $result_pass_login['login'], $result_pass_login['password'], $result_pass_login['name'], $result_pass_login['surname'], $result_pass_login['birth_date'], $result_pass_login['email'], $row_auth['tel'], $result_pass_login['registration_date'], $result_pass_login['group_id'], $result_pass_login['role_id']);
+        $_SESSION['user'] = array($result_pass_login['id'], $result_pass_login['login'], $password, $result_pass_login['name'], $result_pass_login['surname'], $result_pass_login['birth_date'], $result_pass_login['email'], $row_auth['tel'], $result_pass_login['registration_date'], $result_pass_login['group_id'], $result_pass_login['role_id']);
         header('Location: ../hub-test');
     }
 }else{
@@ -82,7 +82,7 @@ try {
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Регистрация на сайте KIT-TEST';
-    $mail->Body    = "<p>Добрый день: <strong>$name $surname</strong>, ваши контактные данные для входа в аккаунт</p><p><strong>Логин: $login</strong></p><p><strong>Пароль: $password</strong><p><p>Но чтобы начать пользоваться сервисом вам нужно потвердить свою личность, просто прейдите по этой ссылке, <a href='http://kit-test.ua/resources/views/account/hub-test?token=$token'>kit-test</a></p>";
+    $mail->Body    = "<p>Добрый день: <strong>$name $surname</strong>, ваши контактные данные для входа в аккаунт</p><p><strong>Логин: $login</strong></p><p><strong>Пароль: $password</strong><p><p>Но чтобы начать пользоваться сервисом вам нужно потвердить свою личность, просто нажмите на кнопку <p><a href='http://kit-test.ua/hub-test?token=$token' style='padding: 10px 20px; background-color: #0097a7; color: #fff; border: 2px solid #005962; cursor: pointer; text-decoration:none;'>Войти в аккаунт!</a></p></p>";
 
     $mail->send();
 } catch (Exception $e) {

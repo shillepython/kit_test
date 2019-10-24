@@ -22,6 +22,9 @@ RewriteRule ^(.*)$ resources/views/error/$1 [L,QSA]
 RewriteCond  %{DOCUMENT_ROOT}/resources/views/account/create-test/$1 -f
 RewriteRule ^(.*)$ resources/views/account/create-test/$1 [L,QSA]
 
+RewriteCond  %{DOCUMENT_ROOT}/resources/views/account/download/$1 -f
+RewriteRule ^(.*)$ resources/views/account/download/$1 [L,QSA]
+
 RewriteCond  %{DOCUMENT_ROOT}/resources/views/account/edit/$1 -f
 RewriteRule ^(.*)$ resources/views/account/edit/$1 [L,QSA]
 

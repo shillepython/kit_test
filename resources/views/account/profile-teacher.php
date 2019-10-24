@@ -19,10 +19,10 @@
 
             <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;   padding-bottom: 20px; padding-top: 20px">
                 <div class="col l4 s6">
-                    <p class="profil-content">Ваша дата рождения:</p>
+                    <p class="profil-content">Ваш пароль:</p>
                 </div>
                 <div class="col l4 s6 offset-l4">
-                    <p class="profil-content"> <?php echo $admin->getElementsTable('birth_date',$id) ?></p>
+                    <p class="profil-content"> <?php echo $_SESSION['user'][2]?></p>
                 </div>
             </div>
 
@@ -49,6 +49,7 @@
             <div class="row" style="color: #fff; font-weight: bold; font-size: 20px; background-color: #263238; border-bottom: 1px solid #000;   padding-bottom: 20px; padding-top: 20px">
                 <div class="col l4 s6">
                     <p class="profil-content">Дата регистрации:</p>
+
                 </div>
                 <div class="col l4 s6 offset-l4">
                     <p class="profil-content"><?php echo $admin->getElementsTable('registration_date',$id) ?></p>

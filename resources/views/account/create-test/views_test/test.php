@@ -38,7 +38,7 @@ $email = $admin->getElementsTable('email',$id);
     <?php require "../../../layouts/navbar.php"; ?>
     
     <p class="container button-run center-align">
-        <button class="waves-effect waves-light btn-large test-run blue-grey darken-4 white-text" style="margin-top: 20px;">Начать тест</button>
+        <button class="waves-effect waves-light btn-large test-run cyan darken-2 white-text" style="margin-top: 20px;">Начать тест</button>
     </p>
 <div class="container">
     <div class="test">
@@ -108,7 +108,7 @@ $email = $admin->getElementsTable('email',$id);
                     action: 'dateProcessing?email=' + email,
                     method: 'POST'
                 }).appendTo(".tests");
-                $('#test').append('<button type="submit" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Завершить тест</button>');
+                $('#test').append('<button type="submit" class="waves-effect waves-light btn-large cyan darken-2 white-text">Завершить тест</button>');
                 $('#test').append("<input type='hidden' name='title_test' value='<?php echo $admin->getTestTable('title',$idGet); ?>'>");
                 $('#test').append("<input type='hidden' name='difficult' value='<?php echo $admin->getTestTable('difficult',$idGet); ?>'>");
                 $(".button-collapse").sideNav();

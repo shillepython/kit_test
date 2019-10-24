@@ -1,4 +1,13 @@
 <?php
+session_start();
+if (isset($_GET['out'])){
+    session_destroy();
+    header('Location: /');
+}
+if (!isset($_SESSION['user'])){
+    header('Location: /');
+    exit();
+}
 require "../../../../autoload.php";
 use app\User;
 use app\Admin;
@@ -23,7 +32,13 @@ $id = $admin->getEmailUser('id', $email);
 if ($admin->getElementsTable('verefy',$id) != 1){
     header("Location: /");
 }
-
+if ($admin->getElementsTable('login',$id) == ''){
+    session_destroy();
+    if (!isset($_SESSION['user'])){
+        header('Location: /');
+        exit();
+    }
+}
 $db_pass = $admin->getEmailUser('password', $email);
 if (isset($email)){
     if (strlen($new_password) < 6){

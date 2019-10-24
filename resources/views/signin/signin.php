@@ -13,8 +13,8 @@ if (isset($_SESSION['user'])){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/public/css/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link type="text/css" rel="stylesheet" href="../../../public/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="../../../public/css/style.css">
     <title>Kit Test</title>
 </head>
 <body>
@@ -41,14 +41,14 @@ if (isset($_SESSION['user'])){
 
 
 <div class="container">
-    <div class="row background-user z-depth-2">
+    <div class="row background-user z-depth-2" style="padding: 20px;">
         <form action="../../../config/signin" method="post" class="col s12">
             <h4>Авторизация</h4>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">face</i>
                     <input id="login" name="login" type="text" class="validate">
-                    <label for="login">Ваша логин</label>
+                    <label for="login">Ваш логин</label>
                 </div>
             </div>
             <div class="row">
@@ -61,7 +61,7 @@ if (isset($_SESSION['user'])){
             </div>
             <div class="row">
                 <div class="col s12">
-                    <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">вход
+                    <button class="btn waves-effect cyan darken-2 waves-light white-text" type="submit" name="action">вход
                         <i class="material-icons right">send</i>
                     </button>
                 </div>

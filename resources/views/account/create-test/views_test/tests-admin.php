@@ -74,10 +74,14 @@ if ($admin->getElementsTable('login',$id) == ''){
         </div>
     </div>
 </nav>
+<style>
+    .row {
+        margin-bottom: 0;
+    }
+</style>
 
-
-<div class="container">
-        <h2 style="border-bottom: 1px solid #000; padding-bottom: 20px">Все тесты:</h2>
+<div class="container" style="margin-top: 30px; margin-bottom: 50px;">
+        <h2 style="border-bottom: 1px solid #000; padding-bottom: 20px; margin-top: 5px;">Все тесты:</h2>
         <div class="row cards-top">
             <?php
             $testing = $admin->out_test();

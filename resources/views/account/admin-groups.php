@@ -45,7 +45,7 @@ if (isset($_POST['action'])){
 
     <?php require "../layouts/adminnav.php"; ?>
 <div class="container">
-    <div id="test1" class="col s12">
+    <div id="test1" class="col s12 admin-panel z-depth-3">
         <h5>Все зарегестрированые пользователи</h5>
         <?php if(!empty($name_search)):?>
         <table>
@@ -70,7 +70,7 @@ if (isset($_POST['action'])){
         <table class="highlight">
             <form action="admin-groups" method="post">
                 <input name="search" placeholder="Введите название группы" type="text" required>
-                <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Поиск
+                <button class="btn waves-effect waves-light cyan darken-2 white-text" style="margin-bottom: 50px;" type="submit" name="action">Поиск
                     <i class="material-icons right">send</i>
                 </button>
 

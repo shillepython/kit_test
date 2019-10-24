@@ -23,7 +23,7 @@ if (isset($_SESSION['user'])){
     <title>Kit Test</title>
 </head>
 <body>
-<nav>
+<nav class="cyan lighten-2">
     <div class="container">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center"><img src="http://kitit.com.ua/wp-content/uploads/2018/12/cropped-logo_kit_w-1.png" width="65" height="65" alt=""></a>
@@ -92,7 +92,7 @@ if (isset($_SESSION['user'])){
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">зарегестрироваться
+                        <button class="btn waves-effect waves-light cyan darken-2 white-text" type="submit" name="action">зарегистрироваться
                             <i class="material-icons right">send</i>
                         </button>
                     </div>

@@ -1,4 +1,13 @@
 <?php
+session_start();
+if (isset($_GET['out'])){
+    session_destroy();
+    header('Location: /');
+}
+if (!isset($_SESSION['user'])){
+    header('Location: /');
+    exit();
+}
 require "../../../../autoload.php";
 use app\User;
 use app\Admin;
@@ -11,7 +20,6 @@ require '../../../../vendor/autoload.php';
 
 $connetion = new User();
 $admin = new Admin();
-session_start();
 
 $email_get = $_GET['email'];
 
@@ -21,7 +29,13 @@ $id = $admin->getEmailUser('id', $email_get);
 if ($admin->getElementsTable('verefy',$id) != 1){
     header("Location: /");
 }
-
+if ($admin->getElementsTable('login',$id) == ''){
+    session_destroy();
+    if (!isset($_SESSION['user'])){
+        header('Location: /');
+        exit();
+    }
+}
 $email = $admin->getEmailUser('email', $email_get);
 ?>
     <!doctype html>

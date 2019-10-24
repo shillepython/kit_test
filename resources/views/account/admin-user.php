@@ -47,6 +47,16 @@ if (isset($_POST['action'])){
 
 
 <?php require "../layouts/adminnav.php"; ?>
+    <div class="fixed-action-btn vertical click-to-toggle">
+        <a class="btn-floating btn-large red darken-2">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul>
+            <li>
+                <a href="download-user" class="btn-floating cyan darken-2"><i class="material-icons">file_download</i></a>
+            </li>
+        </ul>
+    </div>
     <div id="test1" class="col s12">
         <h5>Все зарегестрированые пользователи</h5>
 
@@ -73,7 +83,7 @@ if (isset($_POST['action'])){
         <table class="highlight">
             <form action="admin-user" method="post">
                 <input name="search" placeholder="Введите логин пользователя" type="text" required>
-                <button class="btn waves-effect waves-light blue-grey darken-4 white-text" type="submit" name="action">Поиск
+                <button class="btn waves-effect waves-light cyan darken-2 white-text" type="submit" name="action">Поиск
                     <i class="material-icons right">send</i>
                 </button>
 

@@ -36,6 +36,6 @@ $body    = "<p>Здравствуйте: <strong> $name $surname </strong>, чт
                             <input type='hidden' value='$email' name='email'>
                             <input type='hidden' value='$id' name='id'>
                             <input type='hidden' value='$password' name='password'>
-                            <input class='btn waves-effect waves-light' type='submit' name='action' value='Вход в аккаунт'>
+                            <input class='btn waves-effect waves-light' style='padding: 10px 20px; background-color: #0097a7; color: #fff; border: 2px solid #005962; cursor: pointer;' type='submit' name='action' value='Вход в аккаунт'>
                         </form>";
 $admin->sendEmail($subject,$body,$email);

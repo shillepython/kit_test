@@ -36,7 +36,7 @@ if ($admin->getElementsTable('login',$id) == ''){
 }
 $token = $_GET['token'];
 
-if (!empty($token)){
+if (isset($token)){
     if ($token == $admin->getElementsTable('token',$id)){
         $email = $admin->getElementsTable('email',$id);
 
@@ -54,7 +54,7 @@ if (!empty($token)){
         $group = $admin->getEmailUser('group_id', $email);
         $role = $admin->getEmailUser('role_id', $email);
         $admin->updateUser($id,$login,$password,$name,$surname,$date,$email_row,$token,$verefy,$phone,$date_registartion,$group,$role);
-        header("Location: /");
+        header("Location: hub-test");
     }else{
         return;
     }
@@ -133,10 +133,10 @@ if ($admin->getElementsTable('verefy',$id) != 1):
                 <h5>Панель управление пользователями</h5>
                 <div class="row s12">
                     <div class="col s6">
-                        <a href="create-test/add" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Создать тест</a>
+                        <a href="create-test/add" class="waves-effect waves-light btn-large cyan darken-2 white-text">Создать тест</a>
                     </div>
                     <div class="col s6">
-                        <a href="admin-groups" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Поиск групп</a>
+                        <a href="admin-groups" class="waves-effect waves-light btn-large cyan darken-2 white-text">Поиск групп</a>
                     </div>
                 </div>
             </div>
@@ -151,13 +151,13 @@ if ($admin->getElementsTable('verefy',$id) != 1):
                 <h5>Панель управление пользователями</h5>
                 <div class="row s12">
                     <div class="col s4">
-                        <a href="admin-user" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Таблица пользователей</a>
+                        <a href="admin-user" class="waves-effect waves-light btn-large cyan darken-2 white-text">Таблица пользователей</a>
                     </div>
                     <div class="col s4">
-                        <a href="admin-groups" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Поиск групп</a>
+                        <a href="admin-groups" class="waves-effect waves-light btn-large cyan darken-2 white-text">Поиск групп</a>
                     </div>
                     <div class="col s4">
-                        <a href="add" class="waves-effect waves-light btn-large blue-grey darken-4 white-text">Создать тест</a>
+                        <a href="add" class="waves-effect waves-light btn-large cyan darken-2 white-text">Создать тест</a>
                     </div>
                 </div>
             </div>
