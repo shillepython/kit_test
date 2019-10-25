@@ -105,7 +105,7 @@ class Admin extends UserObject {
         header('Content-Disposition: attachment; filename=user_database.csv');
         $output = fopen("php://output", 'w') or die("не удалось создать файл");
         fputcsv($output, array('ID', 'Login', 'Password', 'Name', 'Surname', 'date', 'email', 'Phone', 'Registration', 'Group', 'Role'), ",");
-
+        $users = [];
         $sql = $this->query("SELECT * FROM `users` ORDER BY id DESC");
         while ($row = $sql->fetch_row()){
             if ($row[12] == "1"){
@@ -115,8 +115,12 @@ class Admin extends UserObject {
             }elseif ($row[12] == "3"){
                 $status = "Admin";
             }
-            $lineData = array($row[0],$row[1],$row[3],$row[4],$row[5],$row[6],$row[7],$row[8],$row[9],$row[10],$row[11],$status);
-            fputcsv($output, $lineData, ",");
+            $users[] = array($row[0],$row[1],$row[3],$row[4],$row[5],$row[6],$row[7],$row[8],$row[9],$row[10],$row[11],$status);
+        }
+
+        fputs($output, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) )); // Для поддержки кириллицы добавляются отметки BOM, альтернативные решения - https://csv.thephpleague.com/9.0/converter/charset/, https://stackoverflow.com/questions/17592707/php-export-csv-when-data-having-utf8-charcters, https://phpspreadsheet.readthedocs.io/en/latest/
+        foreach ($users as $row) {
+            fputcsv($output, $row);
         }
         fclose($output);
     }
