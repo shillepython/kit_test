@@ -31,8 +31,9 @@ $role = $admin->getEmailUser('role_id', $email);
 header("Location: ../verefy-email");
 
 $subject = 'Востановление пароля на сайте KIT-TEST';
+$host = $_SERVER['HTTP_HOST'];
 $body    = "<p>Здравствуйте: <strong> $name $surname </strong>, чтобы сбросить пароль нажмите на кнопку и после чего вы получите письмо с паролем<p>
-                        <form action='http://kit-test.ua/resources/views/signin/update-password?email=$email'>
+                        <form action='http://$host/resources/views/signin/update-password?email=$email'>
                             <input type='hidden' value='$email' name='email'>
                             <input type='hidden' value='$id' name='id'>
                             <input type='hidden' value='$password' name='password'>
