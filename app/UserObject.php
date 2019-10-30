@@ -9,34 +9,7 @@ class UserObject extends AbstractModel{
     {
         return Connection::getInstance()->query($sql);
     }
-    public function whileSearch($name) {
-        while ($row = $name->fetch_row()){
-            echo "<tr>";
-            echo "<td>" . $row[1] . " </td>";
-            echo "<td>" . $row[3] . " </td>";
-            echo "<td>" . $row[4] . " </td>";
-            echo "<td>" . $row[5] . " </td>";
-            echo "<td>" . $row[6] . " </td>";
-            echo "<td>" . $row[9] . " </td>";
-            echo "<td>" . $row[10] . " </td>";
-            echo "<td>" . $row[11] . " </td>";
-            if($row[12] == '3') {echo "<td>" . 'админ' . "</td>";}if ($row[12] == '2'){echo "<td>" . 'автор' . "</td>";}if ($row[12] == '1'){echo "<td>" . 'пользователь' . "</td>";};
-            echo "</tr>";
-        }
-    }
-    //Поиск пользователя
-    public function searchUser($name)
-    {
-        $searhuser = $this->query("SELECT * FROM " . $this->table . " WHERE `login` LIKE '%$name%'");
-        $this->whileSearch($searhuser);
 
-    }
-
-    //Поиск группы
-    public function searchUserGroup($group) {
-        $searhGroup = $this->query("SELECT * FROM " . $this->table . " WHERE `group_id` LIKE '%$group%'");
-        $this->whileSearch($searhGroup);
-    }
 
     public function getElementsTable($row_table,$id)
     {
@@ -44,7 +17,5 @@ class UserObject extends AbstractModel{
         $row_ass = $getGroup->fetch_assoc();
         return $row_ass[$row_table];
     }
-
-
 }
 

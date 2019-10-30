@@ -21,6 +21,7 @@ $user = new User();
 $admin = new Admin();
 echo $admin->editTests(15);
 $title = $_POST['title_test'];
+$theme = $_POST['text'];
 $difficult = $_POST['difficult'];
 
 if (isset($_GET['del_user'])) {
@@ -87,9 +88,25 @@ if ($true_ans > 1){
     </div>
     </body>
 <?php
-
+$bad_res = array("Результат довольно таки плохой, вам нужно подучить эту тему.","Ваш балл не очень высокий, рекомендуем вам подучить эту тему.","Ваш балл не самый высокий, советуем вам выучить этот материал.");
+$less_normal_res = array("Ваш балл ниже среднего, рекомендуем повторить материал.","Ваш результат не самый высокий, повторите материал и сдайте тест на идеально","Повторите материал и ваши результаты будут лучше.");
+$normal_res = array("Результаты выше среднего, но есть куда стремиться.","Советуем повторить лекции и результат будет идеальным.","Хорошо, повторите материал и пройдите тест снова на отлично.","Балл хороший, но есть куда стремиться, рекомендуем повторить материал лекций.");
+$best_res = array("Отлично, вы будущий программист","Превосходно, вы знаете этот материал очень хорошо.","Очень хорошо, ваши знания на высоте!!!");
+if ($test_true<=4) {
+    $rand_keys = array_rand($bad_res);
+    $final_res = $bad_res;
+} elseif($test_true>4 && $test_true<=7){
+    $rand_keys = array_rand($less_normal_res);
+    $final_res = $less_normal_res;
+} elseif($test_true>7 && $test_true<=10){
+    $rand_keys = array_rand($normal_res);
+    $final_res = $normal_res;
+} elseif($test_true>10 && $test_true<=12){
+    $rand_keys = array_rand($best_res);
+    $final_res = $best_res;
+}
 $subject = 'Результаты тестрирования на сайте KIT-TEST';
-$body    = "<p>Здравствуйте: <strong> $name $surname </strong>, результаты теста: <p>Название теста: <strong>$title</strong></p><p>Сложность теста: <strong>$difficult</strong></p><p>Ваш балл: <strong>$test_true</strong></p><p>";
+$body    = "<p>Здравствуйте: <strong> $name $surname </strong>, результаты теста: <p>Название теста: <strong>$title</strong></p><p>Описание теста: <strong>$theme</strong></p><p>Сложность теста: <strong>$difficult</strong></p><p>Ваш балл: <strong>$test_true</strong></p><p><strong>$final_res[$rand_keys]</strong></p><p>";
 if (!empty($email)){
     $admin->sendEmail($subject,$body,$email);
 }

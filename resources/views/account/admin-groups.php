@@ -63,7 +63,7 @@ if (isset($_POST['action'])){
             </tr>
             </thead>
             <tbody>
-                    <?php $admin->searchUserGroup($name_search); ?>
+                    <?php $connection->searchUserGroup($name_search); ?>
             </tbody>
         </table>
     <?php endif; ?>
