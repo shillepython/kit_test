@@ -9,26 +9,12 @@ class Author extends UserObject {
     public function create_json($file_txt_upload,$name_tets,$text_test,$file_image_ret,$difficult,$file_json) {
         header('Content-Type: application/json; charset=utf-8');
 
-        $dir    = 'views_test/json_question/';
-        $files1 = scandir($dir);
-
-        $file_total = [];
-        for($i = 2; $i <= count($files1) - 1; $i++){
-            $filename = "views_test/json_question/".$files1[$i];
-            $handle = fopen($filename, "r");
-            $file_total_text = ($contents = fread($handle, filesize($filename)));
-            array_push($file_total,$file_total_text);
-            fclose($handle);
-        }
-        $fp = fopen("views_test/total_test/total_test.json", "w");
-        fwrite($fp, implode(",", $file_total));
-        fclose($fp);
-
+        $this->create_total_file();
 
         $question_arr = [];
         $answer_arr = [];
         $file = fopen($file_txt_upload, "r"); // открываем файл на чтение
-        $data = date("M-d-Y", mktime()); // создаем метку времени для обеспечения уникального имени файла
+
         while (!feof($file)) {
             $str = fgets($file); // читаем файл построчно
             if (substr($str, 0, 10) === "{---------") { // находим начало вопроса
@@ -44,7 +30,7 @@ class Author extends UserObject {
                     $str_answ = trim($str_answ); // отрезаем  пробелы в начале и конце
                     if (substr($str_answ, 0, 1) === "*") { // если начинается на *
                         $question_arr[$str_quest][] = ltrim($str_answ, "*");  // вопрос записываем без *
-                        $this->add_ans_question($name_tets,ltrim($str_answ, "*"));
+                        $this->add_ans_question($name_tets,ltrim($str_answ, "*")); //Добавление правильных ответов в бд.
                         $answer_arr[$str_quest][] = "true";  // ответ отмечаем как правильный
                     } else {   // иначе
                         $question_arr[$str_quest][] = $str_answ;  //  записываем вопрос
@@ -54,6 +40,27 @@ class Author extends UserObject {
                 fgets($file); // пропускаем строку &
             }
         }
+        $result_file_name = $this->encodeAnswer_Question($question_arr,$answer_arr); //Кодирование фалов
+        $this->add_json_name($name_tets,$result_file_name,$text_test,$file_image_ret,$difficult); //Добавление в бд.
+    }
+
+    public function create_total_file(){
+        $dir    = 'views_test/json_question/';
+        $files1 = scandir($dir);
+        $file_total = [];
+        for($i = 2; $i <= count($files1) - 1; $i++){
+            $filename = "views_test/json_question/".$files1[$i];
+            $handle = fopen($filename, "r");
+            $file_total_text = ($contents = fread($handle, filesize($filename)));
+            array_push($file_total,$file_total_text);
+            fclose($handle);
+        }
+        $fp = fopen("views_test/total_test/total_test.json", "w");
+        fwrite($fp, implode(",", $file_total));
+        fclose($fp);
+    }
+
+    public function encodeAnswer_Question($question_arr,$answer_arr){
         $json_question = json_encode($question_arr, JSON_UNESCAPED_UNICODE);  // преобразуем массив вопросов в формат json
         $json_answer = json_encode($answer_arr, JSON_UNESCAPED_UNICODE); // преобразуем массив jndtnjd в формат json
         $file_quest_dir = 'views_test/json_question/json_question_' .  uniqid() . '.json';
@@ -65,10 +72,9 @@ class Author extends UserObject {
         fwrite($jf_answer, $json_answer);
         fclose($jf_answer);
         header('Location: ../tests-admin');
-        $result_file_name = mb_substr( $file_quest_dir, 25);
-        $this->add_json_name($name_tets,$result_file_name,$text_test,$file_image_ret,$difficult);
-
+        return $result_file_name = mb_substr( $file_quest_dir, 25);
     }
+
 
     public function add_json_name($name_tets,$result_file_name,$text_test,$file_image_ret,$difficult) {
         return $this->query("INSERT INTO `out_test` (title,text,difficult,image,file_name) VALUES ('$name_tets','$text_test','$difficult','$file_image_ret','$result_file_name')");

@@ -3,8 +3,7 @@ namespace app;
 use mysql;
 class UserObject extends AbstractModel{
     private $table = '`users`';
-    //Обновление данных пользователя
-    //Пример использования - $user->updateUser(105,'shille','cthfabv123', 'Серафим', 'Семихат','06.07.2004', 'shillenetwork@gmail.com','0980193160','2019-03-10','Отсутствует','1');
+    //Запрос к БД.
     function query($sql)
     {
         return Connection::getInstance()->query($sql);

@@ -19,9 +19,9 @@ use PHPMailer\PHPMailer\Exception;
 
 $user = new User();
 $admin = new Admin();
-echo $admin->editTests(15);
+
 $title = $_POST['title_test'];
-$theme = $_POST['text'];
+$theme = $_POST['theme'];
 $difficult = $_POST['difficult'];
 
 if (isset($_GET['del_user'])) {

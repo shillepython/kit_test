@@ -111,6 +111,7 @@ $email = $admin->getElementsTable('email',$id);
                 $('#test').append('<button type="submit" class="waves-effect waves-light btn-large cyan darken-2 white-text">Завершить тест</button>');
                 $('#test').append("<input type='hidden' name='title_test' value='<?php echo $admin->getTestTable('title',$idGet); ?>'>");
                 $('#test').append("<input type='hidden' name='difficult' value='<?php echo $admin->getTestTable('difficult',$idGet); ?>'>");
+                $('#test').append("<input type='hidden' name='theme' value='<?php echo $admin->getTestTable('text',$idGet); ?>'>");
                 $(".button-collapse").sideNav();
             });
         });

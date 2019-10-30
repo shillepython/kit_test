@@ -76,7 +76,7 @@ if (isset($_POST['action'])){
                 </tr>
                 </thead>
                 <tbody>
-                <?php $connection->searchUser($name_search); ?>
+                <?php $admin->searchUser($name_search); ?>
                 </tbody>
             </table>
         <?php endif; ?>
