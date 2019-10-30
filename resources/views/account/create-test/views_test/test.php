@@ -52,7 +52,11 @@ $email = $admin->getElementsTable('email',$id);
     </div>
 </div>
 
- <?php $result_file_name = $admin->getTestTable('file_name', $idGet); ?>;
+ <?php
+    $result_file_name = $admin->getTestTable('file_name', $idGet);
+    $dir_file = mb_substr( $result_file_name, 10);
+    $dir_file_final = rtrim($dir_file, ".json");
+ ?>
 
 <?php require "../../../layouts/footer.php" ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -65,9 +69,10 @@ $email = $admin->getElementsTable('email',$id);
     $(document).ready(function() {
         $("button").click(function() {
             var file_name_res = '<?= $result_file_name ?>';
+            var dir_file = '<?= $dir_file_final ?>';
             // задаем функцию при нажатиии на элемент <button>
             $(this).closest("button").remove();
-            $.getJSON("json_question/" + file_name_res, function(data, textStatus, jqXHR) {
+            $.getJSON("total_test/" + dir_file + "/" + file_name_res, function(data, textStatus, jqXHR) {
 
                 // указываем url и функцию обратного вызова;
                 let qstr = "";

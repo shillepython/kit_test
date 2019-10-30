@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 21 2019 г., 23:31
+-- Время создания: Окт 30 2019 г., 23:35
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.1.22
 
@@ -63,18 +63,30 @@ CREATE TABLE `ans_question` (
 --
 
 INSERT INTO `ans_question` (`id`, `name_test`, `ans`) VALUES
-(193, 'JS', 'object'),
-(194, 'JS', 'clearTimeout'),
-(195, 'JS', 'new'),
-(196, 'JS', 'var pattern = [a,b,c];'),
-(197, 'JS', '<a href>'),
-(198, 'JS', 'reverse()'),
-(199, 'JS', 'клиентскими'),
-(200, 'JS', 'onmousedown'),
-(201, 'JS', 'caller'),
-(202, 'JS', 'встраиваемый расширяемый язык программирования'),
-(203, 'JS', 'да, в Firefox такое случается'),
-(204, 'JS', 'sort()');
+(829, 'JS', 'object'),
+(830, 'JS', 'clearTimeout'),
+(831, 'JS', 'new'),
+(832, 'JS', 'var pattern = [a,b,c];'),
+(833, 'JS', '<a href>'),
+(834, 'JS', 'reverse()'),
+(835, 'JS', 'клиентскими'),
+(836, 'JS', 'onmousedown'),
+(837, 'JS', 'caller'),
+(838, 'JS', 'встраиваемый расширяемый язык программирования'),
+(839, 'JS', 'да, в Firefox такое случается'),
+(840, 'JS', 'sort()'),
+(841, 'HTML', '<table>'),
+(842, 'HTML', '<tr>'),
+(843, 'HTML', '<th>'),
+(844, 'HTML', '<td>'),
+(845, 'HTML', '<table align=\"center\">'),
+(846, 'HTML', 'атрибута background'),
+(847, 'HTML', '<td valign=\"top\">'),
+(848, 'HTML', '<td align=\"center\">'),
+(849, 'HTML', 'сellspacing=\"5\"'),
+(850, 'HTML', 'сellpadding=\"5\"'),
+(851, 'HTML', 'colspan=\"5\"'),
+(852, 'HTML', 'bordercolor=\"red\"');
 
 -- --------------------------------------------------------
 
@@ -96,7 +108,8 @@ CREATE TABLE `out_test` (
 --
 
 INSERT INTO `out_test` (`id`, `title`, `text`, `difficult`, `image`, `file_name`) VALUES
-(63, 'JS', 'На сколько хорошо ты знаешь JS? пройди тесты, и узнай результаты.', 'middle', 'js.png', 'json_question_5dae158407a1a.json');
+(95, 'JS', 'На сколько хорошо ты знаешь JS? пройди тесты, и узнай результаты.', 'easy', 'js.png', 'total_testJS.json'),
+(96, 'HTML', 'На сколько хорошо ты знаешь HTML? пройди тесты, и узнай результаты.', 'easy', 'html.png', 'total_testHTML.json');
 
 -- --------------------------------------------------------
 
@@ -186,7 +199,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `surname`, `birth_date`, `email`, `token`, `verefy`, `tel`, `registration_date`, `group_id`, `role_id`) VALUES
 (170, 'shilsdsdle', '$2y$10$mw4U.qeVNGDUB/63egHEretQ8JPY.ZMWgOgsPy3uG/epyWZvakIU.', 'Serafim', 'Semikhat', '06.07.2004', 'shillesdsdnetwork@gmail.com', 'true', 1, '0980193160', '2019-10-16', 'HTML-CSS1', 1),
-(172, 'shille', '$2y$10$ct6r7MsWrIoj6HuD2TBN5OyyBdjOdquAEmap5I25y6RGO836iQ5Ly', 'Serafim', 'Semikhat', '06.07.2004', 'shillenetwork@gmail.com', 'true', 1, '+380980193160', '2019-10-20', 'JS-PHP-1', 3);
+(180, 'shislle', '$2y$10$OrLeZhOgnsa4oK7YesmnKu2dshKaXwRPZ3tB4XVMIlKYaTezcfleO', 'Simavarvar', 'Semikhat', '02.03.2000', 'shillensetwork@gmail.com', 'true', 1, '0980193160', '2019-10-25', 'Отсутствует', 3),
+(189, 'UN_FACE', '$2y$10$Z8ERR5hjmh6rO/4MUSov9ucZdCMC.rWtxdNDdSRzdKJDhTJVeu7Ne', 'Simavarvar', 'Semikhat', '02.03.2000', 'appletrollface@gmail.com', 'AXUHClzs7EMt96mNyhu3', 0, '0980193160', '2019-10-30', 'Отсутствует', 1),
+(190, 'shille', '$2y$10$yuMpON1ZbAs4T/d8.vpopeV4n4bl7bOcFXCOybe.EW4V8gXwbhgL6', 'Simavarvar', 'Semikhat', '02.03.2000', 'shillenetwork@gmail.com', 'true', 1, '0980193160', '2019-10-30', 'Отсутствует', 3);
 
 -- --------------------------------------------------------
 
@@ -292,13 +307,13 @@ ALTER TABLE `answer_options`
 -- AUTO_INCREMENT для таблицы `ans_question`
 --
 ALTER TABLE `ans_question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=853;
 
 --
 -- AUTO_INCREMENT для таблицы `out_test`
 --
 ALTER TABLE `out_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT для таблицы `questions`
@@ -328,7 +343,7 @@ ALTER TABLE `test_results`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT для таблицы `user_test_permissions`
