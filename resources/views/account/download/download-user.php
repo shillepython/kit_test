@@ -9,7 +9,6 @@ if (!isset($_SESSION['user'])) {
     header('Location: /');
     exit();
 }
-
 require "../../../../autoload.php";
 
 use app\User;

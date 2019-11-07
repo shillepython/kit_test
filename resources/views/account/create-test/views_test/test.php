@@ -36,10 +36,22 @@ $email = $admin->getElementsTable('email',$id);
 <?php if($admin->getElementsTable('role_id',$id) == 1):?>
 
     <?php require "../../../layouts/navbar.php"; ?>
-    
+
     <p class="container button-run center-align">
         <button class="waves-effect waves-light btn-large test-run cyan darken-2 white-text" style="margin-top: 20px;">Начать тест</button>
     </p>
+<div id="timer">
+    <span class="minutes">0</span>:<span class="seconds">00</span>
+</div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
 <div class="container">
     <div class="test">
         <div class="row">
@@ -50,8 +62,10 @@ $email = $admin->getElementsTable('email',$id);
         </div>
 
     </div>
-</div>
+    <div class="gohomehref">
 
+    </div>
+</div>
  <?php
     $result_file_name = $admin->getTestTable('file_name', $idGet);
     $dir_file = mb_substr( $result_file_name, 10);
@@ -68,6 +82,8 @@ $email = $admin->getElementsTable('email',$id);
 <script>
     $(document).ready(function() {
         $("button").click(function() {
+
+
             var file_name_res = '<?= $result_file_name ?>';
             var dir_file = '<?= $dir_file_final ?>';
             // задаем функцию при нажатиии на элемент <button>
@@ -113,7 +129,50 @@ $email = $admin->getElementsTable('email',$id);
                     action: 'dateProcessing?email=' + email,
                     method: 'POST'
                 }).appendTo(".tests");
-                $('#test').append('<button type="submit" class="waves-effect waves-light btn-large cyan darken-2 white-text">Завершить тест</button>');
+
+
+
+                function getTimeRemaining(endtime) {
+                    var t = Date.parse(endtime) - Date.parse(new Date());
+                    var seconds = Math.floor((t / 1000) % 60);
+                    var minutes = Math.floor((t / 1000 / 60) % 60);
+                    return {
+                        'total': t,
+                        'minutes': minutes,
+                        'seconds': seconds
+                    };
+                }
+
+                function initializeClock(id, endtime) {
+                    var clock = document.getElementById(id);
+                    var minutesSpan = clock.querySelector('.minutes');
+                    var secondsSpan = clock.querySelector('.seconds');
+
+                    function updateClock() {
+                        var t = getTimeRemaining(endtime);
+                        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                        if (t.total <= 0) {
+                            clearInterval(timeinterval);
+                            var $toastContent = $('<span>Время вышло</span>').add($('<button class="btn-flat toast-action">Закрыть</button>'));
+                            Materialize.toast($toastContent, 10000);
+                            $('#test').remove();
+                            $('.gohomehref').append('<a href="../hub-test" class="waves-effect waves-light btn-large cyan darken-2 white-text">На главную</a>');
+                        }
+                    }
+
+                    updateClock();
+                    var timeinterval = setInterval(updateClock, 1000);
+                }
+
+                var deadline = new Date(Date.parse(new Date()) + 3 * 1000); // for endless timer
+                initializeClock('timer', deadline);
+
+
+
+
+                $('#test').append('<button type="submit" id="finishButton" class="waves-effect waves-light btn-large cyan darken-2 white-text">Завершить тест</button>');
                 $('#test').append("<input type='hidden' name='title_test' value='<?php echo $admin->getTestTable('title',$idGet); ?>'>");
                 $('#test').append("<input type='hidden' name='difficult' value='<?php echo $admin->getTestTable('difficult',$idGet); ?>'>");
                 $('#test').append("<input type='hidden' name='theme' value='<?php echo $admin->getTestTable('text',$idGet); ?>'>");
@@ -121,6 +180,7 @@ $email = $admin->getElementsTable('email',$id);
             });
         });
     });
+
 </script>
 <?php elseif ($admin->getElementsTable('role_id',$id) == 2):
 header("Location: ../../hub-test");

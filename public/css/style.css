@@ -69,6 +69,19 @@ label .active {
 .center-table {
     text-align: center;
 }
+#timer {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    z-index: 99999;
+    background-color: #276670;
+    border-radius: 0 10px 10px 0;
+    width: 60px;
+    justify-content: center;
+    display: flex;
+    padding: 10px;
+    color: #fff;
+}
 
 
 

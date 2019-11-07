@@ -38,37 +38,46 @@ class Author extends UserObject {
     }
 
     public function file_exists_empty($file_quest_dir,$file_total,$file_name_json){
+        //Создание файла который в себе хранит все тесты.
         $fp = fopen("views_test/total_test/total_test.json", "w");
         fwrite($fp, str_ireplace('"]},{"', '"],"', implode(",", $file_total)));
         fclose($fp);
 
-        // fwrite($fp, str_ireplace('"]},{"', '"],"', implode(",", $file_total)));
+        //Создание массива
+        $strJsonFileContents = file_get_contents($file_quest_dir);// Получаем код файла
+        $array = json_decode($strJsonFileContents, true); //Декодируем и получаем массив
 
-        $strJsonFileContents = file_get_contents($file_quest_dir);
-        // Convert to array
-        $array = json_decode($strJsonFileContents, true);
-
+        // Дописываем данные в конец файла.
         $fp = $this->fopen_file_totaltest($file_name_json, "a");
         fwrite($fp, json_encode($array, JSON_UNESCAPED_UNICODE));
         fclose($fp);
 
-        $json_code_replace = file_get_contents("views_test/total_test/" . rtrim($file_name_json,".json") . "/total_test" . $file_name_json);
-        $dir_total_json = str_ireplace('"]}{"', '"],"', $json_code_replace);
-
+        //Делаем так чтобы все вопросы были через "],"
+        $json_code_replace = $this->getDirTotal_test_file_in($file_name_json);// Получаем код файла
+        $dir_total_json = str_ireplace('"]}{"', '"],"', $json_code_replace); //Заменяем символы
+        //Записываем данные
         $fp = $this->fopen_file_totaltest($file_name_json, "w");
         fwrite($fp, $dir_total_json);
         fclose($fp);
 
-        $reload =  file_get_contents("views_test/total_test/" . rtrim($file_name_json,".json") . "/total_test" . $file_name_json);
+        //Проверка на одинаковые вопросы. Если есть хоть один вопрос будет дургой, он добавляется в конец файла.
+        $reload = $this->getDirTotal_test_file_in($file_name_json);// Получаем код файла
         $final_json_array = json_decode($reload, true);
+        $this->verefy_repeat_question($file_name_json,$final_json_array);
+    }
 
-        $fp = $this->fopen_file_totaltest($file_name_json, "w");
-        fwrite($fp, json_encode($final_json_array, JSON_UNESCAPED_UNICODE));
-        fclose($fp);
+    public function getDirTotal_test_file_in($file_name_json){
+        return file_get_contents("views_test/total_test/" . rtrim($file_name_json,".json") . "/total_test" . $file_name_json);
     }
 
     public function fopen_file_totaltest($file_name_json, $key){
         return fopen("views_test/total_test/" . rtrim($file_name_json,".json") . "/total_test" . $file_name_json, $key);
+    }
+
+    public function verefy_repeat_question($file_name_json,$final_json_array){
+        $fp = $this->fopen_file_totaltest($file_name_json, "w");
+        fwrite($fp, json_encode($final_json_array, JSON_UNESCAPED_UNICODE));
+        fclose($fp);
     }
 
     public function file_exists_no_empty($file_quest_dir,$file_total,$file_name_json) {
@@ -107,7 +116,7 @@ class Author extends UserObject {
             $this->file_exists_no_empty($file_quest_dir,$file_total,$file_name_json);
         }
 
-        header('Location: ../tests-admin');
+//        header('Location: ../tests-admin');
     }
 
     public function verefy_file_json($file,$name_tets,$question_arr,$answer_arr,$file_quest_dir){
