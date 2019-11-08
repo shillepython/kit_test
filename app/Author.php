@@ -116,7 +116,7 @@ class Author extends UserObject {
             $this->file_exists_no_empty($file_quest_dir,$file_total,$file_name_json);
         }
 
-//        header('Location: ../tests-admin');
+        header('Location: ../tests-admin');
     }
 
     public function verefy_file_json($file,$name_tets,$question_arr,$answer_arr,$file_quest_dir){

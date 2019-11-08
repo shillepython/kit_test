@@ -84,44 +84,85 @@ $email = $admin->getElementsTable('email',$id);
         $("button").click(function() {
 
 
+
             var file_name_res = '<?= $result_file_name ?>';
             var dir_file = '<?= $dir_file_final ?>';
             // задаем функцию при нажатиии на элемент <button>
             $(this).closest("button").remove();
             $.getJSON("total_test/" + dir_file + "/" + file_name_res, function(data, textStatus, jqXHR) {
 
+                var endquesions = {}; //новый массив , в котором строиться рандомизированный массив с тестами
+                function fix(arr){  //функция строит новый масив
+                    var keys = Object.keys(data);
+                    for (let i = 0 ; i < arr.length;i++){
+                        endquesions[keys[arr[i]]] = data[keys[arr[i]]]
+                    }
+                }
+                function mix(array) { //создаёт массив на основе которого строиться перемешаный
+                    var randomquesion;
+                    var auxiliary;
+                    var newarr = [];
+                    for (var i = array.length ; i > newarr.length ; i++) {
+                        randomquesion = Math.floor(Math.random() * (array.length - 0) + 0);
+                        auxiliary = randomquesion;
+                        auxiliary += "";
+                        if(newarr.length>=array.length){
+                            return fix(newarr);
+                        }
+                        if (newarr.indexOf(auxiliary)==-1){
+                            newarr.push(auxiliary);
+                        }
+                    }
+                    return array;
+                }
+
+                function auxiliary(array) {
+                    return mix(Object.keys(array));
+                }
+                function showlog(array){
+                    console.log(array);
+                }
+                mixedarray = auxiliary(data);
+                showlog(endquesions);
+
+
+
+
                 // указываем url и функцию обратного вызова;
                 let qstr = "";
                 let email = '<?= $email ?>';
                 let group_number = 0;
                 let test_id = 0;
-                for (let key in data) {
-                    let answ_number = 0;
-                    qstr +=
-                        '<div class="row tests z-depth-2" style="border-radius: 5px; padding: 20px;"<div class="col s12">' +
-                        "<h4>" +
-                        key +
-                        "</h4>";
-                    let arr = data[key];
-                    for (let i = 0; i < arr.length; i++){
-                        $val_first = arr[i].replace("<", "&lt;");
-                        $val = $val_first.replace(">", "&gt;");
-                        qstr +=
-                            "<p> <input required value='"+ $val +"' name='group" +
-                            group_number +
-                            "' type='radio' id='test" +
-                            test_id +
-                            "' /><label for='test" +
-                            test_id +
-                            "'>" +
-                            $val +
-                            "</label></p>";
-                        answ_number++;
-                        test_id++;
-                    }
-                    qstr += "</div></div>";
-                    group_number++;
-                }
+                // endquesions += Object.values(endquesions).splice(11);
+                console.log(endquesions);
+
+                        for (let key in endquesions) {
+                            let answ_number = 0;
+                            qstr +=
+                                '<div class="row tests z-depth-2" style="border-radius: 5px; padding: 20px;"<div class="col s12">' +
+                                "<h4>" +
+                                key +
+                                "</h4>";
+                            let arr = endquesions[key];
+                            for (let i = 0; i < arr.length; i++) {
+                                $val_first = arr[i].replace("<", "&lt;");
+                                $val = $val_first.replace(">", "&gt;");
+                                qstr +=
+                                    "<p> <input required value='" + $val + "' name='group" +
+                                    group_number +
+                                    "' type='radio' id='test" +
+                                    test_id +
+                                    "' /><label for='test" +
+                                    test_id +
+                                    "'>" +
+                                    $val +
+                                    "</label></p>";
+                                answ_number++;
+                                test_id++;
+                            }
+                            qstr += "</div></div>";
+                            group_number++;
+                        }
                 $("<form/>", {
                     id: "test",
                     class: "my-new-list",
@@ -166,7 +207,7 @@ $email = $admin->getElementsTable('email',$id);
                     var timeinterval = setInterval(updateClock, 1000);
                 }
 
-                var deadline = new Date(Date.parse(new Date()) + 3 * 1000); // for endless timer
+                var deadline = new Date(Date.parse(new Date()) + 60 * 1000 * 60); // for endless timer
                 initializeClock('timer', deadline);
 
 
